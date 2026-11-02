@@ -1,0 +1,34 @@
+{
+  "name": "@icm/web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc --noEmit",
+    "e2e": "playwright test",
+    "ui-evidence": "node scripts/capture-ui-evidence.mjs"
+  },
+  "dependencies": {
+    "@icm/api-client": "workspace:*",
+    "@icm/ui-tokens": "workspace:*",
+    "@icm/ui-web": "workspace:*",
+    "@icm/i18n": "workspace:*",
+    "@tanstack/react-router": "^1.170.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@playwright/test": "^1.49.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0"
+  }
+}

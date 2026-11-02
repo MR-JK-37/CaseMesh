@@ -1,0 +1,19 @@
+{
+  "name": "@icm/ui-tokens",
+  "version": "0.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc --noEmit",
+    "contrast": "tsx scripts/check-contrast.ts",
+    "tokens:css": "tsx scripts/generate-css.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}

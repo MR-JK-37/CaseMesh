@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "APAAR Platform",
+    "slug": "apaar-platform",
+    "scheme": "apaar",
+    "version": "0.0.0",
+    "sdkVersion": "58.0.0",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "org.apaar.platform"
+    },
+    "android": {
+      "package": "org.apaar.platform"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ]
+  }
+}

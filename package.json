@@ -1,0 +1,22 @@
+{
+  "name": "icm-platform",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@11.26.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "guard:data-origin": "bash scripts/check-data-origin.sh",
+    "guard:icons": "bash scripts/check-icon-imports.sh",
+    "guard:contrast": "pnpm --filter @icm/ui-tokens run contrast"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0",
+    "typescript": "^5.7.0"
+  }
+}

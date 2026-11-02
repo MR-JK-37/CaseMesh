@@ -1,0 +1,25 @@
+.env
+.env.local
+.env.local.*
+!.env.local.example
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.next/
+node_modules/
+build/
+dist/
+.turbo/
+.expo/
+local.properties
+*.apk
+*.aab
+*.egg-info/
+
+# Local tool/session state, not project source
+.arena/
+.playwright-mcp/
+.agents/
+.aws/
+.codex/

@@ -1,0 +1,18 @@
+# Maestro flow for the login -> dashboard path (Section 17 Phase 7 gate).
+# NOT run in this session: there is no emulator/simulator/device or
+# `maestro` CLI available in this sandboxed environment (Monitor
+# honestly — see docs/limitations.md). This file is real, valid Maestro
+# syntax, written against the actual screen structure in app/index.tsx
+# and app/dashboard.tsx; it has not been executed against a built app.
+appId: org.apaar.platform
+---
+- launchApp
+- assertVisible: "Sign in"
+- tapOn:
+    id: "Email"
+- inputText: "e2e-staff@example.test"
+- tapOn:
+    id: "Password"
+- inputText: "E2e-Test-Pass-123"
+- tapOn: "Sign in"
+- assertVisible: "AICTE Dashboard"

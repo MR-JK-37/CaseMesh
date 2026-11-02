@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[project]
+name = "icm-backend"
+version = "0.0.0"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.135",
+  "uvicorn[standard]>=0.42",
+  "pydantic[email]>=2.14",
+  "pydantic-settings>=2.14",
+  "sqlalchemy[asyncio]>=2.0",
+  "greenlet>=3.5",
+  "psycopg[binary]>=3.3",
+  "alembic>=1.20",
+  "argon2-cffi>=25.1",
+  "cryptography>=50.0",
+  "python-dotenv>=1.2",
+  "structlog>=25.1",
+  "pyotp>=2.9",
+  "python-multipart>=0.0.31",
+  "pyjwt>=2.10",
+  "pdfplumber>=0.11",
+  "openpyxl>=3.1",
+  "httpx>=0.28",
+  "redis>=5.2",
+  "sentry-sdk[fastapi]>=2.20",
+  "icm-rules",
+  "holidays>=0.107",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=9.1",
+  "pytest-asyncio>=1.0",
+  "ruff>=0.8",
+]
+
+[tool.uv.sources]
+icm-rules = { path = "../rules", editable = true }
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+# B008: FastAPI's Depends(...) default-argument pattern is idiomatic, not a bug.
+ignore = ["B008"]
+
+[tool.ruff.lint.per-file-ignores]
+# F811: pytest fixtures shared across test files are imported by name
+# (e.g. `from .test_cases_api import world`) specifically so pytest's
+# fixture-discovery-by-parameter-name finds them in this module too —
+# every test function parameter named `world` is that import being
+# used, not a real redefinition. Ruff doesn't know pytest's fixture
+# convention; this is the standard, intentional shape for it.
+"tests/*.py" = ["F811"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

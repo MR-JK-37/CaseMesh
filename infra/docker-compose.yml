@@ -1,0 +1,102 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      # POSTGRES_USER is the bootstrap superuser the postgres image
+      # creates — Postgres refuses to let the bootstrap superuser drop
+      # its own SUPERUSER attribute (confirmed by trying it, see
+      # docs/decision-log.md), so this identity is deliberately
+      # throwaway: used only by infra/initdb/01-create-app-role.sh to
+      # create the real icm_owner (non-superuser) and icm_app roles,
+      # never referenced by the app or migrations.
+      POSTGRES_USER: icm_bootstrap
+      POSTGRES_PASSWORD: ${POSTGRES_BOOTSTRAP_PASSWORD}
+      POSTGRES_DB: icm
+      ICM_OWNER_PASSWORD: ${ICM_OWNER_PASSWORD}
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD}
+    ports:
+      - "5436:5432"
+    volumes:
+      # Named pgdata18, not pgdata: an old pgdata volume from this repo's
+      # prior postgres:16 (APAAR) instance may still exist locally and
+      # Postgres refuses to start against a data directory from a
+      # different major version. Using a fresh volume name avoids both
+      # that crash and deleting anything (docs/decision-log.md).
+      #
+      # Mounted at /var/lib/postgresql (the parent), not .../data: the
+      # postgres:18 image's entrypoint now expects the single mount
+      # point to be the parent directory and refuses to start — even
+      # against a fresh, empty volume — if something is mounted directly
+      # at .../data, which it treats as the deprecated pre-18 layout.
+      - pgdata18:/var/lib/postgresql
+      - ./initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U icm_bootstrap -d icm"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  valkey:
+    # Section 15: "Valkey: confirm the latest stable tag on the day
+    # (8.x expected, not verified here)." Verified on this install day
+    # (2026-10-28) by pulling and running the Streams/pub-sub test in
+    # infra/scripts/valkey-streams-test.sh — see docs/decision-log.md
+    # ADR-11 for the recorded result.
+    image: valkey/valkey:8-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+    env_file:
+      - ../.env
+    environment:
+      DATABASE_URL: postgresql+psycopg://icm_app:${APP_DB_PASSWORD}@postgres:5432/icm
+      MIGRATION_DATABASE_URL: postgresql+psycopg://icm_owner:${ICM_OWNER_PASSWORD}@postgres:5432/icm
+      VALKEY_URL: redis://valkey:6379/0
+    depends_on:
+      postgres:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  worker:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+    env_file:
+      - ../.env
+    environment:
+      DATABASE_URL: postgresql+psycopg://icm_app:${APP_DB_PASSWORD}@postgres:5432/icm
+      MIGRATION_DATABASE_URL: postgresql+psycopg://icm_owner:${ICM_OWNER_PASSWORD}@postgres:5432/icm
+      VALKEY_URL: redis://valkey:6379/0
+    command: ["python", "scripts/relay_worker.py"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+
+  proxy:
+    image: caddy:2-alpine
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+    ports:
+      - "8080:80"
+      - "8443:443"
+    depends_on:
+      - api
+
+volumes:
+  pgdata18:
+  caddy_data:

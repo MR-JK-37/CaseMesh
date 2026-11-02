@@ -1,0 +1,26 @@
+:80 {
+	# Section 7.4: security headers on every response. TLS/HSTS are
+	# meaningful once this is served from a real domain (Phase 9,
+	# Oracle A1 deployment) — Caddy auto-TLS needs a public hostname to
+	# issue a certificate, which `:80` on localhost cannot provide. The
+	# HSTS header is added here but has no browser effect until the site
+	# is actually served over HTTPS; it is not removed before Phase 9
+	# so the behaviour doesn't silently regress between phases.
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' ws: wss:; frame-ancestors 'none'"
+		X-Frame-Options "DENY"
+		-Server
+	}
+
+	handle /api/* {
+		uri strip_prefix /api
+		reverse_proxy api:8000
+	}
+
+	handle {
+		respond "ICM platform proxy — web app is served from this same site starting Phase 0 execution once apps/web has a build output; until then this placeholder is honest about what's not wired up yet." 200
+	}
+}
