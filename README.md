@@ -78,6 +78,9 @@ CaseMesh is an institutional grievance monitoring and case coordination platform
   ```
 - **Guards:**
   ```bash
-  bash scripts/check-data-origin.sh
-  bash scripts/check-icon-imports.sh
+  pnpm guard:all
+  # Or run individually:
+  # pnpm guard:data-origin
+  # pnpm guard:icons
+  # pnpm guard:contrast
   ```

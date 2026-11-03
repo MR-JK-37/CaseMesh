@@ -13,7 +13,8 @@
     "typecheck": "turbo run typecheck",
     "guard:data-origin": "bash scripts/check-data-origin.sh",
     "guard:icons": "bash scripts/check-icon-imports.sh",
-    "guard:contrast": "pnpm --filter @icm/ui-tokens run contrast"
+    "guard:contrast": "pnpm --filter @icm/ui-tokens run contrast",
+    "guard:all": "pnpm guard:data-origin && pnpm guard:icons && pnpm guard:contrast"
   },
   "devDependencies": {
     "turbo": "^2.5.0",
