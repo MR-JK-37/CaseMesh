@@ -32,4 +32,4 @@ pairs >= 3:1 (WCAG 2.2 AA, Section 9.2).
 | status.overlap (light) | light | text | 5.53:1 | 4.5:1 | PASS |
 | status.overlap (dark) | dark | text | 7.35:1 | 4.5:1 | PASS |
 
-_Last run: 2026-10-29T09:54:43.518Z_
+_Last run: 2026-11-03T14:04:56.626Z_
