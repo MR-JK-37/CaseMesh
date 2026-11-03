@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "APAAR Platform",
-    "slug": "apaar-platform",
-    "scheme": "apaar",
-    "version": "0.0.0",
+    "name": "CaseMesh",
+    "slug": "casemesh-platform",
+    "scheme": "casemesh",
+    "version": "0.1.0",
     "sdkVersion": "58.0.0",
     "newArchEnabled": true,
     "ios": {
