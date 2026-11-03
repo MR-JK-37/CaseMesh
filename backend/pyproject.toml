@@ -7,7 +7,8 @@ packages = ["app"]
 
 [project]
 name = "icm-backend"
-version = "0.0.0"
+version = "0.1.0"
+description = "FastAPI backend services for CaseMesh grievance coordination engine"
 requires-python = ">=3.12"
 dependencies = [
   "fastapi>=0.135",
