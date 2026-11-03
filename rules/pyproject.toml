@@ -7,7 +7,8 @@ packages = ["rules"]
 
 [project]
 name = "icm-rules"
-version = "0.0.0"
+version = "0.1.0"
+description = "Deterministic overlap detection and business days calculation engine for CaseMesh"
 requires-python = ">=3.12"
 dependencies = ["rapidfuzz>=3.14"]
 
