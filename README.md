@@ -84,3 +84,10 @@ CaseMesh is an institutional grievance monitoring and case coordination platform
   # pnpm guard:icons
   # pnpm guard:contrast
   ```
+
+---
+
+## License
+
+This project is licensed under the Apache License 2.0. See the LICENSE file for details.
+
