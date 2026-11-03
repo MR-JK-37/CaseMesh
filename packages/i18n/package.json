@@ -1,6 +1,7 @@
 {
   "name": "@icm/i18n",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "Multi-language locale definitions (en, hi, ta) for CaseMesh",
   "private": true,
   "main": "src/index.ts",
   "types": "src/index.ts",
