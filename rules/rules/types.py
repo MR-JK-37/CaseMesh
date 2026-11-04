@@ -35,3 +35,7 @@ class Rule(Protocol):
     version: str
 
     def evaluate(self, ctx: RuleContext) -> Flag | None: ...
+
+    def describe(self) -> str:
+        """Human-readable description of what this rule inspects."""
+        ...
