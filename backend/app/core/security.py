@@ -107,3 +107,11 @@ def decode_token(token: str) -> dict:
 
 def generate_csrf_token() -> str:
     return base64.urlsafe_b64encode(os.urandom(32)).decode().rstrip("=")
+
+
+def verify_csrf_token(token_a: str, token_b: str) -> bool:
+    """Constant-time comparison for CSRF tokens to prevent timing attacks."""
+    if not token_a or not token_b:
+        return False
+    return hmac.compare_digest(token_a.encode("utf-8"), token_b.encode("utf-8"))
+
