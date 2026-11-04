@@ -6,3 +6,8 @@ from rules.types import Rule
 # monitoring (docs/decision-log.md). The engine/types/registry shape
 # itself (run_rules never short-circuits, returns all flags) is kept.
 DEFAULT_RULES: list[Rule] = []
+
+
+def get_default_rules() -> list[Rule]:
+    """Return a shallow copy of the active default rule list."""
+    return list(DEFAULT_RULES)
