@@ -31,10 +31,16 @@ const iconFor: Record<StatusKey, IconName> = {
 };
 
 /** Section 9.2/9.1 rule 6: every status pairs an icon with a text label — never color alone. */
-export function StatusBadge({ status }: { status: StatusKey }) {
+export function StatusBadge({
+  status,
+  className = "",
+}: {
+  status: StatusKey;
+  className?: string;
+}) {
   return (
     <span
-      className="inline-flex items-center gap-1.5 rounded-pill px-3 py-1 text-sm font-medium"
+      className={`inline-flex items-center gap-1.5 rounded-pill px-3 py-1 text-sm font-medium ${className}`}
       style={{ color: `var(--status-${status}-fg)`, background: `var(--status-${status}-bg)` }}
     >
       <Icon name={iconFor[status]} size={16} />
