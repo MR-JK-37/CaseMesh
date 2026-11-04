@@ -31,7 +31,7 @@ class Settings(BaseSettings):
     lockout_threshold: int = 5
     lockout_window_minutes: int = 10
 
-    totp_issuer: str = "ICM (AICTE Case Monitor)"
+    totp_issuer: str = "CaseMesh (AICTE)"
 
     web_origin: str = "http://localhost:3001"
     valkey_url: str = "redis://localhost:6379/0"
