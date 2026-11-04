@@ -22,6 +22,7 @@ const variantStyle: Partial<Record<Variant, React.CSSProperties>> = {
 };
 
 export function Button({
+  type = "button",
   variant = "primary",
   pill = false,
   className = "",
@@ -30,6 +31,7 @@ export function Button({
 }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: Variant; pill?: boolean }) {
   return (
     <button
+      type={type}
       className={`${base} ${variants[variant]} ${pill ? "rounded-pill" : ""} ${className}`}
       style={{ ...variantStyle[variant], ...style }}
       {...props}
