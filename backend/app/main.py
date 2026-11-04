@@ -96,7 +96,7 @@ _engine = create_async_engine(settings.database_url, pool_pre_ping=True)
 @app.get("/health")
 async def health() -> dict[str, str]:
     """Liveness only: process is up. No dependency checks."""
-    return {"status": "ok"}
+    return {"status": "ok", "service": "casemesh-api"}
 
 
 @app.get("/ready")
