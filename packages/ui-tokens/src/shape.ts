@@ -15,6 +15,7 @@ export const spacing = {
 export const elevation = {
   soft: "0 8px 24px rgba(10,46,69,.12)",
   tight: "0 2px 8px rgba(10,46,69,.08)",
+  hover: "0 12px 32px rgba(10,46,69,.16)",
 } as const;
 
 export const motion = {
