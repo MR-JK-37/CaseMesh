@@ -46,7 +46,11 @@ else:
 # `scripts/rebuild_projection.py`/`scripts/eval_overlap.py`'s existing
 # pattern and sidesteps the whole class of problem; see
 # docs/decision-log.md and docs/limitations.md.
-app = FastAPI(title="ICM — AICTE Case Monitor API", version="0.0.0")
+app = FastAPI(
+    title="CaseMesh — AICTE Inter-Institutional Case Monitor API",
+    version="0.1.0",
+    description="Backend API for CaseMesh grievance deduplication and inter-institutional case coordination",
+)
 
 app.add_middleware(
     CORSMiddleware,
