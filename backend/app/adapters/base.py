@@ -17,3 +17,7 @@ class NotConfiguredError(RuntimeError):
     instead of returning invented data. Section 0 rule 2: 'An integration
     that is not configured returns NOT_CONFIGURED; it never returns a
     fabricated or simulated success.'"""
+
+
+class AdapterUnavailableError(RuntimeError):
+    """Raised when an external service is configured but currently unreachable."""
