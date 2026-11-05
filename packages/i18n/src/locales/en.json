@@ -19,6 +19,8 @@
   "login.totp": "Authenticator code (if required for your role)",
   "login.submit": "Sign in",
   "login.invalid": "Invalid credentials",
+  "app.title": "CaseMesh",
+  "app.tagline": "AICTE Inter-Institutional Case Monitor",
   "nav.dashboard": "Dashboard",
   "nav.flags": "Flags",
   "nav.integrations": "Integrations",
