@@ -65,6 +65,9 @@ export function Shell({
         <header className="flex flex-wrap items-center justify-between gap-3">
           <PillNav activeKey={active} onSelect={(key) => navigate({ to: items.find((i) => i.key === key)!.to })} items={items} />
           <div className="flex items-center gap-2">
+            <span className="hidden text-xs font-semibold uppercase tracking-wider text-ink-muted sm:inline-block">
+              CaseMesh
+            </span>
             <button
               type="button"
               onClick={() => setTheme(theme === "light" ? "dark" : "light")}
