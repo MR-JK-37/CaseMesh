@@ -1,5 +1,13 @@
 /** Section 9.6: semi-circular SLA compliance gauge with tick marks. */
-export function Gauge({ percent, label }: { percent: number; label: string }) {
+export function Gauge({
+  percent,
+  label,
+  className = "",
+}: {
+  percent: number;
+  label: string;
+  className?: string;
+}) {
   const clamped = Math.max(0, Math.min(100, percent));
   const angle = (clamped / 100) * 180;
   const r = 70;
@@ -11,7 +19,11 @@ export function Gauge({ percent, label }: { percent: number; label: string }) {
   const ticks = Array.from({ length: 11 }, (_, i) => i * 18);
 
   return (
-    <div role="img" aria-label={`${label}: ${clamped.toFixed(0)} percent`} className="flex flex-col items-center">
+    <div
+      role="img"
+      aria-label={`${label}: ${clamped.toFixed(0)} percent`}
+      className={`flex flex-col items-center ${className}`}
+    >
       <svg width="180" height="100" viewBox="0 0 180 100">
         <defs>
           <linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="0">
