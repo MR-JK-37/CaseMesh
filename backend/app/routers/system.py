@@ -19,6 +19,6 @@ async def system_info():
     exists."""
     return SystemInfoOut(
         tenant_mode=settings.tenant_mode,
-        version="0.1.0",
-        app_name="CaseMesh",
+        version=settings.app_version,
+        app_name=settings.project_name,
     )
