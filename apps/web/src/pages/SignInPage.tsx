@@ -71,7 +71,7 @@ export function SignInPage() {
       <GlassSurface className="w-full max-w-sm p-8">
         <div className="mb-6 flex items-center gap-2">
           <Icon name="institution" size={28} />
-          <h1 className="text-xl font-semibold text-ink">ICM — AICTE Case Monitor</h1>
+          <h1 className="text-xl font-semibold text-ink">CaseMesh — AICTE</h1>
         </div>
 
         <form className="flex flex-col gap-4" onSubmit={submit}>
