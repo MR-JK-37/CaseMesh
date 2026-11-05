@@ -7,13 +7,21 @@ import type { HTMLAttributes } from "react";
  * `prefers-contrast: more`, and browsers without `backdrop-filter`.
  */
 export function GlassSurface({
+  rounded = "card",
   className = "",
   style,
   ...props
-}: HTMLAttributes<HTMLDivElement>) {
+}: HTMLAttributes<HTMLDivElement> & { rounded?: "card" | "tile" | "pill" }) {
+  const roundedClass =
+    rounded === "pill"
+      ? "rounded-pill"
+      : rounded === "tile"
+        ? "rounded-tile"
+        : "rounded-card";
+
   return (
     <div
-      className={`rounded-card backdrop-blur-xl backdrop-saturate-150
+      className={`${roundedClass} backdrop-blur-xl backdrop-saturate-150
         supports-[not(backdrop-filter:blur(1px))]:bg-surface-0
         motion-reduce:backdrop-blur-none
         [@media(prefers-reduced-transparency)]:bg-surface-0
