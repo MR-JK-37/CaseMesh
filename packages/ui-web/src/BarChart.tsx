@@ -1,12 +1,21 @@
 import { useState } from "react";
 
 /** Section 9.6: vertical bars, one highlighted gradient bar + marker dot, inactive bars brand-50. */
-export function BarChart({ data }: { data: { label: string; value: number }[] }) {
+export function BarChart({
+  data,
+  className = "",
+}: {
+  data: { label: string; value: number }[];
+  className?: string;
+}) {
+  if (data.length === 0) {
+    return <div className={`text-sm text-ink-muted ${className}`}>No data available</div>;
+  }
   const [active, setActive] = useState(data.length - 1);
   const max = Math.max(...data.map((d) => d.value), 1);
 
   return (
-    <div>
+    <div className={className}>
       <div className="flex items-end gap-3 h-40">
         {data.map((d, i) => {
           const isActive = i === active;
