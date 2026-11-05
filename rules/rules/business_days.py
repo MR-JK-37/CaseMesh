@@ -47,3 +47,11 @@ def business_days_between(start: dt.date, end: dt.date, holidays: frozenset[dt.d
                 count += 1
         return count
     return -business_days_between(end, start, holidays)
+
+
+def next_business_day(d: dt.date, holidays: frozenset[dt.date]) -> dt.date:
+    """Return d if it is already a business day, or the next upcoming business day."""
+    current = d
+    while not is_business_day(current, holidays):
+        current += dt.timedelta(days=1)
+    return current
