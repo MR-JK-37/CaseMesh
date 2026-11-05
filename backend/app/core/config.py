@@ -50,6 +50,8 @@ class Settings(BaseSettings):
     # only when this instance is pointed at a real, authorised AICTE
     # data source — never silently.
     tenant_mode: str = "test_sandbox"
+    app_version: str = "0.1.0"
+    project_name: str = "CaseMesh"
 
 
 settings = Settings()
