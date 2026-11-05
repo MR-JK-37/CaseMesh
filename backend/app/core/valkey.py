@@ -22,3 +22,12 @@ def get_valkey_client() -> redis_asyncio.Redis:
         _client = redis_asyncio.from_url(settings.valkey_url, decode_responses=True)
         _client_loop = loop
     return _client
+
+
+async def close_valkey_client() -> None:
+    """Explicitly close and cleanup the cached Valkey client connection."""
+    global _client, _client_loop
+    if _client is not None:
+        await _client.aclose()
+        _client = None
+        _client_loop = None
