@@ -51,6 +51,18 @@ def test_business_days_between_inverts_add():
     assert business_days_between(MONDAY, end, NO_HOLIDAYS) == 10
 
 
+def test_next_business_day():
+    from rules.business_days import next_business_day
+
+    saturday = MONDAY + dt.timedelta(days=5)
+    sunday = MONDAY + dt.timedelta(days=6)
+    next_mon = MONDAY + dt.timedelta(days=7)
+
+    assert next_business_day(MONDAY, NO_HOLIDAYS) == MONDAY
+    assert next_business_day(saturday, NO_HOLIDAYS) == next_mon
+    assert next_business_day(sunday, NO_HOLIDAYS) == next_mon
+
+
 def test_business_days_between_same_day_is_zero():
     assert business_days_between(MONDAY, MONDAY, NO_HOLIDAYS) == 0
 
