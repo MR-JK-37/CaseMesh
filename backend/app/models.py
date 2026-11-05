@@ -45,6 +45,11 @@ TOTP_REQUIRED_ROLES = frozenset(
 )
 
 
+def is_totp_required_for_role(role: str) -> bool:
+    """Return True if TOTP MFA is mandatory for the given role."""
+    return role in TOTP_REQUIRED_ROLES
+
+
 class Bureau(Base):
     """Section 1.2 "Organisation master": Bureau or Cell. Admin-editable
     and versioned in spirit (full version history is a Phase 2+ add —
