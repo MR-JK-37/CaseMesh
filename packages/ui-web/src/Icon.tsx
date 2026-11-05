@@ -21,6 +21,9 @@ export function Icon({
   label?: string;
 }) {
   const spec = icons[name];
+  if (!spec) {
+    return null;
+  }
   return (
     <span
       className={`material-symbols-rounded select-none ${className}`}
