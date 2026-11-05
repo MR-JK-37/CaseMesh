@@ -81,3 +81,8 @@ async def get_tenant_session(
             text("SELECT set_config('app.region_ids', :v, true)"), {"v": ",".join(region_ids)}
         )
         yield session
+
+
+async def dispose_engine() -> None:
+    """Close and dispose the global SQLAlchemy async engine."""
+    await engine.dispose()
