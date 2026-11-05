@@ -21,6 +21,10 @@ class Principal:
     bureau_ids: frozenset[str] = field(default_factory=frozenset)
     region_ids: frozenset[str] = field(default_factory=frozenset)
 
+    @property
+    def is_super_admin(self) -> bool:
+        return self.role == "super_admin"
+
 
 async def get_current_principal(
     icm_access: str | None = Cookie(default=None, alias=ACCESS_COOKIE),
