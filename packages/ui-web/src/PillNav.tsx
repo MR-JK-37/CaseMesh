@@ -13,17 +13,19 @@ export function PillNav({
   activeKey,
   onSelect,
   orientation = "horizontal",
+  className = "",
 }: {
   items: PillNavItem[];
   activeKey: string;
   onSelect: (key: string) => void;
   orientation?: "horizontal" | "vertical";
+  className?: string;
 }) {
   return (
     <nav
       aria-label="Primary"
       className={`flex max-w-full gap-1 overflow-x-auto rounded-pill p-1.5 backdrop-blur-xl border
-        ${orientation === "vertical" ? "flex-col" : "flex-row"}`}
+        ${orientation === "vertical" ? "flex-col" : "flex-row"} ${className}`}
       style={{ background: "var(--glass-fill)", borderColor: "var(--glass-border)" }}
     >
       {items.map((item) => {
