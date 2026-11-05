@@ -235,3 +235,8 @@ def can(
     if scope is Scope.SELF:
         return is_own_record
     return False
+
+
+def get_allowed_actions(role: str) -> list[str]:
+    """Return all action keys allowed for a given role."""
+    return list(ROLE_PERMISSIONS.get(role, {}).keys())
