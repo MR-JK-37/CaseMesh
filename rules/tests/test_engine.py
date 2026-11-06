@@ -43,3 +43,15 @@ def test_run_rules_collects_every_flag_and_never_short_circuits():
 def test_run_rules_with_no_rules_returns_no_flags():
     ctx = RuleContext(record={})
     assert run_rules(ctx, []) == []
+
+
+def test_filter_flags_by_severity():
+    from rules.engine import filter_flags_by_severity
+
+    ctx = RuleContext(record={"id": "x"})
+    flags = run_rules(ctx, [_AlwaysFlags()])
+    reviews = filter_flags_by_severity(flags, "review")
+    errors = filter_flags_by_severity(flags, "error")
+
+    assert len(reviews) == 1
+    assert len(errors) == 0
