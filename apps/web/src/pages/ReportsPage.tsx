@@ -59,7 +59,7 @@ export function ReportsPage() {
       const url = URL.createObjectURL(data as Blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `${selected}.csv`;
+      a.download = `casemesh-${selected}-${new Date().toISOString().slice(0, 10)}.csv`;
       a.click();
       URL.revokeObjectURL(url);
     } finally {
