@@ -240,3 +240,8 @@ def can(
 def get_allowed_actions(role: str) -> list[str]:
     """Return all action keys allowed for a given role."""
     return list(ROLE_PERMISSIONS.get(role, {}).keys())
+
+
+def has_permission(role: str, action: str) -> bool:
+    """Check if a role has permission for an action regardless of scope."""
+    return action in ROLE_PERMISSIONS.get(role, {})
