@@ -10,3 +10,8 @@ def run_rules(ctx: RuleContext, rule_set: list[Rule]) -> list[Flag]:
         if flag is not None:
             flags.append(flag)
     return flags
+
+
+def filter_flags_by_severity(flags: list[Flag], severity_code: str) -> list[Flag]:
+    """Filter evaluated flags by severity level."""
+    return [f for f in flags if f.severity.value == severity_code]
