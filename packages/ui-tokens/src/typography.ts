@@ -12,3 +12,4 @@ export const fontFamily = {
 
 export const scale = [12, 14, 16, 18, 20, 24, 32, 40] as const;
 export const weight = { regular: 400, medium: 500, semibold: 600, bold: 700 } as const;
+export const lineHeight = { tight: 1.25, normal: 1.5, relaxed: 1.75 } as const;
