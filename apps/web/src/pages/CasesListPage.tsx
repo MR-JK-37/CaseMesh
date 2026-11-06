@@ -22,6 +22,8 @@ const STATUS_MAP: Record<string, StatusKey> = {
   transferred: "transferred",
   escalated: "escalated",
   disposed: "disposed",
+  overdue: "overdue",
+  overlap: "overlap",
 };
 
 const STATUS_FILTERS = ["pending", "under_process", "escalated", "transferred", "disposed"] as const;
