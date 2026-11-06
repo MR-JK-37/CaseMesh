@@ -27,7 +27,7 @@ const ROLES = [
   "nodal_pg_officer",
   "registry_operator",
   "auditor",
-];
+] as const;
 
 /** Section 9.7 screen 14 (Admin, Phase 1 slice): user directory + create + assign. */
 export function AdminUsersPage() {
