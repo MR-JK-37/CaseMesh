@@ -70,3 +70,15 @@ def test_business_days_between_same_day_is_zero():
 def test_business_days_between_negative_when_reversed():
     end = add_business_days(MONDAY, 5, NO_HOLIDAYS)
     assert business_days_between(end, MONDAY, NO_HOLIDAYS) == -5
+
+
+def test_prev_business_day():
+    from rules.business_days import prev_business_day
+
+    friday = MONDAY + dt.timedelta(days=4)
+    saturday = MONDAY + dt.timedelta(days=5)
+    sunday = MONDAY + dt.timedelta(days=6)
+
+    assert prev_business_day(MONDAY, NO_HOLIDAYS) == MONDAY
+    assert prev_business_day(saturday, NO_HOLIDAYS) == friday
+    assert prev_business_day(sunday, NO_HOLIDAYS) == friday
