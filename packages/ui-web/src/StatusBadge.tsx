@@ -30,6 +30,10 @@ const iconFor: Record<StatusKey, IconName> = {
   overlap: "overlap",
 };
 
+export function getStatusLabel(status: StatusKey): string {
+  return labels[status] ?? status;
+}
+
 /** Section 9.2/9.1 rule 6: every status pairs an icon with a text label — never color alone. */
 export function StatusBadge({
   status,
