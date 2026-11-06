@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from "react";
 
-type Variant = "primary" | "secondary" | "destructive" | "ghost";
+export type ButtonVariant = "primary" | "secondary" | "destructive" | "ghost";
 
 const base =
   "inline-flex items-center justify-center gap-2 font-medium transition-colors duration-200 " +
