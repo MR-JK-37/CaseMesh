@@ -50,6 +50,11 @@ def is_totp_required_for_role(role: str) -> bool:
     return role in TOTP_REQUIRED_ROLES
 
 
+def is_valid_role(role: str) -> bool:
+    """Validate whether a role string is one of the recognized system roles."""
+    return role in ROLES
+
+
 class Bureau(Base):
     """Section 1.2 "Organisation master": Bureau or Cell. Admin-editable
     and versioned in spirit (full version history is a Phase 2+ add —
