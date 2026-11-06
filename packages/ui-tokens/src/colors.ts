@@ -69,3 +69,5 @@ export const status = {
 } as const;
 
 export type StatusKey = keyof typeof status;
+
+export const STATUS_KEYS = Object.keys(status) as readonly StatusKey[];
