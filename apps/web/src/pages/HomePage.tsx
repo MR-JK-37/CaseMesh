@@ -130,7 +130,7 @@ export function HomePage() {
                 <Gauge percent={slaCompliance} label={`${tiles.beyond_timeline} beyond timeline`} />
               </Card>
               <Card>
-                <h3 className="mb-3 text-sm font-semibold text-ink-muted">Monthly received vs disposed</h3>
+                <h3 className="mb-3 text-sm font-semibold text-ink-muted">Monthly received cases</h3>
                 {monthly && monthly.some((m) => m.received > 0 || m.disposed > 0) ? (
                   <BarChart data={monthly.map((m) => ({ label: m.month.slice(5), value: m.received }))} />
                 ) : (
