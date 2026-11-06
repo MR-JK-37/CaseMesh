@@ -115,3 +115,8 @@ def verify_csrf_token(token_a: str, token_b: str) -> bool:
         return False
     return hmac.compare_digest(token_a.encode("utf-8"), token_b.encode("utf-8"))
 
+
+def generate_nonce(length: int = 16) -> str:
+    """Generate a secure cryptographically random URL-safe nonce."""
+    return base64.urlsafe_b64encode(os.urandom(length)).decode().rstrip("=")
+
