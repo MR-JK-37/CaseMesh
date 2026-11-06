@@ -101,10 +101,14 @@ export function InstitutionProfilePage() {
   }, [id]);
 
   async function verify() {
-    await api.POST("/api/v1/institutions/{institution_id}/verify", {
-      params: { path: { institution_id: id } },
-    });
-    await load();
+    try {
+      await api.POST("/api/v1/institutions/{institution_id}/verify", {
+        params: { path: { institution_id: id } },
+      });
+      await load();
+    } catch {
+      // Handled by API error interceptor
+    }
   }
 
   if (notFound) {
