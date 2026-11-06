@@ -21,3 +21,7 @@ class NotConfiguredError(RuntimeError):
 
 class AdapterUnavailableError(RuntimeError):
     """Raised when an external service is configured but currently unreachable."""
+
+
+class AdapterTimeoutError(AdapterUnavailableError):
+    """Raised when an external service request exceeds its allotted deadline."""
