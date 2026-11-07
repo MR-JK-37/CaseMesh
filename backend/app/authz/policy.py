@@ -245,3 +245,8 @@ def get_allowed_actions(role: str) -> list[str]:
 def has_permission(role: str, action: str) -> bool:
     """Check if a role has permission for an action regardless of scope."""
     return action in ROLE_PERMISSIONS.get(role, {})
+
+
+def get_permission_scope(role: str, action: str) -> Scope | None:
+    """Return the granted Scope for a role and action, or None if denied."""
+    return ROLE_PERMISSIONS.get(role, {}).get(action)
