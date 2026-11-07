@@ -120,6 +120,7 @@ export function ImportPage() {
               </p>
             )}
             <Button type="submit" disabled={busy} className="self-start">
+              <Icon name="upload" size={18} />
               {busy ? "Uploading…" : "Preview import"}
             </Button>
           </form>
