@@ -13,7 +13,7 @@ export function Card({ className = "", ...props }: HTMLAttributes<HTMLDivElement
 export function Tile({ className = "", ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={`rounded-tile bg-surface-1 p-4 shadow-[0_2px_8px_rgba(10,46,69,.08)] ${className}`}
+      className={`rounded-tile bg-surface-1 p-4 shadow-[0_2px_8px_rgba(10,46,69,.08)] transition-shadow duration-200 ${className}`}
       {...props}
     />
   );
