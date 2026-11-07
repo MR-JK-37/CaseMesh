@@ -30,7 +30,12 @@ interface OverlapGroupRow {
   updated_at: string;
 }
 
-const LEVEL_LABEL: Record<string, string> = { high: "High", potential: "Potential", info: "Info" };
+const LEVEL_LABEL: Record<string, string> = {
+  high: "High",
+  potential: "Potential",
+  medium: "Potential",
+  info: "Info",
+};
 const LEVEL_COLOR: Record<string, string> = {
   high: "var(--status-escalated-fg)",
   potential: "var(--status-overlap-fg)",
