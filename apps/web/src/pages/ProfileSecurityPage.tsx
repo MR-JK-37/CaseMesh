@@ -120,6 +120,7 @@ export function ProfileSecurityPage() {
             <p className="text-sm text-[#B42318]">Could not load sessions.</p>
           ) : (
             <Table<SessionRow>
+              caption="Active user authentication sessions"
               columns={[
                 { key: "created", header: "Started", render: (r) => new Date(r.created_at).toLocaleString() },
                 {
