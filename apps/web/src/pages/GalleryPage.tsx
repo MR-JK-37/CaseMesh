@@ -48,7 +48,12 @@ export function GalleryPage() {
     <main className="min-h-screen p-6 md:p-10">
       <div className="mx-auto flex max-w-5xl flex-col gap-10">
         <header className="flex items-center justify-between">
-          <h1 className="text-2xl font-semibold text-white">Component gallery</h1>
+          <div className="flex items-center gap-2">
+            <h1 className="text-2xl font-semibold text-white">Component gallery</h1>
+            <span className="rounded-pill bg-brand-50 px-2.5 py-0.5 text-xs font-semibold text-brand-600 border border-outline">
+              Design System
+            </span>
+          </div>
           <Button variant="secondary" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
             <Icon name="settings" size={18} /> {theme === "light" ? "Dark" : "Light"} mode
           </Button>
