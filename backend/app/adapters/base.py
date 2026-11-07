@@ -25,3 +25,7 @@ class AdapterUnavailableError(RuntimeError):
 
 class AdapterTimeoutError(AdapterUnavailableError):
     """Raised when an external service request exceeds its allotted deadline."""
+
+
+class AdapterAuthError(RuntimeError):
+    """Raised when external adapter credentials fail authentication."""
