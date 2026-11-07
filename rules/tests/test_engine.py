@@ -55,3 +55,13 @@ def test_filter_flags_by_severity():
 
     assert len(reviews) == 1
     assert len(errors) == 0
+
+
+def test_has_flag_code():
+    from rules.engine import has_flag_code
+
+    ctx = RuleContext(record={"id": "x"})
+    flags = run_rules(ctx, [_AlwaysFlags()])
+
+    assert has_flag_code(flags, "ALWAYS_FLAGS")
+    assert not has_flag_code(flags, "NON_EXISTENT")
