@@ -29,6 +29,10 @@ class Principal:
     def is_auditor(self) -> bool:
         return self.role == "auditor"
 
+    @property
+    def is_bureau_head(self) -> bool:
+        return self.role == "bureau_head"
+
 
 async def get_current_principal(
     icm_access: str | None = Cookie(default=None, alias=ACCESS_COOKIE),
