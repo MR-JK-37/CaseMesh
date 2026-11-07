@@ -18,6 +18,7 @@ interface AlertRow {
 const SEVERITY_COLOR: Record<string, string> = {
   critical: "var(--status-overdue-fg)",
   warning: "var(--status-pending-fg)",
+  error: "var(--status-overdue-fg)",
   info: "var(--color-ink-muted)",
 };
 
