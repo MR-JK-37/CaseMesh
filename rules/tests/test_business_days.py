@@ -82,3 +82,14 @@ def test_prev_business_day():
     assert prev_business_day(MONDAY, NO_HOLIDAYS) == MONDAY
     assert prev_business_day(saturday, NO_HOLIDAYS) == friday
     assert prev_business_day(sunday, NO_HOLIDAYS) == friday
+
+
+def test_is_weekend():
+    from rules.business_days import is_weekend
+
+    saturday = MONDAY + dt.timedelta(days=5)
+    sunday = MONDAY + dt.timedelta(days=6)
+
+    assert not is_weekend(MONDAY)
+    assert is_weekend(saturday)
+    assert is_weekend(sunday)
