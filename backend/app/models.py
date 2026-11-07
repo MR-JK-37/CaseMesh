@@ -55,6 +55,11 @@ def is_valid_role(role: str) -> bool:
     return role in ROLES
 
 
+def get_all_roles() -> list[str]:
+    """Return a list of all recognized system roles."""
+    return list(ROLES)
+
+
 class Bureau(Base):
     """Section 1.2 "Organisation master": Bureau or Cell. Admin-editable
     and versioned in spirit (full version history is a Phase 2+ add —
