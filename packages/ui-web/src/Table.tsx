@@ -15,14 +15,15 @@ export function Table<T extends { id: string }>({
   rows: T[];
   emptyMessage: string;
   caption?: string;
+  className?: string;
 }) {
   if (rows.length === 0) {
     return (
-      <div className="rounded-card bg-surface-0 p-10 text-center text-ink-muted">{emptyMessage}</div>
+      <div className={`rounded-card bg-surface-0 p-10 text-center text-ink-muted ${className}`}>{emptyMessage}</div>
     );
   }
   return (
-    <div className="overflow-x-auto rounded-card border border-outline">
+    <div className={`overflow-x-auto rounded-card border border-outline ${className}`}>
       <table className="w-full text-left text-sm">
         {caption && <caption className="sr-only">{caption}</caption>}
         <thead className="sticky top-0 bg-surface-2 text-ink-muted">
