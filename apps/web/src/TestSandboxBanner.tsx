@@ -22,6 +22,7 @@ export function TestSandboxBanner() {
   return (
     <div
       role="status"
+      aria-label="Sandbox environment notice"
       className="sticky top-0 z-50 w-full bg-[#B42318] px-4 py-2 text-center text-sm font-semibold text-white"
     >
       TEST DATA — NOT REAL. This instance shows synthetic sandbox data only, never real AICTE records.
