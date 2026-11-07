@@ -48,6 +48,11 @@ def decrypt_field(blob: bytes) -> str:
     return aesgcm.decrypt(nonce, ciphertext, None).decode("utf-8")
 
 
+def is_password_complex(password: str) -> bool:
+    """Check if password satisfies length requirements (minimum 8 chars)."""
+    return len(password) >= 8
+
+
 def blind_index(value: str) -> str:
     """HMAC-SHA-256 blind index for searchable encrypted fields — never
     plain SHA-256 (a prior build's defect, see docs/decision-log.md)."""
