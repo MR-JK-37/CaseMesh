@@ -32,6 +32,7 @@ export function InstitutionsListPage() {
           <h2 className="text-lg font-semibold text-ink">Institutions</h2>
         </div>
         <Table<InstitutionRow>
+          caption="Registered institutions directory with provenance"
           columns={[
             {
               key: "name",
