@@ -22,4 +22,6 @@ export const motion = {
   stateMs: [180, 280] as const,
   spring: { damping: 18, stiffness: 220 },
   highlightFadeMs: 600,
+  durationFastMs: 150,
+  durationNormalMs: 250,
 } as const;
