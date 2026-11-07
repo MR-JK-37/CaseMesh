@@ -63,3 +63,8 @@ def prev_business_day(d: dt.date, holidays: frozenset[dt.date]) -> dt.date:
     while not is_business_day(current, holidays):
         current -= dt.timedelta(days=1)
     return current
+
+
+def is_weekend(d: dt.date) -> bool:
+    """Return True if the date falls on Saturday or Sunday."""
+    return d.weekday() in _WEEKEND
