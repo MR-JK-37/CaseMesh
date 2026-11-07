@@ -15,3 +15,8 @@ def run_rules(ctx: RuleContext, rule_set: list[Rule]) -> list[Flag]:
 def filter_flags_by_severity(flags: list[Flag], severity_code: str) -> list[Flag]:
     """Filter evaluated flags by severity level."""
     return [f for f in flags if f.severity.value == severity_code]
+
+
+def has_flag_code(flags: list[Flag], code: str) -> bool:
+    """Check if any flag with the given code is present in the evaluated flags."""
+    return any(f.code == code for f in flags)
