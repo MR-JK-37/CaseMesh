@@ -12,6 +12,17 @@ class AdapterStatus(str, Enum):
     UNAVAILABLE = "UNAVAILABLE"
 
 
+def is_adapter_operational(status: AdapterStatus) -> bool:
+    """Return True if adapter is in an active working state (LIVE or SANDBOX)."""
+    return status in (AdapterStatus.LIVE, AdapterStatus.SANDBOX)
+
+
+def is_adapter_live(status: AdapterStatus) -> bool:
+    """Return True if adapter is strictly in LIVE production mode."""
+    return status == AdapterStatus.LIVE
+
+
+
 class NotConfiguredError(RuntimeError):
     """Raised by every adapter method when the adapter isn't configured,
     instead of returning invented data. Section 0 rule 2: 'An integration
