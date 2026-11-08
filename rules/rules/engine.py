@@ -20,3 +20,8 @@ def filter_flags_by_severity(flags: list[Flag], severity_code: str) -> list[Flag
 def has_flag_code(flags: list[Flag], code: str) -> bool:
     """Check if any flag with the given code is present in the evaluated flags."""
     return any(f.code == code for f in flags)
+
+
+def get_flag_codes(flags: list[Flag]) -> list[str]:
+    """Return all unique flag codes raised from evaluation."""
+    return sorted({f.code for f in flags})
