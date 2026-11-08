@@ -39,6 +39,7 @@ const LEVEL_LABEL: Record<string, string> = {
 const LEVEL_COLOR: Record<string, string> = {
   high: "var(--status-escalated-fg)",
   potential: "var(--status-overlap-fg)",
+  medium: "var(--status-overlap-fg)",
   info: "var(--color-ink-muted)",
 };
 
