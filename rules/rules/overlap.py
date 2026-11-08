@@ -272,3 +272,14 @@ def score_pair(a: CaseFacts, b: CaseFacts, *, config: OverlapConfig = DEFAULT_CO
         reasons.append(OverlapReason("same_institution", "Both cases concern the same institution"))
 
     return OverlapResult(score=score, level=level, reasons=reasons, signals=signals, config_version=config.version)
+
+
+def is_high_overlap(result: OverlapResult) -> bool:
+    """Return True if the overlap result is classified at high urgency."""
+    return result.level == "high"
+
+
+def is_potential_overlap(result: OverlapResult) -> bool:
+    """Return True if the overlap result is classified as potential overlap."""
+    return result.level == "potential"
+
