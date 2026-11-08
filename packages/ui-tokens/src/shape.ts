@@ -26,3 +26,14 @@ export const motion = {
   durationFastMs: 150,
   durationNormalMs: 250,
 } as const;
+
+export const zIndex = {
+  base: 0,
+  card: 1,
+  header: 10,
+  dropdown: 20,
+  modal: 30,
+  toast: 40,
+  tooltip: 50,
+} as const;
+
