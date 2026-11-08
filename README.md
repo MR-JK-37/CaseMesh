@@ -76,6 +76,10 @@ CaseMesh is an institutional grievance monitoring and case coordination platform
   ```bash
   pnpm guard:contrast
   ```
+- **Backend Linting:**
+  ```bash
+  ruff check backend/ rules/
+  ```
 - **Guards:**
   ```bash
   pnpm guard:all
