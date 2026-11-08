@@ -93,3 +93,13 @@ def test_is_weekend():
     assert not is_weekend(MONDAY)
     assert is_weekend(saturday)
     assert is_weekend(sunday)
+
+
+def test_is_holiday():
+    from rules.business_days import is_holiday
+
+    holiday = MONDAY + dt.timedelta(days=2)
+    holidays = frozenset({holiday})
+
+    assert is_holiday(holiday, holidays)
+    assert not is_holiday(MONDAY, holidays)
