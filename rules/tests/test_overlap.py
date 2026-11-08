@@ -3,6 +3,7 @@ import datetime as dt
 from rules.overlap import (
     CaseFacts,
     InstitutionCandidate,
+    get_known_abbreviations,
     get_overlap_reason_codes,
     has_overlap_reason,
     is_high_overlap,
@@ -159,5 +160,13 @@ def test_overlap_reason_inspection_helpers():
     assert "shared_reference" in codes
     assert has_overlap_reason(pair, "shared_reference") is True
     assert has_overlap_reason(pair, "non_existent_code") is False
+
+
+def test_get_known_abbreviations():
+    abbrevs = get_known_abbreviations()
+    assert abbrevs["engg"] == "engineering"
+    assert abbrevs["inst"] == "institute"
+    assert abbrevs["coll"] == "college"
+
 
 
