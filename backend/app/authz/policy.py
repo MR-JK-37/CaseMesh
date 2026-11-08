@@ -250,3 +250,8 @@ def has_permission(role: str, action: str) -> bool:
 def get_permission_scope(role: str, action: str) -> Scope | None:
     """Return the granted Scope for a role and action, or None if denied."""
     return ROLE_PERMISSIONS.get(role, {}).get(action)
+
+
+def is_system_action(action: str) -> bool:
+    """Check if an action is executable under system machine identity."""
+    return action in ROLE_PERMISSIONS.get("system", {})
