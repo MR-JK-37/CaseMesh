@@ -14,8 +14,8 @@ const MATTER_TYPES = [
   "parliament_question",
   "rti",
   "miscellaneous",
-];
-const SOURCE_CHANNELS = ["letter", "email", "cpgrams", "walk_in", "phone", "other"];
+] as const;
+const SOURCE_CHANNELS = ["letter", "email", "cpgrams", "walk_in", "phone", "other"] as const;
 
 interface Option {
   id: string;
