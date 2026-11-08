@@ -65,3 +65,12 @@ def test_has_flag_code():
 
     assert has_flag_code(flags, "ALWAYS_FLAGS")
     assert not has_flag_code(flags, "NON_EXISTENT")
+
+
+def test_get_flag_codes():
+    from rules.engine import get_flag_codes
+
+    ctx = RuleContext(record={"id": "x"})
+    flags = run_rules(ctx, [_AlwaysFlags(), _AlwaysFlags()])
+
+    assert get_flag_codes(flags) == ["ALWAYS_FLAGS"]
