@@ -4,6 +4,7 @@ export function Input({
   label,
   error,
   helperText,
+  required = false,
   className = "",
   ...props
 }: InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string; helperText?: string }) {
@@ -14,9 +15,11 @@ export function Input({
     <div className="flex flex-col gap-1.5">
       <label htmlFor={id} className="text-sm font-medium text-ink-muted">
         {label}
+        {required && <span className="ml-1 text-[#B42318]">*</span>}
       </label>
       <input
         id={id}
+        required={required}
         aria-invalid={!!error}
         aria-describedby={error ? errorId : helperText ? helpId : undefined}
         className={`min-h-11 rounded-input border border-outline bg-surface-0 px-3.5 text-ink
