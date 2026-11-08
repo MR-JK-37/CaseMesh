@@ -125,3 +125,8 @@ def generate_nonce(length: int = 16) -> str:
     """Generate a secure cryptographically random URL-safe nonce."""
     return base64.urlsafe_b64encode(os.urandom(length)).decode().rstrip("=")
 
+
+def safe_str_compare(a: str, b: str) -> bool:
+    """Constant-time string comparison for security-sensitive tokens."""
+    return hmac.compare_digest(a.encode("utf-8"), b.encode("utf-8"))
+
