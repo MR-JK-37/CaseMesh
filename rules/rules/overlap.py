@@ -294,3 +294,9 @@ def has_overlap_reason(result: OverlapResult, code: str) -> bool:
     return any(r.code == code for r in result.reasons)
 
 
+def get_known_abbreviations() -> dict[str, str]:
+    """Return a copy of the canonical abbreviation expansion dictionary."""
+    return dict(_ABBREVIATIONS)
+
+
+
