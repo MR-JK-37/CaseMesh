@@ -578,6 +578,7 @@ export function CaseDetailPage() {
                   >
                     <option value="resolved">Resolved</option>
                     <option value="not_substantiated">Not substantiated</option>
+                    <option value="withdrawn">Withdrawn</option>
                     <option value="referred_elsewhere">Referred elsewhere</option>
                   </select>
                 </div>
