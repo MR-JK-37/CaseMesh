@@ -83,6 +83,7 @@ export function ReportsPage() {
                 <li key={r.id}>
                   <button
                     type="button"
+                    aria-pressed={selected === r.id}
                     onClick={() => setSelected(r.id)}
                     className={`w-full rounded-input px-3 py-2 text-left text-sm transition-colors
                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500
