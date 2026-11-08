@@ -3,6 +3,8 @@ import datetime as dt
 from rules.overlap import (
     CaseFacts,
     InstitutionCandidate,
+    get_overlap_reason_codes,
+    has_overlap_reason,
     is_high_overlap,
     is_potential_overlap,
     normalize_institution_text,
@@ -149,4 +151,13 @@ def test_overlap_level_predicates():
     info_case = score_pair(_case("c3", "bureau-rb", days_ago=200), _case("c4", "bureau-rb", days_ago=0))
     assert is_high_overlap(info_case) is False
     assert is_potential_overlap(info_case) is False
+
+
+def test_overlap_reason_inspection_helpers():
+    pair = score_pair(_case("c1", "bureau-rb", refs=["REF-123"]), _case("c2", "bureau-pgrc", refs=["REF-123"]))
+    codes = get_overlap_reason_codes(pair)
+    assert "shared_reference" in codes
+    assert has_overlap_reason(pair, "shared_reference") is True
+    assert has_overlap_reason(pair, "non_existent_code") is False
+
 
