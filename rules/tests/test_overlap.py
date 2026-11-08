@@ -3,6 +3,8 @@ import datetime as dt
 from rules.overlap import (
     CaseFacts,
     InstitutionCandidate,
+    is_high_overlap,
+    is_potential_overlap,
     normalize_institution_text,
     resolve_institution,
     score_pair,
@@ -137,3 +139,14 @@ def test_resolve_institution_blocks_by_state_before_scoring():
 def test_resolve_institution_no_candidates_is_unresolved_not_an_error():
     result = resolve_institution(permanent_id=None, free_text_name="Nobody College", state=None, district=None, candidates=[])
     assert result.status == "unresolved"
+
+
+def test_overlap_level_predicates():
+    high_case = score_pair(_case("c1", "bureau-rb", refs=["LTR/2026/001"]), _case("c2", "bureau-pgrc", refs=["LTR/2026/001"]))
+    assert is_high_overlap(high_case) is True
+    assert is_potential_overlap(high_case) is False
+
+    info_case = score_pair(_case("c3", "bureau-rb", days_ago=200), _case("c4", "bureau-rb", days_ago=0))
+    assert is_high_overlap(info_case) is False
+    assert is_potential_overlap(info_case) is False
+
