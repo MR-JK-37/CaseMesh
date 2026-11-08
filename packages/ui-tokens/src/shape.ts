@@ -5,6 +5,7 @@ export const radius = {
   input: 14,
   button: 16,
   pill: 999,
+  badge: 6,
 } as const;
 
 export const spacing = {
