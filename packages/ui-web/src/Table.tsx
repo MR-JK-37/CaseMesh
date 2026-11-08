@@ -10,6 +10,7 @@ export function Table<T extends { id: string }>({
   rows,
   emptyMessage,
   caption,
+  className = "",
 }: {
   columns: Column<T>[];
   rows: T[];
