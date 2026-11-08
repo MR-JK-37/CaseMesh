@@ -18,12 +18,16 @@ function readCsrfCookie(): string | undefined {
   return match ? decodeURIComponent(match[1]) : undefined;
 }
 
+export function isMutationMethod(method: string): boolean {
+  return !["GET", "HEAD", "OPTIONS"].includes(method.toUpperCase());
+}
+
 export function createApiClient(baseUrl: string) {
   const client = createClient<paths>({ baseUrl, credentials: "include" });
 
   client.use({
     onRequest({ request }) {
-      if (!["GET", "HEAD", "OPTIONS"].includes(request.method)) {
+      if (isMutationMethod(request.method)) {
         const csrf = readCsrfCookie();
         if (csrf) request.headers.set("X-CSRF-Token", csrf);
       }
@@ -33,5 +37,6 @@ export function createApiClient(baseUrl: string) {
 
   return client;
 }
+
 
 export type { paths };
