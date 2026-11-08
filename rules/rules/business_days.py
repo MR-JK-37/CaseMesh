@@ -68,3 +68,8 @@ def prev_business_day(d: dt.date, holidays: frozenset[dt.date]) -> dt.date:
 def is_weekend(d: dt.date) -> bool:
     """Return True if the date falls on Saturday or Sunday."""
     return d.weekday() in _WEEKEND
+
+
+def is_holiday(d: dt.date, holidays: frozenset[dt.date]) -> bool:
+    """Return True if the date is explicitly in the holiday set."""
+    return d in holidays
