@@ -33,6 +33,10 @@ class Principal:
     def is_bureau_head(self) -> bool:
         return self.role == "bureau_head"
 
+    @property
+    def is_case_officer(self) -> bool:
+        return self.role == "case_officer"
+
 
 async def get_current_principal(
     icm_access: str | None = Cookie(default=None, alias=ACCESS_COOKIE),
