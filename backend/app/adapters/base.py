@@ -29,3 +29,7 @@ class AdapterTimeoutError(AdapterUnavailableError):
 
 class AdapterAuthError(RuntimeError):
     """Raised when external adapter credentials fail authentication."""
+
+
+class AdapterPayloadError(RuntimeError):
+    """Raised when external adapter response cannot be parsed or is malformed."""
