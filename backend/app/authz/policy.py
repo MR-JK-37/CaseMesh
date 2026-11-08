@@ -255,3 +255,18 @@ def get_permission_scope(role: str, action: str) -> Scope | None:
 def is_system_action(action: str) -> bool:
     """Check if an action is executable under system machine identity."""
     return action in ROLE_PERMISSIONS.get("system", {})
+
+
+def is_valid_scope(scope: str) -> bool:
+    """Check if the provided scope string is a valid Scope enum value."""
+    try:
+        Scope(scope)
+        return True
+    except ValueError:
+        return False
+
+
+def get_roles_with_permission(action: str) -> list[str]:
+    """Return list of roles that have permission to perform the action."""
+    return [role for role, perms in ROLE_PERMISSIONS.items() if action in perms]
+
