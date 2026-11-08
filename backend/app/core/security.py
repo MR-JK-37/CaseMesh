@@ -130,3 +130,19 @@ def safe_str_compare(a: str, b: str) -> bool:
     """Constant-time string comparison for security-sensitive tokens."""
     return hmac.compare_digest(a.encode("utf-8"), b.encode("utf-8"))
 
+
+def is_valid_token_type(payload: dict, expected_type: str) -> bool:
+    """Check if token claims payload matches the expected token type."""
+    return payload.get("type") == expected_type
+
+
+def get_token_subject(payload: dict) -> str | None:
+    """Extract user/subject identifier from token payload."""
+    return payload.get("sub")
+
+
+def get_token_role(payload: dict) -> str | None:
+    """Extract role claim from token payload."""
+    return payload.get("role")
+
+
