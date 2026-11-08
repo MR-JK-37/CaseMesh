@@ -38,7 +38,7 @@ export function AdminUsersPage() {
   const [email, setEmail] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState(ROLES[3]);
+  const [role, setRole] = useState<(typeof ROLES)[number]>(ROLES[3]);
   const [bureauId, setBureauId] = useState("");
   const [createError, setCreateError] = useState<string | null>(null);
   const [createdNotice, setCreatedNotice] = useState<string | null>(null);
@@ -120,7 +120,7 @@ export function AdminUsersPage() {
               <select
                 id="role-select"
                 value={role}
-                onChange={(e) => setRole(e.target.value)}
+                onChange={(e) => setRole(e.target.value as (typeof ROLES)[number])}
                 className="min-h-11 rounded-input border border-outline bg-surface-0 px-3.5 text-ink
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               >
@@ -152,7 +152,7 @@ export function AdminUsersPage() {
             </div>
             <div className="md:col-span-2">
               {createError && (
-                <p role="alert" className="mb-2 text-sm text-[#B42318]">
+                <p role="alert" className="mb-2 text-sm" style={{ color: "var(--status-overdue-fg)" }}>
                   {createError}
                 </p>
               )}
@@ -168,9 +168,10 @@ export function AdminUsersPage() {
             <h2 className="text-lg font-semibold text-ink">All users in your scope</h2>
           </div>
           {loadError ? (
-            <p className="text-sm text-[#B42318]">{loadError}</p>
+            <p className="text-sm" style={{ color: "var(--status-overdue-fg)" }}>{loadError}</p>
           ) : (
             <Table<UserRow>
+              caption="Users directory in current scope"
               columns={[
                 { key: "email", header: "Email", render: (r) => r.email },
                 { key: "name", header: "Name", render: (r) => r.display_name },
