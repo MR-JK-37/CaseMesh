@@ -36,8 +36,8 @@ export function CaseRegistrationPage() {
   const [bureaus, setBureaus] = useState<Option[]>([]);
 
   const [institutionId, setInstitutionId] = useState("");
-  const [matterType, setMatterType] = useState(MATTER_TYPES[0]);
-  const [sourceChannel, setSourceChannel] = useState(SOURCE_CHANNELS[0]);
+  const [matterType, setMatterType] = useState<(typeof MATTER_TYPES)[number]>(MATTER_TYPES[0]);
+  const [sourceChannel, setSourceChannel] = useState<(typeof SOURCE_CHANNELS)[number]>(SOURCE_CHANNELS[0]);
   const [priority, setPriority] = useState("standard");
   const [bureauId, setBureauId] = useState("");
   const [nextAction, setNextAction] = useState("");
@@ -135,7 +135,7 @@ export function CaseRegistrationPage() {
               <select
                 id="matter-select"
                 value={matterType}
-                onChange={(e) => setMatterType(e.target.value)}
+                onChange={(e) => setMatterType(e.target.value as (typeof MATTER_TYPES)[number])}
                 className="min-h-11 rounded-input border border-outline bg-surface-0 px-3.5 text-ink
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               >
@@ -154,7 +154,7 @@ export function CaseRegistrationPage() {
               <select
                 id="source-select"
                 value={sourceChannel}
-                onChange={(e) => setSourceChannel(e.target.value)}
+                onChange={(e) => setSourceChannel(e.target.value as (typeof SOURCE_CHANNELS)[number])}
                 className="min-h-11 rounded-input border border-outline bg-surface-0 px-3.5 text-ink
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               >
