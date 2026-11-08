@@ -283,3 +283,14 @@ def is_potential_overlap(result: OverlapResult) -> bool:
     """Return True if the overlap result is classified as potential overlap."""
     return result.level == "potential"
 
+
+def get_overlap_reason_codes(result: OverlapResult) -> list[str]:
+    """Return list of distinct reason codes from the overlap result."""
+    return [r.code for r in result.reasons]
+
+
+def has_overlap_reason(result: OverlapResult, code: str) -> bool:
+    """Return True if the overlap result contains a specific reason code."""
+    return any(r.code == code for r in result.reasons)
+
+
