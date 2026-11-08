@@ -60,6 +60,11 @@ def get_all_roles() -> list[str]:
     return list(ROLES)
 
 
+def get_totp_required_roles() -> list[str]:
+    """Return a list of roles that strictly require TOTP MFA."""
+    return list(TOTP_REQUIRED_ROLES)
+
+
 class Bureau(Base):
     """Section 1.2 "Organisation master": Bureau or Cell. Admin-editable
     and versioned in spirit (full version history is a Phase 2+ add —
