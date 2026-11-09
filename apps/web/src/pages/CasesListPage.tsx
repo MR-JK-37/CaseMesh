@@ -91,6 +91,7 @@ export function CasesListPage() {
         </div>
 
         <Table<CaseRow>
+          caption="Cases register directory"
           columns={[
             {
               key: "case_number",
