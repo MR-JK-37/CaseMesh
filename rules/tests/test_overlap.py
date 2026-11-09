@@ -3,6 +3,8 @@ import datetime as dt
 from rules.overlap import (
     CaseFacts,
     InstitutionCandidate,
+    ResolutionMatch,
+    filter_candidates_by_min_score,
     get_known_abbreviations,
     get_overlap_reason_codes,
     has_overlap_reason,
@@ -167,6 +169,18 @@ def test_get_known_abbreviations():
     assert abbrevs["engg"] == "engineering"
     assert abbrevs["inst"] == "institute"
     assert abbrevs["coll"] == "college"
+
+
+def test_filter_candidates_by_min_score():
+    candidates = [
+        ResolutionMatch("inst-1", 95.0, "name_similarity"),
+        ResolutionMatch("inst-2", 80.0, "name_similarity"),
+        ResolutionMatch("inst-3", 60.0, "name_similarity"),
+    ]
+    filtered = filter_candidates_by_min_score(candidates, 80.0)
+    assert len(filtered) == 2
+    assert [c.institution_id for c in filtered] == ["inst-1", "inst-2"]
+
 
 
 
