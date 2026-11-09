@@ -146,3 +146,23 @@ def get_token_role(payload: dict) -> str | None:
     return payload.get("role")
 
 
+def is_token_expired(payload: dict) -> bool:
+    """Check if token payload has passed its expiration timestamp."""
+    exp = payload.get("exp")
+    if exp is None:
+        return False
+    if isinstance(exp, (int, float)):
+        exp_dt = dt.datetime.fromtimestamp(exp, tz=dt.UTC)
+    elif isinstance(exp, dt.datetime):
+        exp_dt = exp
+    else:
+        return False
+    return dt.datetime.now(dt.UTC) > exp_dt
+
+
+def get_token_family_id(payload: dict) -> str | None:
+    """Extract family identifier claim from refresh token payload."""
+    return payload.get("family")
+
+
+
