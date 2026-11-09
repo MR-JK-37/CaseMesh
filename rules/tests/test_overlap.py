@@ -7,6 +7,7 @@ from rules.overlap import (
     filter_candidates_by_min_score,
     get_known_abbreviations,
     get_overlap_reason_codes,
+    get_top_candidate,
     has_overlap_reason,
     is_high_overlap,
     is_potential_overlap,
@@ -194,6 +195,24 @@ def test_is_resolution_matched_predicate():
         permanent_id=None, free_text_name="Unknown", state=None, district=None, candidates=[]
     )
     assert is_resolution_matched(unresolved) is False
+
+
+def test_get_top_candidate_helper():
+    candidates = [
+        InstitutionCandidate("inst-1", "Sandbox Institute of Technology"),
+        InstitutionCandidate("inst-2", "Completely Different Polytechnic"),
+    ]
+    matched = resolve_institution(
+        permanent_id=None,
+        free_text_name="Sandbox Institute of Technology",
+        state=None,
+        district=None,
+        candidates=candidates,
+    )
+    top = get_top_candidate(matched)
+    assert top is not None
+    assert top.institution_id == "inst-1"
+
 
 
 
