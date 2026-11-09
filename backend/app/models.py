@@ -65,6 +65,28 @@ def get_totp_required_roles() -> list[str]:
     return list(TOTP_REQUIRED_ROLES)
 
 
+CASE_STATUSES = (
+    "pending",
+    "under_process",
+    "transferred",
+    "escalated",
+    "disposed",
+    "withdrawn",
+)
+TERMINAL_CASE_STATUSES = frozenset({"disposed", "withdrawn"})
+
+
+def is_terminal_status(status: str) -> bool:
+    """Return True if case status represents a completed/terminal lifecycle state."""
+    return status in TERMINAL_CASE_STATUSES
+
+
+def is_active_case_status(status: str) -> bool:
+    """Return True if case status represents an ongoing active workflow."""
+    return status in CASE_STATUSES and status not in TERMINAL_CASE_STATUSES
+
+
+
 class Bureau(Base):
     """Section 1.2 "Organisation master": Bureau or Cell. Admin-editable
     and versioned in spirit (full version history is a Phase 2+ add —
