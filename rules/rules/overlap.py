@@ -306,5 +306,11 @@ def filter_candidates_by_min_score(
     return [c for c in candidates if c.score >= min_score]
 
 
+def is_resolution_matched(result: ResolutionResult) -> bool:
+    """Return True if the resolution result successfully matched an institution."""
+    return result.status == "matched" and result.match is not None
+
+
+
 
 
