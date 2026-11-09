@@ -299,4 +299,12 @@ def get_known_abbreviations() -> dict[str, str]:
     return dict(_ABBREVIATIONS)
 
 
+def filter_candidates_by_min_score(
+    candidates: list[ResolutionMatch], min_score: float
+) -> list[ResolutionMatch]:
+    """Filter candidate matches to those that meet or exceed min_score."""
+    return [c for c in candidates if c.score >= min_score]
+
+
+
 
