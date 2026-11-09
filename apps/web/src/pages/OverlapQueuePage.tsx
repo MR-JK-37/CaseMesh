@@ -77,7 +77,7 @@ export function OverlapQueuePage() {
                     {LEVEL_LABEL[g.max_level] ?? g.max_level}
                   </span>
                 </div>
-                <ul className="flex flex-col gap-2">
+                <ul aria-label="Candidate case pairs" className="flex flex-col gap-2">
                   {g.candidates.map((c) => (
                     <li key={c.id} className="rounded-input bg-surface-2 p-2 text-sm">
                       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -94,7 +94,7 @@ export function OverlapQueuePage() {
                           {LEVEL_LABEL[c.level] ?? c.level} ({c.score}/100) — {c.status}
                         </span>
                       </div>
-                      <ul className="mt-1 list-inside list-disc text-xs text-ink-muted">
+                      <ul aria-label="Overlap reasons" className="mt-1 list-inside list-disc text-xs text-ink-muted">
                         {c.reasons.map((r) => (
                           <li key={r.code}>{r.text}</li>
                         ))}
