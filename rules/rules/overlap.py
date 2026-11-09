@@ -311,6 +311,14 @@ def is_resolution_matched(result: ResolutionResult) -> bool:
     return result.status == "matched" and result.match is not None
 
 
+def get_top_candidate(result: ResolutionResult) -> ResolutionMatch | None:
+    """Return the top candidate resolution match if available."""
+    if result.match:
+        return result.match
+    return result.candidates[0] if result.candidates else None
+
+
+
 
 
 
