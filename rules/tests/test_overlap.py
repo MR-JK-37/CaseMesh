@@ -10,6 +10,7 @@ from rules.overlap import (
     has_overlap_reason,
     is_high_overlap,
     is_potential_overlap,
+    is_resolution_matched,
     normalize_institution_text,
     resolve_institution,
     score_pair,
@@ -180,6 +181,20 @@ def test_filter_candidates_by_min_score():
     filtered = filter_candidates_by_min_score(candidates, 80.0)
     assert len(filtered) == 2
     assert [c.institution_id for c in filtered] == ["inst-1", "inst-2"]
+
+
+def test_is_resolution_matched_predicate():
+    candidates = [InstitutionCandidate("inst-1", "Govt Engg College", permanent_id="1-800000001")]
+    matched = resolve_institution(
+        permanent_id="1-800000001", free_text_name=None, state=None, district=None, candidates=candidates
+    )
+    assert is_resolution_matched(matched) is True
+
+    unresolved = resolve_institution(
+        permanent_id=None, free_text_name="Unknown", state=None, district=None, candidates=[]
+    )
+    assert is_resolution_matched(unresolved) is False
+
 
 
 
