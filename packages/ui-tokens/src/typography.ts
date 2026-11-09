@@ -15,3 +15,7 @@ export const weight = { regular: 400, medium: 500, semibold: 600, bold: 700 } as
 export const lineHeight = { tight: 1.25, normal: 1.5, relaxed: 1.75 } as const;
 export const letterSpacing = { tighter: "-0.02em", tight: "-0.01em", normal: "0em", wide: "0.02em" } as const;
 
+export type LetterSpacingKey = keyof typeof letterSpacing;
+export type FontWeightKey = keyof typeof weight;
+
+
