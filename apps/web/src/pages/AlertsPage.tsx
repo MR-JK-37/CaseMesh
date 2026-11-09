@@ -64,7 +64,7 @@ export function AlertsPage() {
           </label>
         </div>
         {error && (
-          <p role="alert" className="mb-3 text-sm text-[#B42318]">
+          <p role="alert" className="mb-3 text-sm" style={{ color: "var(--status-overdue-fg)" }}>
             {error}
           </p>
         )}
