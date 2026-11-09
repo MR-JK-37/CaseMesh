@@ -37,3 +37,8 @@ export const zIndex = {
   tooltip: 50,
 } as const;
 
+export type RadiusKey = keyof typeof radius;
+export type ElevationKey = keyof typeof elevation;
+export type ZIndexKey = keyof typeof zIndex;
+
+
