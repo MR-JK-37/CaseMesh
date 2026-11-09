@@ -270,3 +270,14 @@ def get_roles_with_permission(action: str) -> list[str]:
     """Return list of roles that have permission to perform the action."""
     return [role for role, perms in ROLE_PERMISSIONS.items() if action in perms]
 
+
+def get_roles_for_scope(action: str, scope: Scope) -> list[str]:
+    """Return list of roles that have permission for the action at the specified scope."""
+    return [role for role, perms in ROLE_PERMISSIONS.items() if perms.get(action) is scope]
+
+
+def is_role_authorized_all_scope(role: str, action: str) -> bool:
+    """Return True if the role has permission for action across ALL scope."""
+    return ROLE_PERMISSIONS.get(role, {}).get(action) is Scope.ALL
+
+
