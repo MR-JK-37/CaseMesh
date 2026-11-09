@@ -4,6 +4,14 @@ export interface Column<T> {
   render: (row: T) => React.ReactNode;
 }
 
+export interface TableProps<T extends { id: string }> {
+  columns: Column<T>[];
+  rows: T[];
+  emptyMessage: string;
+  caption?: string;
+  className?: string;
+}
+
 /** Section 9.11 point 6: a real table component, never a raw <table> on a page. */
 export function Table<T extends { id: string }>({
   columns,
@@ -11,13 +19,7 @@ export function Table<T extends { id: string }>({
   emptyMessage,
   caption,
   className = "",
-}: {
-  columns: Column<T>[];
-  rows: T[];
-  emptyMessage: string;
-  caption?: string;
-  className?: string;
-}) {
+}: TableProps<T>) {
   if (rows.length === 0) {
     return (
       <div className={`rounded-card bg-surface-0 p-10 text-center text-ink-muted ${className}`}>{emptyMessage}</div>
