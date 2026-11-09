@@ -107,7 +107,7 @@ export function HomePage() {
 
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
               <Tile className="border border-outline">
-                <div className="text-2xl font-semibold tabular-nums text-[#B42318]">{tiles.beyond_timeline}</div>
+                <div className="text-2xl font-semibold tabular-nums" style={{ color: "var(--status-overdue-fg)" }}>{tiles.beyond_timeline}</div>
                 <div className="text-sm text-ink-muted">Beyond timeline</div>
               </Tile>
               <Tile className="border border-outline">
