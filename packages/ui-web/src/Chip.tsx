@@ -1,3 +1,5 @@
+export type ChipSize = "sm" | "md";
+
 export function Chip({
   active = false,
   disabled = false,
@@ -9,7 +11,7 @@ export function Chip({
   active?: boolean;
   disabled?: boolean;
   className?: string;
-  size?: "sm" | "md";
+  size?: ChipSize;
   children: React.ReactNode;
   onClick?: () => void;
 }) {
