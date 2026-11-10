@@ -343,6 +343,13 @@ def calculate_token_jaccard(tokens_a: list[str], tokens_b: list[str]) -> float:
     return round(len(set_a & set_b) / len(union), 4)
 
 
+def format_overlap_summary(result: OverlapResult) -> str:
+    """Format a human-readable non-sensitive summary of the overlap result."""
+    reasons_summary = "; ".join(r.text for r in result.reasons)
+    return f"{result.level.upper()} ({result.score}/100): {reasons_summary}"
+
+
+
 
 
 
