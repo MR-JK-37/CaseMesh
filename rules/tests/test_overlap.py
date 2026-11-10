@@ -4,6 +4,7 @@ from rules.overlap import (
     CaseFacts,
     InstitutionCandidate,
     ResolutionMatch,
+    calculate_token_jaccard,
     filter_candidates_by_min_score,
     get_known_abbreviations,
     get_overlap_reason_codes,
@@ -15,6 +16,7 @@ from rules.overlap import (
     normalize_institution_text,
     resolve_institution,
     score_pair,
+    tokenize_normalized_text,
 )
 
 NOW = dt.datetime(2026, 10, 29, tzinfo=dt.UTC)
@@ -212,6 +214,23 @@ def test_get_top_candidate_helper():
     top = get_top_candidate(matched)
     assert top is not None
     assert top.institution_id == "inst-1"
+
+
+def test_tokenize_normalized_text():
+    tokens = tokenize_normalized_text("Govt. Engineering College, Pune (MH)")
+    assert "govt" in tokens
+    assert "engineering" in tokens
+    assert "pune" in tokens
+
+
+def test_calculate_token_jaccard():
+    a = ["engineering", "college", "pune"]
+    b = ["engineering", "technology", "pune"]
+    sim = calculate_token_jaccard(a, b)
+    assert 0.0 < sim < 1.0
+    assert calculate_token_jaccard([], []) == 1.0
+    assert calculate_token_jaccard(["a"], ["a"]) == 1.0
+
 
 
 
