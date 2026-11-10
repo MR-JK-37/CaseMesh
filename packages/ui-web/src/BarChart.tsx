@@ -1,13 +1,20 @@
 import { useState } from "react";
 
+export interface BarChartItem {
+  label: string;
+  value: number;
+}
+
+export interface BarChartProps {
+  data: BarChartItem[];
+  className?: string;
+}
+
 /** Section 9.6: vertical bars, one highlighted gradient bar + marker dot, inactive bars brand-50. */
 export function BarChart({
   data,
   className = "",
-}: {
-  data: { label: string; value: number }[];
-  className?: string;
-}) {
+}: BarChartProps) {
   if (data.length === 0) {
     return <div className={`text-sm text-ink-muted ${className}`}>No data available</div>;
   }
