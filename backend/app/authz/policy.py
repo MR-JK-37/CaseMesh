@@ -281,3 +281,14 @@ def is_role_authorized_all_scope(role: str, action: str) -> bool:
     return ROLE_PERMISSIONS.get(role, {}).get(action) is Scope.ALL
 
 
+def get_roles_count() -> int:
+    """Return total number of system roles recognized by the authz engine."""
+    return len(ROLES)
+
+
+def get_scope_values() -> list[str]:
+    """Return list of valid Scope enum values as strings."""
+    return [s.value for s in Scope]
+
+
+
