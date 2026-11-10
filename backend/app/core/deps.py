@@ -37,6 +37,19 @@ class Principal:
     def is_case_officer(self) -> bool:
         return self.role == "case_officer"
 
+    @property
+    def is_nodal_pg_officer(self) -> bool:
+        return self.role == "nodal_pg_officer"
+
+    @property
+    def is_competent_authority(self) -> bool:
+        return self.role == "competent_authority"
+
+    @property
+    def is_regional_officer(self) -> bool:
+        return self.role == "regional_officer"
+
+
 
 async def get_current_principal(
     icm_access: str | None = Cookie(default=None, alias=ACCESS_COOKIE),
