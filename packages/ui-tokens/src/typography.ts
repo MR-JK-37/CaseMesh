@@ -17,5 +17,8 @@ export const letterSpacing = { tighter: "-0.02em", tight: "-0.01em", normal: "0e
 
 export type LetterSpacingKey = keyof typeof letterSpacing;
 export type FontWeightKey = keyof typeof weight;
+export type FontFamilyKey = keyof typeof fontFamily;
+export type LineHeightKey = keyof typeof lineHeight;
+
 
 
