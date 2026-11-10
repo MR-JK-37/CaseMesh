@@ -23,11 +23,12 @@ interface ImportJob {
 }
 
 const ACTION_COLOR: Record<string, string> = {
-  create: "#0F7B4F",
-  update: "#0F6FA8",
-  unchanged: "#5B7088",
-  error: "#B42318",
+  create: "var(--status-disposed-fg)",
+  update: "var(--color-brand-600)",
+  unchanged: "var(--color-ink-muted)",
+  error: "var(--status-overdue-fg)",
 };
+
 
 /** Section 9.7 screen 13 (Phase 2 slice): upload, preview/diff, commit. */
 export function ImportPage() {
