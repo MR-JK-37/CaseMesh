@@ -53,5 +53,16 @@ class Settings(BaseSettings):
     app_version: str = "0.1.0"
     project_name: str = "CaseMesh"
 
+    @property
+    def is_sandbox_mode(self) -> bool:
+        """Return True if current deployment runs in test sandbox mode."""
+        return self.tenant_mode == "test_sandbox"
+
+    @property
+    def is_sentry_enabled(self) -> bool:
+        """Return True if Sentry error reporting DSN is configured."""
+        return bool(self.sentry_dsn)
+
+
 
 settings = Settings()
