@@ -6,11 +6,13 @@ from rules.overlap import (
     ResolutionMatch,
     calculate_token_jaccard,
     filter_candidates_by_min_score,
+    format_overlap_summary,
     get_known_abbreviations,
     get_overlap_reason_codes,
     get_top_candidate,
     has_overlap_reason,
     is_high_overlap,
+    is_info_overlap,
     is_potential_overlap,
     is_resolution_matched,
     normalize_institution_text,
@@ -154,10 +156,20 @@ def test_overlap_level_predicates():
     high_case = score_pair(_case("c1", "bureau-rb", refs=["LTR/2026/001"]), _case("c2", "bureau-pgrc", refs=["LTR/2026/001"]))
     assert is_high_overlap(high_case) is True
     assert is_potential_overlap(high_case) is False
+    assert is_info_overlap(high_case) is False
 
     info_case = score_pair(_case("c3", "bureau-rb", days_ago=200), _case("c4", "bureau-rb", days_ago=0))
     assert is_high_overlap(info_case) is False
     assert is_potential_overlap(info_case) is False
+    assert is_info_overlap(info_case) is True
+
+
+def test_format_overlap_summary():
+    high_case = score_pair(_case("c1", "bureau-rb", refs=["LTR/2026/001"]), _case("c2", "bureau-pgrc", refs=["LTR/2026/001"]))
+    summary = format_overlap_summary(high_case)
+    assert "HIGH" in summary
+    assert "Both cases cite the same reference number" in summary
+
 
 
 def test_overlap_reason_inspection_helpers():
