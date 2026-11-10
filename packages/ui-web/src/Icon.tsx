@@ -1,5 +1,13 @@
 import { icons, type IconName } from "@icm/ui-tokens";
 
+export interface IconProps {
+  name: IconName;
+  filled?: boolean;
+  size?: number;
+  className?: string;
+  label?: string;
+}
+
 /**
  * Section 9.9: web icons render through Material Symbols Rounded only,
  * looked up from the single semantic icon table — never a third-party
@@ -13,13 +21,7 @@ export function Icon({
   size = 20,
   className = "",
   label,
-}: {
-  name: IconName;
-  filled?: boolean;
-  size?: number;
-  className?: string;
-  label?: string;
-}) {
+}: IconProps) {
   const spec = icons[name];
   if (!spec) {
     return null;
