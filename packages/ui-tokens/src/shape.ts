@@ -40,5 +40,8 @@ export const zIndex = {
 export type RadiusKey = keyof typeof radius;
 export type ElevationKey = keyof typeof elevation;
 export type ZIndexKey = keyof typeof zIndex;
+export type SpacingKey = keyof typeof spacing;
+export type MotionKey = keyof typeof motion;
+
 
 
