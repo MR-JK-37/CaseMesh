@@ -199,7 +199,7 @@ export function InstitutionProfilePage() {
               <p className="mb-2 flex items-center gap-1.5 font-medium">
                 <Icon name="overlap-link" size={16} /> Potential Overlapping Cases – Coordination Required
               </p>
-              <ul className="flex flex-col gap-1 text-xs">
+              <ul aria-label="Overlap candidates" className="flex flex-col gap-1 text-xs">
                 {overlapGroup.candidates.map((c) => (
                   <li key={c.id}>
                     {c.case_a_number} ↔ {c.case_b_number} — {c.level} ({c.score}/100, {c.status})
@@ -218,7 +218,7 @@ export function InstitutionProfilePage() {
           {cases.length === 0 ? (
             <p className="text-sm text-ink-muted">{casesNote}</p>
           ) : (
-            <ul className="flex flex-col gap-2">
+            <ul aria-label="Institution case history" className="flex flex-col gap-2">
               {cases.map((c) => (
                 <li key={c.id} className="flex flex-wrap items-center justify-between gap-2 rounded-input border border-outline p-2 text-sm">
                   <Link to="/cases/$id" params={{ id: c.id }} className="font-medium text-brand-600 hover:underline">
