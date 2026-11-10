@@ -325,6 +325,19 @@ def tokenize_normalized_text(text: str) -> list[str]:
     return [t for t in normalized.split() if t]
 
 
+def calculate_token_jaccard(tokens_a: list[str], tokens_b: list[str]) -> float:
+    """Calculate the Jaccard similarity coefficient between two token sequences."""
+    set_a = set(tokens_a)
+    set_b = set(tokens_b)
+    if not set_a and not set_b:
+        return 1.0
+    union = set_a | set_b
+    if not union:
+        return 0.0
+    return round(len(set_a & set_b) / len(union), 4)
+
+
+
 
 
 
