@@ -318,6 +318,14 @@ def get_top_candidate(result: ResolutionResult) -> ResolutionMatch | None:
     return result.candidates[0] if result.candidates else None
 
 
+def tokenize_normalized_text(text: str) -> list[str]:
+    """Tokenize normalized text into cleaned lowercase tokens."""
+    normalized = unicodedata.normalize("NFKC", text).lower()
+    normalized = re.sub(r"[^\w\s]", " ", normalized)
+    return [t for t in normalized.split() if t]
+
+
+
 
 
 
