@@ -1,13 +1,15 @@
+export interface GaugeProps {
+  percent: number;
+  label: string;
+  className?: string;
+}
+
 /** Section 9.6: semi-circular SLA compliance gauge with tick marks. */
 export function Gauge({
   percent,
   label,
   className = "",
-}: {
-  percent: number;
-  label: string;
-  className?: string;
-}) {
+}: GaugeProps) {
   const clamped = Math.max(0, Math.min(100, percent));
   const angle = (clamped / 100) * 180;
   const r = 70;
