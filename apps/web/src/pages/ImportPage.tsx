@@ -116,7 +116,7 @@ export function ImportPage() {
               />
             </div>
             {error && (
-              <p role="alert" className="text-sm text-[#B42318]">
+              <p role="alert" className="text-sm" style={{ color: "var(--status-overdue-fg)" }}>
                 {error}
               </p>
             )}
@@ -137,7 +137,7 @@ export function ImportPage() {
                 <Button onClick={commit}>Commit import</Button>
               )}
             </div>
-            {committedNotice && <p className="mb-3 text-sm text-[#0F7B4F]">{committedNotice}</p>}
+            {committedNotice && <p className="mb-3 text-sm" style={{ color: "var(--status-disposed-fg)" }}>{committedNotice}</p>}
             <div className="flex flex-col gap-2">
               {job.rows.map((r) => (
                 <div key={r.id} className="rounded-input border border-outline p-3 text-sm">
