@@ -284,6 +284,12 @@ def is_potential_overlap(result: OverlapResult) -> bool:
     return result.level == "potential"
 
 
+def is_info_overlap(result: OverlapResult) -> bool:
+    """Return True if the overlap result is classified at baseline info urgency."""
+    return result.level == "info"
+
+
+
 def get_overlap_reason_codes(result: OverlapResult) -> list[str]:
     """Return list of distinct reason codes from the overlap result."""
     return [r.code for r in result.reasons]
