@@ -198,6 +198,17 @@ class OverlapConfig:
 DEFAULT_CONFIG = OverlapConfig()
 
 
+def get_overlap_config_version(config: OverlapConfig = DEFAULT_CONFIG) -> str:
+    """Return the configuration version string."""
+    return config.version
+
+
+def get_default_weights() -> OverlapWeights:
+    """Return the default scoring weights configuration."""
+    return DEFAULT_CONFIG.weights
+
+
+
 @dataclass(frozen=True)
 class CaseFacts:
     case_id: str
