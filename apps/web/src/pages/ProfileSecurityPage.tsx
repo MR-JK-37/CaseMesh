@@ -121,6 +121,7 @@ export function ProfileSecurityPage() {
           ) : (
             <Table<SessionRow>
               caption="Active user authentication sessions"
+              className="mt-2"
               columns={[
                 { key: "created", header: "Started", render: (r) => new Date(r.created_at).toLocaleString() },
                 {
