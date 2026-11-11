@@ -160,6 +160,12 @@ def _categories_compatible(a: str, b: str) -> bool:
     return any(a in family and b in family for family in CATEGORY_FAMILIES)
 
 
+def is_category_compatible(a: str, b: str) -> bool:
+    """Check whether two matter types belong to compatible categories."""
+    return _categories_compatible(a, b)
+
+
+
 @dataclass(frozen=True)
 class OverlapWeights:
     different_bureau: int = 15
