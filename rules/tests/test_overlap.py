@@ -7,10 +7,12 @@ from rules.overlap import (
     calculate_token_jaccard,
     filter_candidates_by_min_score,
     format_overlap_summary,
+    get_compatible_categories,
     get_known_abbreviations,
     get_overlap_reason_codes,
     get_top_candidate,
     has_overlap_reason,
+    is_category_compatible,
     is_high_overlap,
     is_info_overlap,
     is_potential_overlap,
@@ -169,6 +171,15 @@ def test_format_overlap_summary():
     summary = format_overlap_summary(high_case)
     assert "HIGH" in summary
     assert "Both cases cite the same reference number" in summary
+
+
+def test_category_compatibility_helpers():
+    assert is_category_compatible("court_case", "court_case") is True
+    assert is_category_compatible("court_case", "parliament_question") is True
+    compat = get_compatible_categories("court_case")
+    assert "parliament_question" in compat
+    assert "rti" in compat
+
 
 
 
