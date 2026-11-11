@@ -76,3 +76,8 @@ export type BrandToneKey = keyof typeof brand;
 export type SurfaceKey = keyof typeof surface.light;
 export type OutlineKey = keyof typeof outline;
 
+export function isBrandToneKey(key: string): key is BrandToneKey {
+  return key in brand;
+}
+
+
