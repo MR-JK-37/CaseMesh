@@ -8,7 +8,9 @@ from rules.overlap import (
     filter_candidates_by_min_score,
     format_overlap_summary,
     get_compatible_categories,
+    get_default_weights,
     get_known_abbreviations,
+    get_overlap_config_version,
     get_overlap_reason_codes,
     get_top_candidate,
     has_overlap_reason,
@@ -179,6 +181,14 @@ def test_category_compatibility_helpers():
     compat = get_compatible_categories("court_case")
     assert "parliament_question" in compat
     assert "rti" in compat
+
+
+def test_overlap_config_and_weights_helpers():
+    assert get_overlap_config_version() == "overlap-v1"
+    weights = get_default_weights()
+    assert weights.shared_reference == 40
+    assert weights.different_bureau == 15
+
 
 
 
