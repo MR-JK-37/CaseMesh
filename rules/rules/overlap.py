@@ -165,6 +165,16 @@ def is_category_compatible(a: str, b: str) -> bool:
     return _categories_compatible(a, b)
 
 
+def get_compatible_categories(category: str) -> set[str]:
+    """Return set of all categories compatible with the given category (including itself)."""
+    res = {category}
+    for fam in CATEGORY_FAMILIES:
+        if category in fam:
+            res.update(fam)
+    return res
+
+
+
 
 @dataclass(frozen=True)
 class OverlapWeights:
