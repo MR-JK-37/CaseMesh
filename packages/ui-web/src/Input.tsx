@@ -1,5 +1,11 @@
 import { useId, type InputHTMLAttributes } from "react";
 
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+  error?: string;
+  helperText?: string;
+}
+
 export function Input({
   label,
   error,
@@ -7,7 +13,7 @@ export function Input({
   required = false,
   className = "",
   ...props
-}: InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string; helperText?: string }) {
+}: InputProps) {
   const id = useId();
   const errorId = `${id}-error`;
   const helpId = `${id}-help`;
@@ -15,7 +21,7 @@ export function Input({
     <div className="flex flex-col gap-1.5">
       <label htmlFor={id} className="text-sm font-medium text-ink-muted">
         {label}
-        {required && <span className="ml-1 text-[#B42318]">*</span>}
+        {required && <span className="ml-1" style={{ color: "var(--status-overdue-fg)" }}>*</span>}
       </label>
       <input
         id={id}
@@ -24,7 +30,8 @@ export function Input({
         aria-describedby={error ? errorId : helperText ? helpId : undefined}
         className={`min-h-11 rounded-input border border-outline bg-surface-0 px-3.5 text-ink
           placeholder:text-ink-muted focus-visible:outline-none focus-visible:ring-2
-          focus-visible:ring-brand-500 ${error ? "border-[#B42318]" : ""} ${className}`}
+          focus-visible:ring-brand-500 ${className}`}
+        style={error ? { borderColor: "var(--status-overdue-fg)" } : undefined}
         {...props}
       />
       {helperText && !error && (
@@ -33,10 +40,11 @@ export function Input({
         </p>
       )}
       {error && (
-        <p id={errorId} role="alert" className="text-sm text-[#B42318]">
+        <p id={errorId} role="alert" className="text-sm" style={{ color: "var(--status-overdue-fg)" }}>
           {error}
         </p>
       )}
     </div>
   );
 }
+
