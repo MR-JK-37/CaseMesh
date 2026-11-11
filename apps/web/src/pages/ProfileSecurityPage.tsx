@@ -137,7 +137,8 @@ export function ProfileSecurityPage() {
                       <button
                         type="button"
                         onClick={() => revoke(r.id)}
-                        className="text-sm font-medium text-[#B42318] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                        className="text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                        style={{ color: "var(--status-overdue-fg)" }}
                       >
                         Sign out
                       </button>
