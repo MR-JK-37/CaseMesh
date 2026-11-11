@@ -71,3 +71,8 @@ export const status = {
 export type StatusKey = keyof typeof status;
 
 export const STATUS_KEYS = Object.keys(status) as readonly StatusKey[];
+
+export type BrandToneKey = keyof typeof brand;
+export type SurfaceKey = keyof typeof surface.light;
+export type OutlineKey = keyof typeof outline;
+
