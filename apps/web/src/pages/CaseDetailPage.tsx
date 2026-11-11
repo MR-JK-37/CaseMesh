@@ -232,11 +232,12 @@ export function CaseDetailPage() {
         </Card>
 
         {error && (
-          <p role="alert" className="text-sm text-[#B42318]">
+          <p role="alert" className="text-sm" style={{ color: "var(--status-overdue-fg)" }}>
             {error}
           </p>
         )}
-        {notice && <p className="text-sm text-[#0F7B4F]">{notice}</p>}
+        {notice && <p className="text-sm" style={{ color: "var(--status-disposed-fg)" }}>{notice}</p>}
+
 
         {overlaps.filter((o) => o.status === "pending" || o.thread_id).length > 0 && (
           <Card>
