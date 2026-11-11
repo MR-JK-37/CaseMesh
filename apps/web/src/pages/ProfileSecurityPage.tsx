@@ -102,7 +102,7 @@ export function ProfileSecurityPage() {
                 onChange={(e) => setConfirmCode(e.target.value)}
               />
               {enrollMessage && (
-                <p role="alert" className="text-sm text-[#B42318]">
+                <p role="alert" className="text-sm" style={{ color: "var(--status-overdue-fg)" }}>
                   {enrollMessage}
                 </p>
               )}
@@ -117,7 +117,7 @@ export function ProfileSecurityPage() {
             <h2 className="text-lg font-semibold text-ink">Sessions</h2>
           </div>
           {loadError ? (
-            <p className="text-sm text-[#B42318]">Could not load sessions.</p>
+            <p className="text-sm" style={{ color: "var(--status-overdue-fg)" }}>Could not load sessions.</p>
           ) : (
             <Table<SessionRow>
               caption="Active user authentication sessions"
