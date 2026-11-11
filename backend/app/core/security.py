@@ -165,4 +165,17 @@ def get_token_family_id(payload: dict) -> str | None:
     return payload.get("family")
 
 
+def mask_email(email: str) -> str:
+    """Mask email for privacy-safe logging/audit displays (e.g. j***n@domain.com)."""
+    if "@" not in email:
+        return "***"
+    local, domain = email.split("@", 1)
+    if len(local) <= 2:
+        masked_local = local[0] + "*"
+    else:
+        masked_local = local[0] + "*" * (len(local) - 2) + local[-1]
+    return f"{masked_local}@{domain}"
+
+
+
 
