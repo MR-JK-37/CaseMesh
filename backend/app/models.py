@@ -372,6 +372,15 @@ def get_all_matter_types() -> list[str]:
     return list(MATTER_TYPES)
 
 
+CONFIDENTIAL_MATTER_TYPES = frozenset({"ragging", "vip_ministry_reference"})
+
+
+def is_confidential_matter_type(matter_type: str) -> bool:
+    """Return True if matter type is flagged confidential by policy default."""
+    return matter_type in CONFIDENTIAL_MATTER_TYPES
+
+
+
 CASE_STATUSES = ("pending", "under_process", "transferred", "escalated", "disposed")
 
 # Section 4.3/6.3's full event vocabulary — Phase 3 implements this
