@@ -22,6 +22,17 @@ def is_adapter_live(status: AdapterStatus) -> bool:
     return status == AdapterStatus.LIVE
 
 
+def get_adapter_status_values() -> list[str]:
+    """Return all valid AdapterStatus string values."""
+    return [s.value for s in AdapterStatus]
+
+
+def is_adapter_configured(status: AdapterStatus) -> bool:
+    """Return True if adapter is configured (LIVE, SANDBOX, or UNAVAILABLE)."""
+    return status != AdapterStatus.NOT_CONFIGURED
+
+
+
 
 class NotConfiguredError(RuntimeError):
     """Raised by every adapter method when the adapter isn't configured,
