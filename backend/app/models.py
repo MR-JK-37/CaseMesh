@@ -361,6 +361,17 @@ MATTER_TYPES = (
     "miscellaneous",
 )
 
+
+def is_valid_matter_type(matter_type: str) -> bool:
+    """Validate whether a matter type is in the canonical PGRC matter types list."""
+    return matter_type in MATTER_TYPES
+
+
+def get_all_matter_types() -> list[str]:
+    """Return all canonical PGRC matter types."""
+    return list(MATTER_TYPES)
+
+
 CASE_STATUSES = ("pending", "under_process", "transferred", "escalated", "disposed")
 
 # Section 4.3/6.3's full event vocabulary — Phase 3 implements this
