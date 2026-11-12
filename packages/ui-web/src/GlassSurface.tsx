@@ -1,5 +1,10 @@
 import type { HTMLAttributes } from "react";
 
+export interface GlassSurfaceProps extends HTMLAttributes<HTMLDivElement> {
+  rounded?: "card" | "tile" | "pill";
+  className?: string;
+}
+
 /**
  * Section 9.4: glass belongs to the functional layer (command bar,
  * sidebar rail, floating filter bar, dialogs) — never content cards.
@@ -11,7 +16,7 @@ export function GlassSurface({
   className = "",
   style,
   ...props
-}: HTMLAttributes<HTMLDivElement> & { rounded?: "card" | "tile" | "pill" }) {
+}: GlassSurfaceProps) {
   const roundedClass =
     rounded === "pill"
       ? "rounded-pill"
