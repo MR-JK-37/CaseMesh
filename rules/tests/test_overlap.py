@@ -4,6 +4,7 @@ from rules.overlap import (
     CaseFacts,
     InstitutionCandidate,
     ResolutionMatch,
+    calculate_time_proximity_score,
     calculate_token_jaccard,
     filter_candidates_by_min_score,
     format_overlap_summary,
@@ -12,6 +13,7 @@ from rules.overlap import (
     get_known_abbreviations,
     get_overlap_config_version,
     get_overlap_reason_codes,
+    get_shared_references,
     get_top_candidate,
     has_overlap_reason,
     is_category_compatible,
@@ -188,6 +190,21 @@ def test_overlap_config_and_weights_helpers():
     weights = get_default_weights()
     assert weights.shared_reference == 40
     assert weights.different_bureau == 15
+
+
+def test_time_proximity_and_shared_references_helpers():
+    t1 = dt.datetime(2026, 1, 1, tzinfo=dt.UTC)
+    t2 = dt.datetime(2026, 1, 10, tzinfo=dt.UTC)
+    t3 = dt.datetime(2026, 6, 1, tzinfo=dt.UTC)
+
+    prox = calculate_time_proximity_score(t1, t2, window_days=90)
+    assert 0.8 < prox < 1.0
+    assert calculate_time_proximity_score(t1, t3, window_days=90) == 0.0
+
+    shared = get_shared_references(["REF-1", "REF-2"], ["REF-2", "REF-3"])
+    assert shared == ["REF-2"]
+    assert get_shared_references([], ["REF-1"]) == []
+
 
 
 
