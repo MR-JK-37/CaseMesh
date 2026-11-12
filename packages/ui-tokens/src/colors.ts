@@ -80,4 +80,12 @@ export function isBrandToneKey(key: string): key is BrandToneKey {
   return key in brand;
 }
 
+export function getStatusColor(
+  key: StatusKey,
+  theme: "light" | "dark" = "light"
+): { fg: string; bg: string } {
+  return status[key][theme];
+}
+
+
 
