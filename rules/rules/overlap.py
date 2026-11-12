@@ -376,6 +376,17 @@ def format_overlap_summary(result: OverlapResult) -> str:
     return f"{result.level.upper()} ({result.score}/100): {reasons_summary}"
 
 
+def calculate_time_proximity_score(
+    received_a: datetime, received_b: datetime, window_days: int = 90
+) -> float:
+    """Calculate normalized time proximity score between two case receipt dates (0..1)."""
+    days_apart = abs((received_a - received_b).days)
+    if days_apart > window_days:
+        return 0.0
+    return round(max(0.0, 1.0 - (days_apart / window_days)), 3)
+
+
+
 
 
 
