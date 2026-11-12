@@ -393,6 +393,20 @@ def get_all_source_channels() -> list[str]:
     return list(SOURCE_CHANNELS)
 
 
+PRIORITIES = ("standard", "priority")
+
+
+def is_valid_priority(priority: str) -> bool:
+    """Validate whether priority is one of the recognized priority levels."""
+    return priority in PRIORITIES
+
+
+def get_all_priorities() -> list[str]:
+    """Return list of recognized case priority levels."""
+    return list(PRIORITIES)
+
+
+
 
 
 CASE_STATUSES = ("pending", "under_process", "transferred", "escalated", "disposed")
