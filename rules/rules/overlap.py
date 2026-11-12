@@ -393,6 +393,29 @@ def get_shared_references(
     return sorted(set(refs_a) & set(refs_b))
 
 
+def create_case_facts(
+    case_id: str,
+    *,
+    bureau_id: str | None = None,
+    matter_type: str = "student_faculty_stakeholder_complaint",
+    external_refs: tuple[str, ...] | list[str] = (),
+    description: str | None = None,
+    received_at: datetime | None = None,
+) -> CaseFacts:
+    """Construct a CaseFacts instance with sensible defaults for callers and tests."""
+    if received_at is None:
+        received_at = datetime.now()
+    return CaseFacts(
+        case_id=case_id,
+        bureau_id=bureau_id,
+        matter_type=matter_type,
+        external_refs=tuple(external_refs),
+        description=description,
+        received_at=received_at,
+    )
+
+
+
 
 
 
