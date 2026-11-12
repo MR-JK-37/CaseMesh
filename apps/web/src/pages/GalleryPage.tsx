@@ -11,20 +11,14 @@ import {
   StatusBadge,
   Table,
   Tile,
+  getAllStatusKeys,
   type StatusKey,
 } from "@icm/ui-web";
 import { useState } from "react";
 import { useTheme } from "../useTheme";
 
-const statuses: StatusKey[] = [
-  "pending",
-  "under_process",
-  "disposed",
-  "transferred",
-  "escalated",
-  "overdue",
-  "overlap",
-];
+const statuses: StatusKey[] = getAllStatusKeys();
+
 
 interface Row {
   id: string;
