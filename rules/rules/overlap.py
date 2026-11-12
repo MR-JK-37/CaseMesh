@@ -386,6 +386,14 @@ def calculate_time_proximity_score(
     return round(max(0.0, 1.0 - (days_apart / window_days)), 3)
 
 
+def get_shared_references(
+    refs_a: tuple[str, ...] | list[str], refs_b: tuple[str, ...] | list[str]
+) -> list[str]:
+    """Return sorted list of common external references between two cases."""
+    return sorted(set(refs_a) & set(refs_b))
+
+
+
 
 
 
