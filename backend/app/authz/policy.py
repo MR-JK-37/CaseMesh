@@ -316,5 +316,31 @@ def can_any(
     )
 
 
+def can_all(
+    role: str,
+    actions: list[str],
+    *,
+    actor_bureau_ids: frozenset[str] = frozenset(),
+    resource_bureau_ids: frozenset[str] = frozenset(),
+    actor_region_ids: frozenset[str] = frozenset(),
+    resource_region_ids: frozenset[str] = frozenset(),
+    is_own_record: bool = False,
+) -> bool:
+    """Return True if principal has permission to perform every action in the list."""
+    return all(
+        can(
+            role,
+            action,
+            actor_bureau_ids=actor_bureau_ids,
+            resource_bureau_ids=resource_bureau_ids,
+            actor_region_ids=actor_region_ids,
+            resource_region_ids=resource_region_ids,
+            is_own_record=is_own_record,
+        )
+        for action in actions
+    )
+
+
+
 
 
