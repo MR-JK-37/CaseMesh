@@ -183,5 +183,13 @@ def mask_email(email: str) -> str:
     return f"{masked_local}@{domain}"
 
 
+def truncate_for_log(val: str, max_len: int = 64) -> str:
+    """Truncate potentially sensitive or long tokens for safe log inclusion."""
+    if len(val) <= max_len:
+        return val
+    return val[:max_len] + "…"
+
+
+
 
 
