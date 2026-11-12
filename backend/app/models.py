@@ -380,6 +380,20 @@ def is_confidential_matter_type(matter_type: str) -> bool:
     return matter_type in CONFIDENTIAL_MATTER_TYPES
 
 
+SOURCE_CHANNELS = ("letter", "email", "cpgrams", "walk_in", "phone", "other")
+
+
+def is_valid_source_channel(source_channel: str) -> bool:
+    """Validate whether a channel is in recognized source channels list."""
+    return source_channel in SOURCE_CHANNELS
+
+
+def get_all_source_channels() -> list[str]:
+    """Return list of all recognized case source channels."""
+    return list(SOURCE_CHANNELS)
+
+
+
 
 CASE_STATUSES = ("pending", "under_process", "transferred", "escalated", "disposed")
 
