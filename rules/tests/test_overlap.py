@@ -6,6 +6,7 @@ from rules.overlap import (
     ResolutionMatch,
     calculate_time_proximity_score,
     calculate_token_jaccard,
+    create_case_facts,
     filter_candidates_by_min_score,
     format_overlap_summary,
     get_compatible_categories,
@@ -204,6 +205,15 @@ def test_time_proximity_and_shared_references_helpers():
     shared = get_shared_references(["REF-1", "REF-2"], ["REF-2", "REF-3"])
     assert shared == ["REF-2"]
     assert get_shared_references([], ["REF-1"]) == []
+
+
+def test_create_case_facts_factory():
+    facts = create_case_facts("case-100", bureau_id="b-1", external_refs=["REF-100"])
+    assert facts.case_id == "case-100"
+    assert facts.bureau_id == "b-1"
+    assert facts.external_refs == ("REF-100",)
+    assert facts.matter_type == "student_faculty_stakeholder_complaint"
+
 
 
 
