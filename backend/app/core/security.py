@@ -28,6 +28,12 @@ def verify_password(password: str, password_hash: str) -> bool:
         return False
 
 
+def is_argon2_hash(val: str) -> bool:
+    """Return True if string conforms to standard Argon2 hash prefix."""
+    return val.startswith("$argon2id$") or val.startswith("$argon2i$")
+
+
+
 def _aes_key() -> bytes:
     # Section 7.4 field-level encryption key. No row uses this yet
     # (complainant identity encryption is Phase 3, case_parties) — kept
