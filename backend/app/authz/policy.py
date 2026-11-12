@@ -291,4 +291,30 @@ def get_scope_values() -> list[str]:
     return [s.value for s in Scope]
 
 
+def can_any(
+    role: str,
+    actions: list[str],
+    *,
+    actor_bureau_ids: frozenset[str] = frozenset(),
+    resource_bureau_ids: frozenset[str] = frozenset(),
+    actor_region_ids: frozenset[str] = frozenset(),
+    resource_region_ids: frozenset[str] = frozenset(),
+    is_own_record: bool = False,
+) -> bool:
+    """Return True if principal has permission to perform at least one of the actions."""
+    return any(
+        can(
+            role,
+            action,
+            actor_bureau_ids=actor_bureau_ids,
+            resource_bureau_ids=resource_bureau_ids,
+            actor_region_ids=actor_region_ids,
+            resource_region_ids=resource_region_ids,
+            is_own_record=is_own_record,
+        )
+        for action in actions
+    )
+
+
+
 
