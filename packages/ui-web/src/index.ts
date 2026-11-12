@@ -3,7 +3,8 @@ export type { ButtonVariant } from "./Button";
 export { Input } from "./Input";
 export { Chip } from "./Chip";
 export { Card, Tile } from "./Card";
-export { StatusBadge, getStatusLabel, getStatusIcon } from "./StatusBadge";
+export { StatusBadge, getStatusLabel, getStatusIcon, getAllStatusKeys } from "./StatusBadge";
+
 export type { StatusKey } from "./StatusBadge";
 export { Gauge } from "./Gauge";
 export { BarChart } from "./BarChart";
