@@ -10,7 +10,7 @@ export type { StatusKey } from "./StatusBadge";
 export { Gauge } from "./Gauge";
 export { BarChart } from "./BarChart";
 export { PillNav } from "./PillNav";
-export type { PillNavItem } from "./PillNav";
+export type { PillNavItem, PillNavProps } from "./PillNav";
 export { GlassSurface } from "./GlassSurface";
 export { Table } from "./Table";
 export type { Column } from "./Table";

@@ -7,6 +7,15 @@ export interface PillNavItem {
   icon: IconName;
 }
 
+export interface PillNavProps {
+  items: PillNavItem[];
+  activeKey: string;
+  onSelect: (key: string) => void;
+  orientation?: "horizontal" | "vertical";
+  className?: string;
+  ariaLabel?: string;
+}
+
 /** Section 9.6/9.8: floating pill navigation, active item expands into a gradient pill + label. */
 export function PillNav({
   items,
@@ -15,14 +24,7 @@ export function PillNav({
   orientation = "horizontal",
   className = "",
   ariaLabel = "Primary",
-}: {
-  items: PillNavItem[];
-  activeKey: string;
-  onSelect: (key: string) => void;
-  orientation?: "horizontal" | "vertical";
-  className?: string;
-  ariaLabel?: string;
-}) {
+}: PillNavProps) {
   return (
     <nav
       aria-label={ariaLabel}
