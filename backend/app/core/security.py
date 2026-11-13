@@ -190,6 +190,16 @@ def truncate_for_log(val: str, max_len: int = 64) -> str:
     return val[:max_len] + "…"
 
 
+def is_valid_uuid(val: str) -> bool:
+    """Return True if string conforms to standard UUID representation."""
+    try:
+        uuid.UUID(str(val))
+        return True
+    except (ValueError, AttributeError, TypeError):
+        return False
+
+
+
 
 
 
