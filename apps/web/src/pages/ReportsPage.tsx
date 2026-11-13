@@ -119,6 +119,7 @@ export function ReportsPage() {
                 </Button>
               </div>
               <Table<{ id: string; cells: (string | number)[] }>
+                caption={`${result.title} preview data table`}
                 columns={result.columns.map((header, colIndex) => ({
                   key: `col-${colIndex}`,
                   header,
