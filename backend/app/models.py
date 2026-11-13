@@ -95,6 +95,17 @@ DISPOSAL_TYPES = (
 )
 
 
+def is_valid_disposal_type(dtype: str | None) -> bool:
+    """Return True if disposal type is valid according to AICTE resolution vocabulary."""
+    return dtype in DISPOSAL_TYPES
+
+
+def get_all_disposal_types() -> tuple[str, ...]:
+    """Return tuple of all valid disposal outcome types."""
+    return DISPOSAL_TYPES
+
+
+
 
 
 class Bureau(Base):
