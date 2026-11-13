@@ -415,6 +415,14 @@ def create_case_facts(
     )
 
 
+def is_cross_bureau_pair(case_a: CaseFacts, case_b: CaseFacts) -> bool:
+    """Return True if both cases have bureaus assigned and belong to different bureaus."""
+    if not case_a.bureau_id or not case_b.bureau_id:
+        return False
+    return case_a.bureau_id != case_b.bureau_id
+
+
+
 
 
 
