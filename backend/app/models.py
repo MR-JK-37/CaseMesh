@@ -86,6 +86,16 @@ def is_active_case_status(status: str) -> bool:
     return status in CASE_STATUSES and status not in TERMINAL_CASE_STATUSES
 
 
+DISPOSAL_TYPES = (
+    "resolved",
+    "rejected",
+    "withdrawn",
+    "transferred_out",
+    "merged_duplicate",
+)
+
+
+
 
 class Bureau(Base):
     """Section 1.2 "Organisation master": Bureau or Cell. Admin-editable
