@@ -24,6 +24,7 @@ from rules.overlap import (
     is_info_overlap,
     is_potential_overlap,
     is_resolution_matched,
+    normalize_external_reference,
     normalize_institution_text,
     resolve_institution,
     score_pair,
@@ -315,6 +316,13 @@ def test_get_all_category_names():
     assert "student_faculty_stakeholder_complaint" in names
     # Must be sorted alphabetically
     assert list(names) == sorted(names)
+
+
+def test_normalize_external_reference():
+    assert normalize_external_reference("  aicte/2026/001  ") == "AICTE/2026/001"
+    assert normalize_external_reference("cpgrams-998877") == "CPGRAMS-998877"
+    assert normalize_external_reference("") == ""
+
 
 
 
