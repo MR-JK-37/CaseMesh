@@ -402,6 +402,12 @@ def get_shared_references(
     return sorted(set(refs_a) & set(refs_b))
 
 
+def normalize_external_reference(ref: str) -> str:
+    """Normalize an external reference string by stripping whitespace and uppercase transformation."""
+    return ref.strip().upper()
+
+
+
 def create_case_facts(
     case_id: str,
     *,
