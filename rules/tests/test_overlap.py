@@ -9,6 +9,7 @@ from rules.overlap import (
     create_case_facts,
     filter_candidates_by_min_score,
     format_overlap_summary,
+    get_all_category_names,
     get_compatible_categories,
     get_default_weights,
     get_known_abbreviations,
@@ -303,6 +304,18 @@ def test_is_cross_bureau_pair():
     assert is_cross_bureau_pair(c1, c3) is False
     assert is_cross_bureau_pair(c1, c_none) is False
     assert is_cross_bureau_pair(c_none, c_none) is False
+
+
+def test_get_all_category_names():
+    names = get_all_category_names()
+    assert isinstance(names, tuple)
+    assert "court_case" in names
+    assert "ragging" in names
+    assert "norm_violation" in names
+    assert "student_faculty_stakeholder_complaint" in names
+    # Must be sorted alphabetically
+    assert list(names) == sorted(names)
+
 
 
 
