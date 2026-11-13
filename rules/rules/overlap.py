@@ -174,6 +174,15 @@ def get_compatible_categories(category: str) -> set[str]:
     return res
 
 
+def get_all_category_names() -> tuple[str, ...]:
+    """Return all unique category names that participate in category compatibility families."""
+    categories: set[str] = set()
+    for fam in CATEGORY_FAMILIES:
+        categories.update(fam)
+    return tuple(sorted(categories))
+
+
+
 
 
 @dataclass(frozen=True)
