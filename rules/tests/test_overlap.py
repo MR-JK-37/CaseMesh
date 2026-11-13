@@ -17,6 +17,7 @@ from rules.overlap import (
     get_overlap_reason_codes,
     get_shared_references,
     get_top_candidate,
+    has_matching_permanent_id,
     has_overlap_reason,
     is_category_compatible,
     is_cross_bureau_pair,
@@ -322,6 +323,19 @@ def test_normalize_external_reference():
     assert normalize_external_reference("  aicte/2026/001  ") == "AICTE/2026/001"
     assert normalize_external_reference("cpgrams-998877") == "CPGRAMS-998877"
     assert normalize_external_reference("") == ""
+
+
+def test_has_matching_permanent_id():
+    c1 = InstitutionCandidate("i1", "Inst 1", permanent_id="1-1234567")
+    c2 = InstitutionCandidate("i2", "Inst 2", permanent_id=" 1-1234567 ")
+    c3 = InstitutionCandidate("i3", "Inst 3", permanent_id="1-9999999")
+    c_none = InstitutionCandidate("i4", "Inst 4", permanent_id=None)
+
+    assert has_matching_permanent_id(c1, c2) is True
+    assert has_matching_permanent_id(c1, c3) is False
+    assert has_matching_permanent_id(c1, c_none) is False
+    assert has_matching_permanent_id(c_none, c_none) is False
+
 
 
 
