@@ -43,5 +43,14 @@ export type ZIndexKey = keyof typeof zIndex;
 export type SpacingKey = keyof typeof spacing;
 export type MotionKey = keyof typeof motion;
 
+export function getRadius(key: RadiusKey): number {
+  return radius[key];
+}
+
+export function getElevation(key: ElevationKey): string {
+  return elevation[key];
+}
+
+
 
 
