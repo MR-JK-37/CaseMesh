@@ -18,6 +18,7 @@ from rules.overlap import (
     get_top_candidate,
     has_overlap_reason,
     is_category_compatible,
+    is_cross_bureau_pair,
     is_high_overlap,
     is_info_overlap,
     is_potential_overlap,
@@ -290,6 +291,19 @@ def test_calculate_token_jaccard():
     assert 0.0 < sim < 1.0
     assert calculate_token_jaccard([], []) == 1.0
     assert calculate_token_jaccard(["a"], ["a"]) == 1.0
+
+
+def test_is_cross_bureau_pair():
+    c1 = _case("c1", "bureau-approval")
+    c2 = _case("c2", "bureau-grievance")
+    c3 = _case("c3", "bureau-approval")
+    c_none = _case("c4", None)
+
+    assert is_cross_bureau_pair(c1, c2) is True
+    assert is_cross_bureau_pair(c1, c3) is False
+    assert is_cross_bureau_pair(c1, c_none) is False
+    assert is_cross_bureau_pair(c_none, c_none) is False
+
 
 
 
