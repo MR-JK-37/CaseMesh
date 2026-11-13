@@ -407,6 +407,16 @@ def normalize_external_reference(ref: str) -> str:
     return ref.strip().upper()
 
 
+def has_matching_permanent_id(
+    cand_a: InstitutionCandidate, cand_b: InstitutionCandidate
+) -> bool:
+    """Check if both candidates share a valid non-empty permanent AICTE institution ID."""
+    if not cand_a.permanent_id or not cand_b.permanent_id:
+        return False
+    return cand_a.permanent_id.strip() == cand_b.permanent_id.strip()
+
+
+
 
 def create_case_facts(
     case_id: str,
