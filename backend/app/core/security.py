@@ -199,6 +199,16 @@ def is_valid_uuid(val: str) -> bool:
         return False
 
 
+def generate_secure_random_string(length: int = 32) -> str:
+    """Generate a cryptographically secure random alphanumeric string."""
+    import secrets
+    import string
+
+    chars = string.ascii_letters + string.digits
+    return "".join(secrets.choice(chars) for _ in range(length))
+
+
+
 
 
 
