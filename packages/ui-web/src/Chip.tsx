@@ -1,5 +1,14 @@
 export type ChipSize = "sm" | "md";
 
+export interface ChipProps {
+  active?: boolean;
+  disabled?: boolean;
+  className?: string;
+  size?: ChipSize;
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+
 export function Chip({
   active = false,
   disabled = false,
@@ -7,14 +16,7 @@ export function Chip({
   size = "md",
   children,
   onClick,
-}: {
-  active?: boolean;
-  disabled?: boolean;
-  className?: string;
-  size?: ChipSize;
-  children: React.ReactNode;
-  onClick?: () => void;
-}) {
+}: ChipProps) {
   const sizeClasses = size === "sm" ? "min-h-7 px-3 text-xs" : "min-h-9 px-4 text-sm";
   return (
     <button

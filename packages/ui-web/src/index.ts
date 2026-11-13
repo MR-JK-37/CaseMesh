@@ -2,6 +2,7 @@ export { Button } from "./Button";
 export type { ButtonVariant } from "./Button";
 export { Input } from "./Input";
 export { Chip } from "./Chip";
+export type { ChipProps, ChipSize } from "./Chip";
 export { Card, Tile } from "./Card";
 export { StatusBadge, getStatusLabel, getStatusIcon, getAllStatusKeys } from "./StatusBadge";
 
