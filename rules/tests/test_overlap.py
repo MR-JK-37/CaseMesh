@@ -26,6 +26,7 @@ from rules.overlap import (
     is_high_overlap,
     is_info_overlap,
     is_potential_overlap,
+    is_recent_case,
     is_resolution_matched,
     normalize_external_reference,
     normalize_institution_text,
@@ -366,6 +367,15 @@ def test_has_matching_district_and_state():
     assert has_matching_district_and_state(c1, c2) is True
     assert has_matching_district_and_state(c1, c3) is False
     assert has_matching_district_and_state(c1, c_none) is False
+
+
+def test_is_recent_case():
+    case_recent = _case("c1", "b1", days_ago=5)
+    case_old = _case("c2", "b1", days_ago=45)
+
+    assert is_recent_case(case_recent, days_threshold=30, now=NOW) is True
+    assert is_recent_case(case_old, days_threshold=30, now=NOW) is False
+
 
 
 
