@@ -215,6 +215,14 @@ def is_valid_sha256_hex(val: str) -> bool:
     return all(c in "0123456789abcdefABCDEF" for c in val)
 
 
+def sanitize_alphanumeric_code(code: str) -> str:
+    """Strip whitespace and non-alphanumeric characters for clean verification codes/IDs."""
+    import re
+
+    return re.sub(r"[^A-Za-z0-9]", "", code)
+
+
+
 
 
 
