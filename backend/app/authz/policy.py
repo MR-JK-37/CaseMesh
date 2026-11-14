@@ -341,6 +341,33 @@ def can_all(
     )
 
 
+def get_permitted_actions(
+    role: str,
+    actions: list[str] | tuple[str, ...],
+    *,
+    actor_bureau_ids: frozenset[str] = frozenset(),
+    resource_bureau_ids: frozenset[str] = frozenset(),
+    actor_region_ids: frozenset[str] = frozenset(),
+    resource_region_ids: frozenset[str] = frozenset(),
+    is_own_record: bool = False,
+) -> list[str]:
+    """Filter candidate actions to only those permitted for the principal in this context."""
+    return [
+        action
+        for action in actions
+        if can(
+            role,
+            action,
+            actor_bureau_ids=actor_bureau_ids,
+            resource_bureau_ids=resource_bureau_ids,
+            actor_region_ids=actor_region_ids,
+            resource_region_ids=resource_region_ids,
+            is_own_record=is_own_record,
+        )
+    ]
+
+
+
 
 
 
