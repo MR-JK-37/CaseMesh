@@ -182,6 +182,12 @@ def get_all_category_names() -> tuple[str, ...]:
     return tuple(sorted(categories))
 
 
+def is_valid_matter_category(category: str) -> bool:
+    """Return True if category is registered in any known category compatibility family."""
+    return any(category in family for family in CATEGORY_FAMILIES)
+
+
+
 
 
 
