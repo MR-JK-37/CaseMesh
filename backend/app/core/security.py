@@ -208,6 +208,14 @@ def generate_secure_random_string(length: int = 32) -> str:
     return "".join(secrets.choice(chars) for _ in range(length))
 
 
+def is_valid_sha256_hex(val: str) -> bool:
+    """Return True if string is a valid 64-character hexadecimal SHA-256 digest."""
+    if not isinstance(val, str) or len(val) != 64:
+        return False
+    return all(c in "0123456789abcdefABCDEF" for c in val)
+
+
+
 
 
 
