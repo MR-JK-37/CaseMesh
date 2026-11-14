@@ -51,6 +51,15 @@ export function getElevation(key: ElevationKey): string {
   return elevation[key];
 }
 
+export function getSpacingGutter(screen: keyof typeof spacing.gutter): number {
+  return spacing.gutter[screen];
+}
+
+export function getZIndex(key: ZIndexKey): number {
+  return zIndex[key];
+}
+
+
 
 
 
