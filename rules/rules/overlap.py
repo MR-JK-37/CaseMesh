@@ -416,6 +416,19 @@ def has_matching_permanent_id(
     return cand_a.permanent_id.strip() == cand_b.permanent_id.strip()
 
 
+def has_matching_district_and_state(
+    cand_a: InstitutionCandidate, cand_b: InstitutionCandidate
+) -> bool:
+    """Return True if both candidates have non-empty state and district that match case-insensitively."""
+    if not cand_a.state or not cand_b.state or not cand_a.district or not cand_b.district:
+        return False
+    return (
+        cand_a.state.strip().lower() == cand_b.state.strip().lower()
+        and cand_a.district.strip().lower() == cand_b.district.strip().lower()
+    )
+
+
+
 
 
 def create_case_facts(
