@@ -28,6 +28,7 @@ from rules.overlap import (
     is_potential_overlap,
     is_recent_case,
     is_resolution_matched,
+    is_valid_matter_category,
     normalize_external_reference,
     normalize_institution_text,
     resolve_institution,
@@ -375,6 +376,15 @@ def test_is_recent_case():
 
     assert is_recent_case(case_recent, days_threshold=30, now=NOW) is True
     assert is_recent_case(case_old, days_threshold=30, now=NOW) is False
+
+
+def test_is_valid_matter_category():
+    assert is_valid_matter_category("court_case") is True
+    assert is_valid_matter_category("ragging") is True
+    assert is_valid_matter_category("cpgrams_grievance") is True
+    assert is_valid_matter_category("completely_unknown_category") is False
+    assert is_valid_matter_category("") is False
+
 
 
 
