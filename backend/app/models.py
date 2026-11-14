@@ -105,6 +105,20 @@ def get_all_disposal_types() -> tuple[str, ...]:
     return DISPOSAL_TYPES
 
 
+COMMUNICATION_CHANNELS = (
+    "portal",
+    "email",
+    "sms",
+    "physical_post",
+)
+
+
+def is_valid_communication_channel(channel: str | None) -> bool:
+    """Return True if communication channel is recognized by notification dispatcher."""
+    return channel in COMMUNICATION_CHANNELS
+
+
+
 
 
 
