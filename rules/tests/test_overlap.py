@@ -17,6 +17,7 @@ from rules.overlap import (
     get_overlap_reason_codes,
     get_shared_references,
     get_top_candidate,
+    get_top_n_candidates,
     has_matching_permanent_id,
     has_overlap_reason,
     is_category_compatible,
@@ -335,6 +336,25 @@ def test_has_matching_permanent_id():
     assert has_matching_permanent_id(c1, c3) is False
     assert has_matching_permanent_id(c1, c_none) is False
     assert has_matching_permanent_id(c_none, c_none) is False
+
+
+def test_get_top_n_candidates():
+    candidates = [
+        InstitutionCandidate("inst-1", "Sandbox Institute of Technology"),
+        InstitutionCandidate("inst-2", "State Engineering College"),
+        InstitutionCandidate("inst-3", "Polytechnic Institute"),
+    ]
+    matched = resolve_institution(
+        permanent_id=None,
+        free_text_name="Engineering College",
+        state=None,
+        district=None,
+        candidates=candidates,
+    )
+    top2 = get_top_n_candidates(matched, n=2)
+    assert len(top2) <= 2
+    assert isinstance(top2, list)
+
 
 
 
