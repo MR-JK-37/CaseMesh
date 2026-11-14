@@ -24,6 +24,8 @@
   "common.view": "देखें",
   "common.edit": "संपादित करें",
   "common.retry": "पुनः प्रयास करें",
+  "common.apply": "लागू करें",
+  "common.reset": "रीसेट करें",
   "dashboard.title": "AICTE डैशबोर्ड",
   "dashboard.noEnrollmentData": "अभी तक कोई नामांकन डेटा जमा नहीं किया गया है",
   "dashboard.noStudents": "अभी तक कोई छात्र पंजीकृत नहीं है",
