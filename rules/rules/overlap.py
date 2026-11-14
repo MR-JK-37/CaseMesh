@@ -447,6 +447,14 @@ def is_cross_bureau_pair(case_a: CaseFacts, case_b: CaseFacts) -> bool:
     return case_a.bureau_id != case_b.bureau_id
 
 
+def get_top_n_candidates(
+    result: ResolutionResult, n: int = 3
+) -> list[ResolutionMatch]:
+    """Return top N candidate matches from a resolution result."""
+    return result.candidates[:n]
+
+
+
 
 
 
