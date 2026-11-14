@@ -50,9 +50,9 @@ export function InstitutionsListPage() {
               header: "Status",
               render: (r) =>
                 r.status === "active" ? (
-                  <span className="text-[#0F7B4F]">Active</span>
+                  <span className="text-status-disposed">Active</span>
                 ) : (
-                  <span className="text-[#8A5A00]">Pending review</span>
+                  <span className="text-status-pending">Pending review</span>
                 ),
             },
             {
