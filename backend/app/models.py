@@ -118,6 +118,12 @@ def is_valid_communication_channel(channel: str | None) -> bool:
     return channel in COMMUNICATION_CHANNELS
 
 
+def get_all_communication_channels() -> tuple[str, ...]:
+    """Return tuple of all supported citizen and institutional communication channels."""
+    return COMMUNICATION_CHANNELS
+
+
+
 
 
 
