@@ -460,6 +460,16 @@ def is_cross_bureau_pair(case_a: CaseFacts, case_b: CaseFacts) -> bool:
     return case_a.bureau_id != case_b.bureau_id
 
 
+def is_recent_case(
+    case: CaseFacts, days_threshold: int = 30, now: datetime | None = None
+) -> bool:
+    """Return True if case was received within days_threshold days from now."""
+    if now is None:
+        now = datetime.now(case.received_at.tzinfo) if case.received_at.tzinfo else datetime.now()
+    return abs((now - case.received_at).days) <= days_threshold
+
+
+
 def get_top_n_candidates(
     result: ResolutionResult, n: int = 3
 ) -> list[ResolutionMatch]:
