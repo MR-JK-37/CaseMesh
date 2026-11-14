@@ -20,5 +20,18 @@ export type FontWeightKey = keyof typeof weight;
 export type FontFamilyKey = keyof typeof fontFamily;
 export type LineHeightKey = keyof typeof lineHeight;
 
+export function getFontWeight(key: FontWeightKey): number {
+  return weight[key];
+}
+
+export function getLineHeight(key: LineHeightKey): number {
+  return lineHeight[key];
+}
+
+export function getLetterSpacing(key: LetterSpacingKey): string {
+  return letterSpacing[key];
+}
+
+
 
 
