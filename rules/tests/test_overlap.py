@@ -18,6 +18,7 @@ from rules.overlap import (
     get_shared_references,
     get_top_candidate,
     get_top_n_candidates,
+    has_matching_district_and_state,
     has_matching_permanent_id,
     has_overlap_reason,
     is_category_compatible,
@@ -354,6 +355,18 @@ def test_get_top_n_candidates():
     top2 = get_top_n_candidates(matched, n=2)
     assert len(top2) <= 2
     assert isinstance(top2, list)
+
+
+def test_has_matching_district_and_state():
+    c1 = InstitutionCandidate("i1", "Inst 1", state="Maharashtra", district="Pune")
+    c2 = InstitutionCandidate("i2", "Inst 2", state="maharashtra", district="pune")
+    c3 = InstitutionCandidate("i3", "Inst 3", state="Maharashtra", district="Mumbai")
+    c_none = InstitutionCandidate("i4", "Inst 4", state=None, district="Pune")
+
+    assert has_matching_district_and_state(c1, c2) is True
+    assert has_matching_district_and_state(c1, c3) is False
+    assert has_matching_district_and_state(c1, c_none) is False
+
 
 
 
