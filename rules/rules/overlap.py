@@ -504,6 +504,16 @@ def has_any_shared_external_reference(case_a: CaseFacts, case_b: CaseFacts) -> b
     return bool(set(case_a.external_refs) & set(case_b.external_refs))
 
 
+def is_institution_candidate_active(candidate: InstitutionCandidate) -> bool:
+    """Check if candidate has valid non-empty name and at least one identifier."""
+    if not candidate.name or not candidate.name.strip():
+        return False
+    has_inst_id = bool(candidate.institution_id and candidate.institution_id.strip())
+    has_perm_id = bool(candidate.permanent_id and candidate.permanent_id.strip())
+    return has_inst_id or has_perm_id
+
+
+
 
 
 
