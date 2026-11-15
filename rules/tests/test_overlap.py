@@ -28,6 +28,7 @@ from rules.overlap import (
     is_cross_bureau_pair,
     is_high_overlap,
     is_info_overlap,
+    is_institution_candidate_active,
     is_potential_overlap,
     is_recent_case,
     is_resolution_matched,
@@ -429,6 +430,17 @@ def test_has_any_shared_external_reference():
     assert has_any_shared_external_reference(c1, c2) is True
     assert has_any_shared_external_reference(c1, c3) is False
     assert has_any_shared_external_reference(c2, c3) is False
+
+
+def test_is_institution_candidate_active():
+    c_valid = InstitutionCandidate("i1", "Test College", permanent_id="1-000")
+    c_no_id = InstitutionCandidate("", "Test College", permanent_id=None)
+    c_no_name = InstitutionCandidate("i2", "   ", permanent_id="1-001")
+
+    assert is_institution_candidate_active(c_valid) is True
+    assert is_institution_candidate_active(c_no_id) is False
+    assert is_institution_candidate_active(c_no_name) is False
+
 
 
 
