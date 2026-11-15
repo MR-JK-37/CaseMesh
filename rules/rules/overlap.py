@@ -499,6 +499,12 @@ def format_case_reference_summary(case: CaseFacts) -> str:
     return f"Case[{case.case_id}] (bureau: {bureau}, matter: {case.matter_type})"
 
 
+def has_any_shared_external_reference(case_a: CaseFacts, case_b: CaseFacts) -> bool:
+    """Return True if case_a and case_b have at least one common external reference."""
+    return bool(set(case_a.external_refs) & set(case_b.external_refs))
+
+
+
 
 
 
