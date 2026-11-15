@@ -26,6 +26,8 @@
   "common.retry": "மீண்டும் முயற்சி செய்",
   "common.apply": "பயன்படுத்து",
   "common.reset": "மீட்டமை",
+  "common.yes": "ஆம்",
+  "common.no": "இல்லை",
   "dashboard.title": "AICTE டாஷ்போர்டு",
   "dashboard.noEnrollmentData": "இன்னும் சேர்க்கை தரவு சமர்ப்பிக்கப்படவில்லை",
   "dashboard.noStudents": "இன்னும் மாணவர்கள் பதிவு செய்யப்படவில்லை",
