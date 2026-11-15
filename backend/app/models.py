@@ -123,6 +123,20 @@ def get_all_communication_channels() -> tuple[str, ...]:
     return COMMUNICATION_CHANNELS
 
 
+ESCALATION_LEVELS = (
+    "none",
+    "bureau_head",
+    "member_secretary",
+    "chairman",
+)
+
+
+def is_valid_escalation_level(level: str | None) -> bool:
+    """Return True if escalation level conforms to Section 6.2 hierarchy."""
+    return level in ESCALATION_LEVELS
+
+
+
 
 
 
