@@ -493,6 +493,13 @@ def get_candidate_by_id(
     return None
 
 
+def format_case_reference_summary(case: CaseFacts) -> str:
+    """Format a concise human-readable reference summary for a case."""
+    bureau = case.bureau_id or "unassigned"
+    return f"Case[{case.case_id}] (bureau: {bureau}, matter: {case.matter_type})"
+
+
+
 
 
 
