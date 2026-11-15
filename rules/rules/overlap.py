@@ -483,6 +483,17 @@ def get_top_n_candidates(
     return result.candidates[:n]
 
 
+def get_candidate_by_id(
+    result: ResolutionResult, institution_id: str
+) -> ResolutionMatch | None:
+    """Find and return candidate with matching institution_id from resolution result, if present."""
+    for cand in result.candidates:
+        if cand.institution_id == institution_id:
+            return cand
+    return None
+
+
+
 
 
 
