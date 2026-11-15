@@ -8,6 +8,7 @@ from rules.overlap import (
     calculate_token_jaccard,
     create_case_facts,
     filter_candidates_by_min_score,
+    format_case_reference_summary,
     format_overlap_summary,
     get_all_category_names,
     get_candidate_by_id,
@@ -405,6 +406,19 @@ def test_get_candidate_by_id():
 
     not_found = get_candidate_by_id(matched, "inst-nonexistent")
     assert not_found is None
+
+
+def test_format_case_reference_summary():
+    c = _case("case-100", "bureau-approval", matter_type="ragging")
+    summary = format_case_reference_summary(c)
+    assert "Case[case-100]" in summary
+    assert "bureau-approval" in summary
+    assert "ragging" in summary
+
+    c_nobureau = _case("case-101", None)
+    summary_nobureau = format_case_reference_summary(c_nobureau)
+    assert "unassigned" in summary_nobureau
+
 
 
 
