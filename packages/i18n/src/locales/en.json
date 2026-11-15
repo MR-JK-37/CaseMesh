@@ -26,6 +26,8 @@
   "common.retry": "Retry",
   "common.apply": "Apply",
   "common.reset": "Reset",
+  "common.yes": "Yes",
+  "common.no": "No",
   "dashboard.title": "AICTE Dashboard",
   "dashboard.noEnrollmentData": "No enrollment data submitted yet",
   "dashboard.noStudents": "No students registered yet",
