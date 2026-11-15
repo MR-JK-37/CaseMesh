@@ -32,6 +32,12 @@ export function getLetterSpacing(key: LetterSpacingKey): string {
   return letterSpacing[key];
 }
 
+export function getScaleStep(step: number): number {
+  const index = Math.max(0, Math.min(step, scale.length - 1));
+  return scale[index];
+}
+
+
 
 
 
