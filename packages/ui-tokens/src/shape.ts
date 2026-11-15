@@ -59,6 +59,13 @@ export function getZIndex(key: ZIndexKey): number {
   return zIndex[key];
 }
 
+export function getMotionDuration(type: "fast" | "normal" | "highlight"): number {
+  if (type === "fast") return motion.durationFastMs;
+  if (type === "highlight") return motion.highlightFadeMs;
+  return motion.durationNormalMs;
+}
+
+
 
 
 
