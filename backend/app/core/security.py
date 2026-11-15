@@ -222,6 +222,15 @@ def sanitize_alphanumeric_code(code: str) -> str:
     return re.sub(r"[^A-Za-z0-9]", "", code)
 
 
+def is_valid_email_format(email: str) -> bool:
+    """Return True if email string matches general user email address format."""
+    import re
+
+    pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+    return bool(re.match(pattern, email.strip()))
+
+
+
 
 
 
