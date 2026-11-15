@@ -20,6 +20,7 @@ from rules.overlap import (
     get_shared_references,
     get_top_candidate,
     get_top_n_candidates,
+    has_any_shared_external_reference,
     has_matching_district_and_state,
     has_matching_permanent_id,
     has_overlap_reason,
@@ -418,6 +419,17 @@ def test_format_case_reference_summary():
     c_nobureau = _case("case-101", None)
     summary_nobureau = format_case_reference_summary(c_nobureau)
     assert "unassigned" in summary_nobureau
+
+
+def test_has_any_shared_external_reference():
+    c1 = _case("c1", "b1", refs=("REF-A", "REF-B"))
+    c2 = _case("c2", "b2", refs=("REF-B", "REF-C"))
+    c3 = _case("c3", "b3", refs=("REF-X", "REF-Y"))
+
+    assert has_any_shared_external_reference(c1, c2) is True
+    assert has_any_shared_external_reference(c1, c3) is False
+    assert has_any_shared_external_reference(c2, c3) is False
+
 
 
 
