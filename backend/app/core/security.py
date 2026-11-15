@@ -230,6 +230,15 @@ def is_valid_email_format(email: str) -> bool:
     return bool(re.match(pattern, email.strip()))
 
 
+def mask_phone_number(phone: str) -> str:
+    """Mask phone number for privacy-safe displays (e.g. ******7890)."""
+    clean = phone.strip()
+    if len(clean) <= 4:
+        return "****"
+    return f"{'*' * (len(clean) - 4)}{clean[-4:]}"
+
+
+
 
 
 
