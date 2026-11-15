@@ -367,6 +367,12 @@ def get_permitted_actions(
     ]
 
 
+def can_manage_users(role: str) -> bool:
+    """Return True if role has administrative user-management authority."""
+    return can(role, "user:create")
+
+
+
 
 
 
