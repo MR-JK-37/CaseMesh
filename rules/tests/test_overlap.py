@@ -10,6 +10,7 @@ from rules.overlap import (
     filter_candidates_by_min_score,
     format_overlap_summary,
     get_all_category_names,
+    get_candidate_by_id,
     get_compatible_categories,
     get_default_weights,
     get_known_abbreviations,
@@ -384,6 +385,27 @@ def test_is_valid_matter_category():
     assert is_valid_matter_category("cpgrams_grievance") is True
     assert is_valid_matter_category("completely_unknown_category") is False
     assert is_valid_matter_category("") is False
+
+
+def test_get_candidate_by_id():
+    candidates = [
+        InstitutionCandidate("inst-1", "Sandbox Institute of Technology"),
+        InstitutionCandidate("inst-2", "State Engineering College"),
+    ]
+    matched = resolve_institution(
+        permanent_id=None,
+        free_text_name="Engineering College",
+        state=None,
+        district=None,
+        candidates=candidates,
+    )
+    found = get_candidate_by_id(matched, "inst-2")
+    assert found is not None
+    assert found.institution_id == "inst-2"
+
+    not_found = get_candidate_by_id(matched, "inst-nonexistent")
+    assert not_found is None
+
 
 
 
