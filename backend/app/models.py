@@ -136,6 +136,12 @@ def is_valid_escalation_level(level: str | None) -> bool:
     return level in ESCALATION_LEVELS
 
 
+def get_all_escalation_levels() -> tuple[str, ...]:
+    """Return tuple of all valid hierarchy escalation levels."""
+    return ESCALATION_LEVELS
+
+
+
 
 
 
