@@ -372,6 +372,12 @@ def can_manage_users(role: str) -> bool:
     return can(role, "user:create")
 
 
+def can_verify_institutions(role: str) -> bool:
+    """Return True if role has authority to verify and activate imported institutions."""
+    return can(role, "institution:verify")
+
+
+
 
 
 
