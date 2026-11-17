@@ -35,6 +35,7 @@ from rules.overlap import (
     is_recent_case,
     is_resolution_matched,
     is_valid_matter_category,
+    is_valid_resolution_status,
     normalize_external_reference,
     normalize_institution_text,
     resolve_institution,
@@ -476,6 +477,15 @@ def test_get_top_candidate_score():
         candidates=[],
     )
     assert get_top_candidate_score(unmatched) is None
+
+
+def test_is_valid_resolution_status():
+    assert is_valid_resolution_status("matched") is True
+    assert is_valid_resolution_status("unresolved") is True
+    assert is_valid_resolution_status("pending") is False
+    assert is_valid_resolution_status("error") is False
+    assert is_valid_resolution_status("") is False
+
 
 
 
