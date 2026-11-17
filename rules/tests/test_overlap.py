@@ -7,6 +7,7 @@ from rules.overlap import (
     calculate_days_between_cases,
     calculate_time_proximity_score,
     calculate_token_jaccard,
+    count_shared_references,
     create_case_facts,
     filter_candidates_by_min_score,
     format_case_reference_summary,
@@ -485,6 +486,17 @@ def test_is_valid_resolution_status():
     assert is_valid_resolution_status("pending") is False
     assert is_valid_resolution_status("error") is False
     assert is_valid_resolution_status("") is False
+
+
+def test_count_shared_references():
+    c1 = _case("c1", "b1", refs=("REF-A", "REF-B", "REF-C"))
+    c2 = _case("c2", "b1", refs=("REF-B", "REF-C", "REF-D"))
+    c3 = _case("c3", "b1", refs=("REF-X", "REF-Y"))
+
+    assert count_shared_references(c1, c2) == 2
+    assert count_shared_references(c1, c3) == 0
+    assert count_shared_references(c1, c1) == 3
+
 
 
 
