@@ -518,6 +518,14 @@ def calculate_days_between_cases(case_a: CaseFacts, case_b: CaseFacts) -> int:
     return abs((case_a.received_at - case_b.received_at).days)
 
 
+def get_top_candidate_score(result: ResolutionResult) -> float | None:
+    """Return score of the highest ranking candidate, or None if no candidates found."""
+    if not result.candidates:
+        return None
+    return result.candidates[0].score
+
+
+
 
 
 
