@@ -1,5 +1,6 @@
 {
   "common.loading": "लोड हो रहा है…",
+  "common.loadingMore": "और लोड हो रहा है…",
   "common.error": "कुछ गलत हो गया",
   "common.notConfigured": "कॉन्फ़िगर नहीं किया गया",
   "common.signOut": "साइन आउट करें",
