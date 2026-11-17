@@ -4,6 +4,7 @@ from rules.overlap import (
     CaseFacts,
     InstitutionCandidate,
     ResolutionMatch,
+    calculate_days_between_cases,
     calculate_time_proximity_score,
     calculate_token_jaccard,
     create_case_facts,
@@ -440,6 +441,15 @@ def test_is_institution_candidate_active():
     assert is_institution_candidate_active(c_valid) is True
     assert is_institution_candidate_active(c_no_id) is False
     assert is_institution_candidate_active(c_no_name) is False
+
+
+def test_calculate_days_between_cases():
+    c1 = _case("c1", "b1", days_ago=10)
+    c2 = _case("c2", "b1", days_ago=25)
+    assert calculate_days_between_cases(c1, c2) == 15
+    assert calculate_days_between_cases(c2, c1) == 15
+    assert calculate_days_between_cases(c1, c1) == 0
+
 
 
 
