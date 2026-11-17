@@ -245,6 +245,12 @@ def is_valid_hex_color(color: str) -> bool:
     return bool(re.match(r"^#(?:[0-9a-fA-F]{3}){1,2}$", color.strip()))
 
 
+def sanitize_sql_like_pattern(pattern: str) -> str:
+    """Escape special SQL wildcard characters (%, _, \\) for safe LIKE pattern matching."""
+    return pattern.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+
+
+
 
 
 
