@@ -65,6 +65,11 @@ export function getMotionDuration(type: "fast" | "normal" | "highlight"): number
   return motion.durationNormalMs;
 }
 
+export function getSpringConfig(): { damping: number; stiffness: number } {
+  return { ...motion.spring };
+}
+
+
 
 
 
