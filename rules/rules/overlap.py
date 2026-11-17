@@ -530,6 +530,12 @@ def is_valid_resolution_status(status: str) -> bool:
     return status in ("matched", "unresolved")
 
 
+def count_shared_references(case_a: CaseFacts, case_b: CaseFacts) -> int:
+    """Return the number of unique external references common to both cases."""
+    return len(set(case_a.external_refs) & set(case_b.external_refs))
+
+
+
 
 
 
