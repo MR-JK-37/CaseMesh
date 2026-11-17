@@ -20,6 +20,7 @@ from rules.overlap import (
     get_overlap_reason_codes,
     get_shared_references,
     get_top_candidate,
+    get_top_candidate_score,
     get_top_n_candidates,
     has_any_shared_external_reference,
     has_matching_district_and_state,
@@ -449,6 +450,33 @@ def test_calculate_days_between_cases():
     assert calculate_days_between_cases(c1, c2) == 15
     assert calculate_days_between_cases(c2, c1) == 15
     assert calculate_days_between_cases(c1, c1) == 0
+
+
+def test_get_top_candidate_score():
+    candidates = [
+        InstitutionCandidate("inst-1", "Sandbox Institute of Technology"),
+        InstitutionCandidate("inst-2", "State Engineering College"),
+    ]
+    matched = resolve_institution(
+        permanent_id=None,
+        free_text_name="Sandbox Institute of Technology",
+        state=None,
+        district=None,
+        candidates=candidates,
+    )
+    score = get_top_candidate_score(matched)
+    assert score is not None
+    assert score > 0.0
+
+    unmatched = resolve_institution(
+        permanent_id=None,
+        free_text_name="Unknown School",
+        state=None,
+        district=None,
+        candidates=[],
+    )
+    assert get_top_candidate_score(unmatched) is None
+
 
 
 
