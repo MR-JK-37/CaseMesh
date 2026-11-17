@@ -513,6 +513,12 @@ def is_institution_candidate_active(candidate: InstitutionCandidate) -> bool:
     return has_inst_id or has_perm_id
 
 
+def calculate_days_between_cases(case_a: CaseFacts, case_b: CaseFacts) -> int:
+    """Calculate the absolute number of calendar days between receipt dates of two cases."""
+    return abs((case_a.received_at - case_b.received_at).days)
+
+
+
 
 
 
