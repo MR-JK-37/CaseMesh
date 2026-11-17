@@ -238,6 +238,14 @@ def mask_phone_number(phone: str) -> str:
     return f"{'*' * (len(clean) - 4)}{clean[-4:]}"
 
 
+def is_valid_hex_color(color: str) -> bool:
+    """Return True if string is a valid 3- or 6-digit hex color starting with '#'."""
+    import re
+
+    return bool(re.match(r"^#(?:[0-9a-fA-F]{3}){1,2}$", color.strip()))
+
+
+
 
 
 
