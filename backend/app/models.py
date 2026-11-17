@@ -154,6 +154,12 @@ def is_valid_alert_severity(severity: str | None) -> bool:
     return severity in ALERT_SEVERITIES
 
 
+def get_all_alert_severities() -> tuple[str, ...]:
+    """Return tuple of all valid alert severity levels."""
+    return ALERT_SEVERITIES
+
+
+
 
 
 
