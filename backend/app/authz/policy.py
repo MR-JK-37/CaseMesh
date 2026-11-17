@@ -382,6 +382,12 @@ def can_read_audit_logs(role: str) -> bool:
     return can(role, "audit:read")
 
 
+def can_ack_alerts(role: str) -> bool:
+    """Return True if role has authority to acknowledge system operational alerts."""
+    return can(role, "alert:ack")
+
+
+
 
 
 
