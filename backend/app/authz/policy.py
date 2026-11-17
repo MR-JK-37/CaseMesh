@@ -377,6 +377,12 @@ def can_verify_institutions(role: str) -> bool:
     return can(role, "institution:verify")
 
 
+def can_read_audit_logs(role: str) -> bool:
+    """Return True if role has authority to view immutable audit trails."""
+    return can(role, "audit:read")
+
+
+
 
 
 
