@@ -1,5 +1,6 @@
 {
   "common.loading": "Loading…",
+  "common.loadingMore": "Loading more…",
   "common.error": "Something went wrong",
   "common.notConfigured": "Not configured",
   "common.signOut": "Sign out",
