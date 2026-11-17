@@ -525,6 +525,12 @@ def get_top_candidate_score(result: ResolutionResult) -> float | None:
     return result.candidates[0].score
 
 
+def is_valid_resolution_status(status: str) -> bool:
+    """Return True if status conforms to ResolutionResult status values ('matched' or 'unresolved')."""
+    return status in ("matched", "unresolved")
+
+
+
 
 
 
