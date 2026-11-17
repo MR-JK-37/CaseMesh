@@ -141,6 +141,20 @@ def get_all_escalation_levels() -> tuple[str, ...]:
     return ESCALATION_LEVELS
 
 
+ALERT_SEVERITIES = (
+    "critical",
+    "error",
+    "warning",
+    "info",
+)
+
+
+def is_valid_alert_severity(severity: str | None) -> bool:
+    """Return True if alert severity conforms to system notification vocabulary."""
+    return severity in ALERT_SEVERITIES
+
+
+
 
 
 
