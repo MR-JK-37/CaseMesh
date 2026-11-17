@@ -87,5 +87,17 @@ export function getStatusColor(
   return status[key][theme];
 }
 
+export function isValidStatusKey(key: string): key is StatusKey {
+  return key in status;
+}
+
+export function getStatusForeground(
+  key: StatusKey,
+  theme: "light" | "dark" = "light"
+): string {
+  return status[key][theme].fg;
+}
+
+
 
 
