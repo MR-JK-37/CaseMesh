@@ -16,6 +16,7 @@ from rules.overlap import (
     get_candidate_by_id,
     get_compatible_categories,
     get_default_weights,
+    get_external_references_count,
     get_known_abbreviations,
     get_matter_type,
     get_overlap_config_version,
@@ -530,6 +531,15 @@ def test_has_description():
     assert has_description(c_empty) is False
     assert has_description(c_whitespace) is False
     assert has_description(c_none) is False
+
+
+def test_get_external_references_count():
+    c3 = _case("c1", "b1", refs=("REF-1", "REF-2", "REF-3"))
+    c0 = _case("c2", "b1", refs=())
+
+    assert get_external_references_count(c3) == 3
+    assert get_external_references_count(c0) == 0
+
 
 
 
