@@ -535,6 +535,14 @@ def count_shared_references(case_a: CaseFacts, case_b: CaseFacts) -> int:
     return len(set(case_a.external_refs) & set(case_b.external_refs))
 
 
+def is_same_bureau(case_a: CaseFacts, case_b: CaseFacts) -> bool:
+    """Return True if both cases are assigned to the same bureau."""
+    if not case_a.bureau_id or not case_b.bureau_id:
+        return False
+    return case_a.bureau_id == case_b.bureau_id
+
+
+
 
 
 
