@@ -392,6 +392,12 @@ def can_import_institutions(role: str) -> bool:
     return can(role, "institution:import")
 
 
+def can_manage_bureaus(role: str) -> bool:
+    """Return True if role has authority to configure bureaus and cells."""
+    return can(role, "bureau:manage")
+
+
+
 
 
 
