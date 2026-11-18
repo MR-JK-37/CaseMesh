@@ -69,6 +69,11 @@ export function getSpringConfig(): { damping: number; stiffness: number } {
   return { ...motion.spring };
 }
 
+export function getGutterKeys(): (keyof typeof spacing.gutter)[] {
+  return ["mobile", "tablet", "desktop"];
+}
+
+
 
 
 
