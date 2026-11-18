@@ -260,6 +260,15 @@ def generate_case_tracking_code(prefix: str = "CASE", length: int = 8) -> str:
     return f"{prefix.strip().upper()}-{suffix}"
 
 
+def mask_account_number(acc: str) -> str:
+    """Mask account/disbursement number for privacy (e.g. *******1234)."""
+    clean = acc.strip()
+    if len(clean) <= 4:
+        return "****"
+    return f"{'*' * (len(clean) - 4)}{clean[-4:]}"
+
+
+
 
 
 
