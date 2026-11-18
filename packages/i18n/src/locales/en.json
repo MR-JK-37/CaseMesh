@@ -21,6 +21,7 @@
   "common.delete": "Delete",
   "common.export": "Export",
   "common.import": "Import",
+  "common.download": "Download",
   "common.status": "Status",
   "common.view": "View",
   "common.edit": "Edit",
