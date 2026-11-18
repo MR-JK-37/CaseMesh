@@ -387,6 +387,12 @@ def can_ack_alerts(role: str) -> bool:
     return can(role, "alert:ack")
 
 
+def can_import_institutions(role: str) -> bool:
+    """Return True if role has authority to perform bulk institution imports."""
+    return can(role, "institution:import")
+
+
+
 
 
 
