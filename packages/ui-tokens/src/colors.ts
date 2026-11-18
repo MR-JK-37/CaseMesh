@@ -98,6 +98,14 @@ export function getStatusForeground(
   return status[key][theme].fg;
 }
 
+export function getStatusBackground(
+  key: StatusKey,
+  theme: "light" | "dark" = "light"
+): string {
+  return status[key][theme].bg;
+}
+
+
 
 
 
