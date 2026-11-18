@@ -552,6 +552,12 @@ def has_description(case: CaseFacts) -> bool:
     return bool(case.description and case.description.strip())
 
 
+def get_external_references_count(case: CaseFacts) -> int:
+    """Return the total number of external tracking references attached to a case."""
+    return len(case.external_refs)
+
+
+
 
 
 
