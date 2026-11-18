@@ -250,6 +250,17 @@ def sanitize_sql_like_pattern(pattern: str) -> str:
     return pattern.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
 
 
+def generate_case_tracking_code(prefix: str = "CASE", length: int = 8) -> str:
+    """Generate an alphanumeric reference tracking code (e.g. CASE-AB12CD34)."""
+    import secrets
+    import string
+
+    chars = string.ascii_uppercase + string.digits
+    suffix = "".join(secrets.choice(chars) for _ in range(length))
+    return f"{prefix.strip().upper()}-{suffix}"
+
+
+
 
 
 
