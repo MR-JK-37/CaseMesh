@@ -170,6 +170,12 @@ def is_valid_report_format(fmt: str | None) -> bool:
     return fmt in REPORT_FORMATS
 
 
+def get_all_report_formats() -> tuple[str, ...]:
+    """Return tuple of all valid report format types."""
+    return REPORT_FORMATS
+
+
+
 
 
 
