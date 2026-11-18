@@ -17,6 +17,7 @@ from rules.overlap import (
     get_compatible_categories,
     get_default_weights,
     get_known_abbreviations,
+    get_matter_type,
     get_overlap_config_version,
     get_overlap_reason_codes,
     get_shared_references,
@@ -509,6 +510,14 @@ def test_is_same_bureau():
     assert is_same_bureau(c1, c3) is False
     assert is_same_bureau(c1, c_none) is False
     assert is_same_bureau(c_none, c_none) is False
+
+
+def test_get_matter_type():
+    c1 = _case("c1", "b1", matter_type="ragging")
+    c2 = _case("c2", "b1", matter_type="court_case")
+    assert get_matter_type(c1) == "ragging"
+    assert get_matter_type(c2) == "court_case"
+
 
 
 
