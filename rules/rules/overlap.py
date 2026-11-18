@@ -542,6 +542,12 @@ def is_same_bureau(case_a: CaseFacts, case_b: CaseFacts) -> bool:
     return case_a.bureau_id == case_b.bureau_id
 
 
+def get_matter_type(case: CaseFacts) -> str:
+    """Return the grievance category/matter type identifier for a case."""
+    return case.matter_type
+
+
+
 
 
 
