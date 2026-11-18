@@ -547,6 +547,12 @@ def get_matter_type(case: CaseFacts) -> str:
     return case.matter_type
 
 
+def has_description(case: CaseFacts) -> bool:
+    """Return True if case facts include a non-empty free-text description."""
+    return bool(case.description and case.description.strip())
+
+
+
 
 
 
