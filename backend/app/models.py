@@ -159,6 +159,18 @@ def get_all_alert_severities() -> tuple[str, ...]:
     return ALERT_SEVERITIES
 
 
+REPORT_FORMATS = (
+    "json",
+    "csv",
+)
+
+
+def is_valid_report_format(fmt: str | None) -> bool:
+    """Return True if report format is a supported export target."""
+    return fmt in REPORT_FORMATS
+
+
+
 
 
 
