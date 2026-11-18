@@ -35,6 +35,7 @@ from rules.overlap import (
     is_potential_overlap,
     is_recent_case,
     is_resolution_matched,
+    is_same_bureau,
     is_valid_matter_category,
     is_valid_resolution_status,
     normalize_external_reference,
@@ -496,6 +497,19 @@ def test_count_shared_references():
     assert count_shared_references(c1, c2) == 2
     assert count_shared_references(c1, c3) == 0
     assert count_shared_references(c1, c1) == 3
+
+
+def test_is_same_bureau():
+    c1 = _case("c1", "bureau-approval")
+    c2 = _case("c2", "bureau-approval")
+    c3 = _case("c3", "bureau-grievance")
+    c_none = _case("c4", None)
+
+    assert is_same_bureau(c1, c2) is True
+    assert is_same_bureau(c1, c3) is False
+    assert is_same_bureau(c1, c_none) is False
+    assert is_same_bureau(c_none, c_none) is False
+
 
 
 
