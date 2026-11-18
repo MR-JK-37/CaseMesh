@@ -25,6 +25,7 @@ from rules.overlap import (
     get_top_candidate_score,
     get_top_n_candidates,
     has_any_shared_external_reference,
+    has_description,
     has_matching_district_and_state,
     has_matching_permanent_id,
     has_overlap_reason,
@@ -517,6 +518,19 @@ def test_get_matter_type():
     c2 = _case("c2", "b1", matter_type="court_case")
     assert get_matter_type(c1) == "ragging"
     assert get_matter_type(c2) == "court_case"
+
+
+def test_has_description():
+    c_with = _case("c1", "b1", desc="Valid description text")
+    c_empty = _case("c2", "b1", desc="")
+    c_whitespace = _case("c3", "b1", desc="   ")
+    c_none = _case("c4", "b1", desc=None)
+
+    assert has_description(c_with) is True
+    assert has_description(c_empty) is False
+    assert has_description(c_whitespace) is False
+    assert has_description(c_none) is False
+
 
 
 
