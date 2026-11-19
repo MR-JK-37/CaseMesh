@@ -10,6 +10,7 @@ from rules.overlap import (
     count_shared_references,
     create_case_facts,
     filter_candidates_by_min_score,
+    filter_cases_by_matter_type,
     format_case_reference_summary,
     format_overlap_summary,
     get_all_category_names,
@@ -569,6 +570,18 @@ def test_is_cross_state_institution_pair():
     assert is_cross_state_institution_pair(c1, c3) is False
     assert is_cross_state_institution_pair(c1, c_none) is False
     assert is_cross_state_institution_pair(c_none, c_none) is False
+
+
+def test_filter_cases_by_matter_type():
+    c1 = _case("c1", "b1", matter_type="ragging")
+    c2 = _case("c2", "b1", matter_type="norm_violation")
+    c3 = _case("c3", "b1", matter_type="ragging")
+
+    ragging_cases = filter_cases_by_matter_type([c1, c2, c3], "ragging")
+    assert len(ragging_cases) == 2
+    assert all(c.matter_type == "ragging" for c in ragging_cases)
+    assert filter_cases_by_matter_type([c1, c2, c3], "court_case") == []
+
 
 
 
