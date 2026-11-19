@@ -569,6 +569,16 @@ def has_any_overlap_reasons(result: OverlapResult) -> bool:
     return bool(result.reasons)
 
 
+def is_cross_state_institution_pair(
+    cand_a: InstitutionCandidate, cand_b: InstitutionCandidate
+) -> bool:
+    """Return True if both institution candidates have non-empty states and they differ."""
+    if not cand_a.state or not cand_b.state:
+        return False
+    return cand_a.state.strip().lower() != cand_b.state.strip().lower()
+
+
+
 
 
 
