@@ -268,6 +268,11 @@ def mask_account_number(acc: str) -> str:
     return f"{'*' * (len(clean) - 4)}{clean[-4:]}"
 
 
+def normalize_case_number(case_num: str) -> str:
+    """Normalize a case number by trimming whitespace and converting to uppercase."""
+    return case_num.strip().upper()
+
+
 
 
 
