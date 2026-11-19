@@ -188,6 +188,11 @@ def is_valid_sync_status(status: str | None) -> bool:
     return status in SYNC_STATUSES
 
 
+def get_all_sync_statuses() -> tuple[str, ...]:
+    """Return tuple of all valid external synchronization states."""
+    return SYNC_STATUSES
+
+
 
 
 
