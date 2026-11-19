@@ -73,6 +73,10 @@ export function getGutterKeys(): (keyof typeof spacing.gutter)[] {
   return ["mobile", "tablet", "desktop"];
 }
 
+export function isValidRadiusKey(key: string): key is RadiusKey {
+  return key in radius;
+}
+
 
 
 
