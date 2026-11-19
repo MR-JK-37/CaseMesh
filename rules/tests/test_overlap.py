@@ -26,6 +26,7 @@ from rules.overlap import (
     get_top_candidate_score,
     get_top_n_candidates,
     get_unique_matter_types,
+    has_any_overlap_reasons,
     has_any_shared_external_reference,
     has_description,
     has_matching_district_and_state,
@@ -548,6 +549,14 @@ def test_get_unique_matter_types():
     c3 = _case("c3", "b1", matter_type="ragging")
     assert get_unique_matter_types([c1, c2, c3]) == ["norm_violation", "ragging"]
     assert get_unique_matter_types([]) == []
+
+
+def test_has_any_overlap_reasons():
+    c1 = _case("c1", "b1", refs=("REF-A",))
+    c2 = _case("c2", "b1", refs=("REF-A",))
+    res = score_pair(c1, c2)
+    assert has_any_overlap_reasons(res) is True
+
 
 
 
