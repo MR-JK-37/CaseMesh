@@ -34,6 +34,7 @@ from rules.overlap import (
     has_overlap_reason,
     is_category_compatible,
     is_cross_bureau_pair,
+    is_cross_state_institution_pair,
     is_high_overlap,
     is_info_overlap,
     is_institution_candidate_active,
@@ -556,6 +557,19 @@ def test_has_any_overlap_reasons():
     c2 = _case("c2", "b1", refs=("REF-A",))
     res = score_pair(c1, c2)
     assert has_any_overlap_reasons(res) is True
+
+
+def test_is_cross_state_institution_pair():
+    c1 = InstitutionCandidate("i1", "Inst 1", state="Maharashtra")
+    c2 = InstitutionCandidate("i2", "Inst 2", state="Delhi")
+    c3 = InstitutionCandidate("i3", "Inst 3", state="maharashtra")
+    c_none = InstitutionCandidate("i4", "Inst 4", state=None)
+
+    assert is_cross_state_institution_pair(c1, c2) is True
+    assert is_cross_state_institution_pair(c1, c3) is False
+    assert is_cross_state_institution_pair(c1, c_none) is False
+    assert is_cross_state_institution_pair(c_none, c_none) is False
+
 
 
 
