@@ -578,6 +578,14 @@ def is_cross_state_institution_pair(
     return cand_a.state.strip().lower() != cand_b.state.strip().lower()
 
 
+def filter_cases_by_matter_type(
+    cases: list[CaseFacts] | tuple[CaseFacts, ...], matter_type: str
+) -> list[CaseFacts]:
+    """Filter a list of case facts to those matching the specified matter type."""
+    return [c for c in cases if c.matter_type == matter_type]
+
+
+
 
 
 
