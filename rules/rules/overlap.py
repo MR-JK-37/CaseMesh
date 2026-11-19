@@ -564,6 +564,12 @@ def get_unique_matter_types(
     return sorted({case.matter_type for case in cases})
 
 
+def has_any_overlap_reasons(result: OverlapResult) -> bool:
+    """Return True if overlap scoring produced at least one structured reason."""
+    return bool(result.reasons)
+
+
+
 
 
 
