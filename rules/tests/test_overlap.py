@@ -25,6 +25,7 @@ from rules.overlap import (
     get_top_candidate,
     get_top_candidate_score,
     get_top_n_candidates,
+    get_unique_matter_types,
     has_any_shared_external_reference,
     has_description,
     has_matching_district_and_state,
@@ -539,6 +540,15 @@ def test_get_external_references_count():
 
     assert get_external_references_count(c3) == 3
     assert get_external_references_count(c0) == 0
+
+
+def test_get_unique_matter_types():
+    c1 = _case("c1", "b1", matter_type="ragging")
+    c2 = _case("c2", "b1", matter_type="norm_violation")
+    c3 = _case("c3", "b1", matter_type="ragging")
+    assert get_unique_matter_types([c1, c2, c3]) == ["norm_violation", "ragging"]
+    assert get_unique_matter_types([]) == []
+
 
 
 
