@@ -397,6 +397,11 @@ def can_manage_bureaus(role: str) -> bool:
     return can(role, "bureau:manage")
 
 
+def can_manage_regions(role: str) -> bool:
+    """Return True if role has authority to configure geographical regions."""
+    return can(role, "region:manage")
+
+
 
 
 
