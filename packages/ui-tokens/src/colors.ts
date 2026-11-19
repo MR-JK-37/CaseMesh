@@ -105,6 +105,13 @@ export function getStatusBackground(
   return status[key][theme].bg;
 }
 
+export function getSurfaceColor(
+  key: SurfaceKey,
+  theme: "light" | "dark" = "light"
+): string {
+  return surface[theme][key];
+}
+
 
 
 
