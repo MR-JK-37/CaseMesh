@@ -557,6 +557,14 @@ def get_external_references_count(case: CaseFacts) -> int:
     return len(case.external_refs)
 
 
+def get_unique_matter_types(
+    cases: list[CaseFacts] | tuple[CaseFacts, ...]
+) -> list[str]:
+    """Return sorted unique matter type categories across a collection of cases."""
+    return sorted({case.matter_type for case in cases})
+
+
+
 
 
 
