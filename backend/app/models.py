@@ -175,6 +175,19 @@ def get_all_report_formats() -> tuple[str, ...]:
     return REPORT_FORMATS
 
 
+SYNC_STATUSES = (
+    "idle",
+    "syncing",
+    "synced",
+    "failed",
+)
+
+
+def is_valid_sync_status(status: str | None) -> bool:
+    """Return True if sync status conforms to integration pipeline states."""
+    return status in SYNC_STATUSES
+
+
 
 
 
