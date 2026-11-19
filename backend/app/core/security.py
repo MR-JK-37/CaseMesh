@@ -273,6 +273,13 @@ def normalize_case_number(case_num: str) -> str:
     return case_num.strip().upper()
 
 
+def is_valid_matter_type_format(matter_type: str) -> bool:
+    """Validate whether matter type adheres to lowercase identifier conventions (e.g. norm_violation)."""
+    import re
+
+    return bool(re.match(r"^[a-z][a-z0-9_]*$", matter_type.strip()))
+
+
 
 
 
