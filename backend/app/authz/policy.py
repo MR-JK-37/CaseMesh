@@ -402,6 +402,11 @@ def can_manage_regions(role: str) -> bool:
     return can(role, "region:manage")
 
 
+def can_manage_aliases(role: str) -> bool:
+    """Return True if role has authority to configure institution aliases."""
+    return can(role, "institution:alias_manage")
+
+
 
 
 
