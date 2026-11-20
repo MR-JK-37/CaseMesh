@@ -10,6 +10,7 @@ from rules.overlap import (
     count_shared_references,
     create_case_facts,
     filter_candidates_by_min_score,
+    filter_cases_by_bureau,
     filter_cases_by_matter_type,
     format_case_reference_summary,
     format_overlap_summary,
@@ -581,6 +582,17 @@ def test_filter_cases_by_matter_type():
     assert len(ragging_cases) == 2
     assert all(c.matter_type == "ragging" for c in ragging_cases)
     assert filter_cases_by_matter_type([c1, c2, c3], "court_case") == []
+
+
+def test_filter_cases_by_bureau():
+    c1 = _case("c1", "bureau_a", matter_type="ragging")
+    c2 = _case("c2", "bureau_b", matter_type="ragging")
+    c3 = _case("c3", "bureau_a", matter_type="norm_violation")
+
+    bureau_a_cases = filter_cases_by_bureau([c1, c2, c3], "bureau_a")
+    assert len(bureau_a_cases) == 2
+    assert {c.case_id for c in bureau_a_cases} == {"c1", "c3"}
+    assert filter_cases_by_bureau([c1, c2, c3], "bureau_c") == []
 
 
 
