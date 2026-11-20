@@ -605,6 +605,13 @@ def is_same_receipt_month(case_a: CaseFacts, case_b: CaseFacts) -> bool:
     )
 
 
+def get_candidate_institution_names(
+    candidates: list[InstitutionCandidate] | tuple[InstitutionCandidate, ...]
+) -> list[str]:
+    """Extract non-empty candidate institution names in order."""
+    return [c.name for c in candidates if c.name and c.name.strip()]
+
+
 
 
 
