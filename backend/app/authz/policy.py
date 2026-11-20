@@ -412,6 +412,11 @@ def can_reopen_cases(role: str) -> bool:
     return can(role, "case:reopen")
 
 
+def can_decide_overlaps(role: str) -> bool:
+    """Return True if role has authority to issue formal decisions on cross-bureau overlaps."""
+    return can(role, "overlap:decide")
+
+
 
 
 
