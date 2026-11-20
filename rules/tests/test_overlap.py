@@ -33,6 +33,7 @@ from rules.overlap import (
     has_description,
     has_matching_district_and_state,
     has_matching_permanent_id,
+    has_matching_receipt_year,
     has_overlap_reason,
     is_category_compatible,
     is_cross_bureau_pair,
@@ -593,6 +594,15 @@ def test_filter_cases_by_bureau():
     assert len(bureau_a_cases) == 2
     assert {c.case_id for c in bureau_a_cases} == {"c1", "c3"}
     assert filter_cases_by_bureau([c1, c2, c3], "bureau_c") == []
+
+
+def test_has_matching_receipt_year():
+    c1 = _case("c1", "b1", days_ago=10)
+    c2 = _case("c2", "b1", days_ago=20)
+    c3 = _case("c3", "b1", days_ago=400)
+
+    assert has_matching_receipt_year(c1, c2) is True
+    assert has_matching_receipt_year(c1, c3) is False
 
 
 
