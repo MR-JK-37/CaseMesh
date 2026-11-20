@@ -207,6 +207,11 @@ def is_valid_evidence_type(etype: str | None) -> bool:
     return etype in EVIDENCE_TYPES
 
 
+def get_all_evidence_types() -> tuple[str, ...]:
+    """Return tuple of all valid evidence attachment types."""
+    return EVIDENCE_TYPES
+
+
 
 
 
