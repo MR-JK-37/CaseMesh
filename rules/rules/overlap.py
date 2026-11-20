@@ -592,6 +592,11 @@ def filter_cases_by_bureau(
     return [c for c in cases if c.bureau_id == bureau_id]
 
 
+def has_matching_receipt_year(case_a: CaseFacts, case_b: CaseFacts) -> bool:
+    """Return True if both cases were received in the same calendar year."""
+    return case_a.received_at.year == case_b.received_at.year
+
+
 
 
 
