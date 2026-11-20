@@ -407,6 +407,11 @@ def can_manage_aliases(role: str) -> bool:
     return can(role, "institution:alias_manage")
 
 
+def can_reopen_cases(role: str) -> bool:
+    """Return True if role has authority to reopen disposed grievance cases."""
+    return can(role, "case:reopen")
+
+
 
 
 
