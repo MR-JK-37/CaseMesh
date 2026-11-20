@@ -193,6 +193,20 @@ def get_all_sync_statuses() -> tuple[str, ...]:
     return SYNC_STATUSES
 
 
+EVIDENCE_TYPES = (
+    "document",
+    "image",
+    "audio",
+    "video",
+    "other",
+)
+
+
+def is_valid_evidence_type(etype: str | None) -> bool:
+    """Return True if evidence attachment type conforms to grievance evidence schema."""
+    return etype in EVIDENCE_TYPES
+
+
 
 
 
