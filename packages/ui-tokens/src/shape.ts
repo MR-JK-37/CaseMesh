@@ -77,6 +77,10 @@ export function isValidRadiusKey(key: string): key is RadiusKey {
   return key in radius;
 }
 
+export function isValidElevationKey(key: string): key is ElevationKey {
+  return key in elevation;
+}
+
 
 
 
