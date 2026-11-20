@@ -597,6 +597,14 @@ def has_matching_receipt_year(case_a: CaseFacts, case_b: CaseFacts) -> bool:
     return case_a.received_at.year == case_b.received_at.year
 
 
+def is_same_receipt_month(case_a: CaseFacts, case_b: CaseFacts) -> bool:
+    """Return True if both cases were received in the same year and calendar month."""
+    return (
+        case_a.received_at.year == case_b.received_at.year
+        and case_a.received_at.month == case_b.received_at.month
+    )
+
+
 
 
 
