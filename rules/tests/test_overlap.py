@@ -45,6 +45,7 @@ from rules.overlap import (
     is_recent_case,
     is_resolution_matched,
     is_same_bureau,
+    is_same_receipt_month,
     is_valid_matter_category,
     is_valid_resolution_status,
     normalize_external_reference,
@@ -603,6 +604,15 @@ def test_has_matching_receipt_year():
 
     assert has_matching_receipt_year(c1, c2) is True
     assert has_matching_receipt_year(c1, c3) is False
+
+
+def test_is_same_receipt_month():
+    c1 = _case("c1", "b1", days_ago=2)
+    c2 = _case("c2", "b1", days_ago=5)
+    c3 = _case("c3", "b1", days_ago=60)
+
+    assert is_same_receipt_month(c1, c2) is True
+    assert is_same_receipt_month(c1, c3) is False
 
 
 
