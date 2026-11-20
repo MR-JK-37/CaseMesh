@@ -81,6 +81,10 @@ export function isValidElevationKey(key: string): key is ElevationKey {
   return key in elevation;
 }
 
+export function isValidZIndexKey(key: string): key is ZIndexKey {
+  return key in zIndex;
+}
+
 
 
 
