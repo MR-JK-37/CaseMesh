@@ -23,6 +23,7 @@
   "common.import": "Import",
   "common.download": "Download",
   "common.upload": "Upload",
+  "common.copy": "Copy",
   "common.status": "Status",
   "common.view": "View",
   "common.edit": "Edit",
