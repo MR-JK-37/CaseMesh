@@ -585,6 +585,13 @@ def filter_cases_by_matter_type(
     return [c for c in cases if c.matter_type == matter_type]
 
 
+def filter_cases_by_bureau(
+    cases: list[CaseFacts] | tuple[CaseFacts, ...], bureau_id: str
+) -> list[CaseFacts]:
+    """Filter a collection of case facts to those registered under a given bureau."""
+    return [c for c in cases if c.bureau_id == bureau_id]
+
+
 
 
 
