@@ -16,6 +16,7 @@ from rules.overlap import (
     format_overlap_summary,
     get_all_category_names,
     get_candidate_by_id,
+    get_candidate_institution_names,
     get_compatible_categories,
     get_default_weights,
     get_external_references_count,
@@ -613,6 +614,16 @@ def test_is_same_receipt_month():
 
     assert is_same_receipt_month(c1, c2) is True
     assert is_same_receipt_month(c1, c3) is False
+
+
+def test_get_candidate_institution_names():
+    c1 = InstitutionCandidate("i1", "Indian Institute of Science")
+    c2 = InstitutionCandidate("i2", "  ")
+    c3 = InstitutionCandidate("i3", "IIT Bombay")
+
+    names = get_candidate_institution_names([c1, c2, c3])
+    assert names == ["Indian Institute of Science", "IIT Bombay"]
+    assert get_candidate_institution_names([]) == []
 
 
 
