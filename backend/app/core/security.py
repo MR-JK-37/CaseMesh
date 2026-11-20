@@ -285,6 +285,13 @@ def normalize_bureau_code(code: str) -> str:
     return code.strip().upper()
 
 
+def is_valid_phone_format(phone: str) -> bool:
+    """Return True if string conforms to standard Indian mobile number format (+91 or 10 digits)."""
+    import re
+
+    return bool(re.match(r"^(?:\+91[\-\s]?)?[6-9]\d{9}$", phone.strip()))
+
+
 
 
 
