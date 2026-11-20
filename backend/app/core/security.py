@@ -280,6 +280,11 @@ def is_valid_matter_type_format(matter_type: str) -> bool:
     return bool(re.match(r"^[a-z][a-z0-9_]*$", matter_type.strip()))
 
 
+def normalize_bureau_code(code: str) -> str:
+    """Normalize a bureau identifier code by trimming whitespace and converting to uppercase."""
+    return code.strip().upper()
+
+
 
 
 
