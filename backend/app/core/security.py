@@ -292,6 +292,14 @@ def is_valid_phone_format(phone: str) -> bool:
     return bool(re.match(r"^(?:\+91[\-\s]?)?[6-9]\d{9}$", phone.strip()))
 
 
+def mask_permanent_id(permanent_id: str) -> str:
+    """Mask institution permanent identifier for safe audit display (e.g. 1-***567)."""
+    clean = permanent_id.strip()
+    if len(clean) <= 4:
+        return "****"
+    return f"{clean[:2]}{'*' * (len(clean) - 5)}{clean[-3:]}"
+
+
 
 
 
