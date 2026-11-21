@@ -612,6 +612,11 @@ def get_candidate_institution_names(
     return [c.name for c in candidates if c.name and c.name.strip()]
 
 
+def is_empty_or_whitespace(text: str | None) -> bool:
+    """Return True if text is None, empty, or consists exclusively of whitespace."""
+    return text is None or not text.strip()
+
+
 
 
 
