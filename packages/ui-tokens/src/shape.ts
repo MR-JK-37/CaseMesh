@@ -89,6 +89,10 @@ export function isValidSpacingGutterKey(key: string): key is keyof typeof spacin
   return key in spacing.gutter;
 }
 
+export function getGridStep(multiplier: number = 1): number {
+  return spacing.grid * multiplier;
+}
+
 
 
 
