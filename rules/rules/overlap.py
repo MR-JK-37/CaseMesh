@@ -639,6 +639,19 @@ def count_cases_by_matter_type(
     return counts
 
 
+def filter_candidates_by_state(
+    candidates: list[InstitutionCandidate] | tuple[InstitutionCandidate, ...],
+    state: str,
+) -> list[InstitutionCandidate]:
+    """Filter candidate institutions by geographical state case-insensitively."""
+    target_state = state.strip().lower()
+    return [
+        c
+        for c in candidates
+        if c.state and c.state.strip().lower() == target_state
+    ]
+
+
 
 
 
