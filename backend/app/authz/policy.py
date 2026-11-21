@@ -422,6 +422,11 @@ def can_assign_cases(role: str) -> bool:
     return can(role, "case:assign")
 
 
+def can_escalate_cases(role: str) -> bool:
+    """Return True if role has authority to escalate cases up the administrative hierarchy."""
+    return can(role, "case:escalate")
+
+
 
 
 
