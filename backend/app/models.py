@@ -212,6 +212,21 @@ def get_all_evidence_types() -> tuple[str, ...]:
     return EVIDENCE_TYPES
 
 
+AUDIT_ACTIONS = (
+    "create",
+    "read",
+    "update",
+    "delete",
+    "login",
+    "export",
+)
+
+
+def is_valid_audit_action(action: str | None) -> bool:
+    """Return True if audit action complies with immutable audit trail taxonomy."""
+    return action in AUDIT_ACTIONS
+
+
 
 
 
