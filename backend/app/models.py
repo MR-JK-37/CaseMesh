@@ -227,6 +227,11 @@ def is_valid_audit_action(action: str | None) -> bool:
     return action in AUDIT_ACTIONS
 
 
+def get_all_audit_actions() -> tuple[str, ...]:
+    """Return tuple of all valid immutable audit trail actions."""
+    return AUDIT_ACTIONS
+
+
 
 
 
