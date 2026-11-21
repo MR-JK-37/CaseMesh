@@ -39,6 +39,7 @@ from rules.overlap import (
     is_category_compatible,
     is_cross_bureau_pair,
     is_cross_state_institution_pair,
+    is_empty_or_whitespace,
     is_high_overlap,
     is_info_overlap,
     is_institution_candidate_active,
@@ -624,6 +625,15 @@ def test_get_candidate_institution_names():
     names = get_candidate_institution_names([c1, c2, c3])
     assert names == ["Indian Institute of Science", "IIT Bombay"]
     assert get_candidate_institution_names([]) == []
+
+
+def test_is_empty_or_whitespace():
+    assert is_empty_or_whitespace(None) is True
+    assert is_empty_or_whitespace("") is True
+    assert is_empty_or_whitespace("   ") is True
+    assert is_empty_or_whitespace("\t\n") is True
+    assert is_empty_or_whitespace("valid") is False
+    assert is_empty_or_whitespace("  valid  ") is False
 
 
 
