@@ -16,6 +16,7 @@ from rules.overlap import (
     format_overlap_summary,
     get_all_category_names,
     get_candidate_by_id,
+    get_candidate_by_permanent_id,
     get_candidate_institution_names,
     get_compatible_categories,
     get_default_weights,
@@ -634,6 +635,16 @@ def test_is_empty_or_whitespace():
     assert is_empty_or_whitespace("\t\n") is True
     assert is_empty_or_whitespace("valid") is False
     assert is_empty_or_whitespace("  valid  ") is False
+
+
+def test_get_candidate_by_permanent_id():
+    c1 = InstitutionCandidate("i1", "Inst 1", permanent_id="1-1234567")
+    c2 = InstitutionCandidate("i2", "Inst 2", permanent_id="1-7654321")
+
+    assert get_candidate_by_permanent_id([c1, c2], "1-1234567") == c1
+    assert get_candidate_by_permanent_id([c1, c2], " 1-7654321 ") == c2
+    assert get_candidate_by_permanent_id([c1, c2], "1-9999999") is None
+    assert get_candidate_by_permanent_id([], "1-1234567") is None
 
 
 
