@@ -617,6 +617,18 @@ def is_empty_or_whitespace(text: str | None) -> bool:
     return text is None or not text.strip()
 
 
+def get_candidate_by_permanent_id(
+    candidates: list[InstitutionCandidate] | tuple[InstitutionCandidate, ...],
+    permanent_id: str,
+) -> InstitutionCandidate | None:
+    """Find and return candidate matching permanent ID, or None if not found."""
+    clean_id = permanent_id.strip()
+    for c in candidates:
+        if c.permanent_id and c.permanent_id.strip() == clean_id:
+            return c
+    return None
+
+
 
 
 
