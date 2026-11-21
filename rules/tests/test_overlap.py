@@ -7,6 +7,7 @@ from rules.overlap import (
     calculate_days_between_cases,
     calculate_time_proximity_score,
     calculate_token_jaccard,
+    count_cases_by_matter_type,
     count_shared_references,
     create_case_facts,
     filter_candidates_by_min_score,
@@ -645,6 +646,16 @@ def test_get_candidate_by_permanent_id():
     assert get_candidate_by_permanent_id([c1, c2], " 1-7654321 ") == c2
     assert get_candidate_by_permanent_id([c1, c2], "1-9999999") is None
     assert get_candidate_by_permanent_id([], "1-1234567") is None
+
+
+def test_count_cases_by_matter_type():
+    c1 = _case("c1", "b1", matter_type="ragging")
+    c2 = _case("c2", "b1", matter_type="ragging")
+    c3 = _case("c3", "b1", matter_type="norm_violation")
+
+    counts = count_cases_by_matter_type([c1, c2, c3])
+    assert counts == {"ragging": 2, "norm_violation": 1}
+    assert count_cases_by_matter_type([]) == {}
 
 
 
