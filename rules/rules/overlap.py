@@ -629,6 +629,16 @@ def get_candidate_by_permanent_id(
     return None
 
 
+def count_cases_by_matter_type(
+    cases: list[CaseFacts] | tuple[CaseFacts, ...]
+) -> dict[str, int]:
+    """Count case frequency aggregated by matter type."""
+    counts: dict[str, int] = {}
+    for case in cases:
+        counts[case.matter_type] = counts.get(case.matter_type, 0) + 1
+    return counts
+
+
 
 
 
