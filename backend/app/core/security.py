@@ -300,6 +300,13 @@ def mask_permanent_id(permanent_id: str) -> str:
     return f"{clean[:2]}{'*' * (len(clean) - 5)}{clean[-3:]}"
 
 
+def is_valid_permanent_id_format(permanent_id: str) -> bool:
+    """Validate whether an institution permanent ID complies with the 1-XXXXXX format."""
+    import re
+
+    return bool(re.match(r"^1-\d{6,12}$", permanent_id.strip()))
+
+
 
 
 
