@@ -85,6 +85,10 @@ export function isValidZIndexKey(key: string): key is ZIndexKey {
   return key in zIndex;
 }
 
+export function isValidSpacingGutterKey(key: string): key is keyof typeof spacing.gutter {
+  return key in spacing.gutter;
+}
+
 
 
 
