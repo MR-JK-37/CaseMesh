@@ -417,6 +417,11 @@ def can_decide_overlaps(role: str) -> bool:
     return can(role, "overlap:decide")
 
 
+def can_assign_cases(role: str) -> bool:
+    """Return True if role has authority to assign cases to officers."""
+    return can(role, "case:assign")
+
+
 
 
 
