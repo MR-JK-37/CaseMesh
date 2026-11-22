@@ -665,6 +665,14 @@ def filter_candidates_by_district(
     ]
 
 
+def is_case_within_window(
+    case: CaseFacts, target_date: datetime, window_days: int = 90
+) -> bool:
+    """Return True if case was received within window_days of the target date."""
+    days_apart = abs((case.received_at - target_date).days)
+    return days_apart <= window_days
+
+
 
 
 
