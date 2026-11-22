@@ -21,6 +21,7 @@ from rules.overlap import (
     get_candidate_by_id,
     get_candidate_by_permanent_id,
     get_candidate_institution_names,
+    get_candidate_permanent_ids,
     get_compatible_categories,
     get_default_weights,
     get_external_references_count,
@@ -708,6 +709,17 @@ def test_has_distinct_bureau_pair():
     assert has_distinct_bureau_pair([c1, c3]) is False
     assert has_distinct_bureau_pair([c1, c_none]) is False
     assert has_distinct_bureau_pair([]) is False
+
+
+def test_get_candidate_permanent_ids():
+    c1 = InstitutionCandidate("i1", "Inst 1", permanent_id="1-2345678")
+    c2 = InstitutionCandidate("i2", "Inst 2", permanent_id="1-1234567")
+    c3 = InstitutionCandidate("i3", "Inst 3", permanent_id="1-2345678")
+    c4 = InstitutionCandidate("i4", "Inst 4", permanent_id=None)
+
+    perm_ids = get_candidate_permanent_ids([c1, c2, c3, c4])
+    assert perm_ids == ["1-1234567", "1-2345678"]
+    assert get_candidate_permanent_ids([]) == []
 
 
 
