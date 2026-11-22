@@ -93,6 +93,10 @@ export function getGridStep(multiplier: number = 1): number {
   return spacing.grid * multiplier;
 }
 
+export function isValidMotionDurationKey(type: string): type is "fast" | "normal" | "highlight" {
+  return type === "fast" || type === "normal" || type === "highlight";
+}
+
 
 
 
