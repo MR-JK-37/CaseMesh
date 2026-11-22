@@ -36,6 +36,7 @@ from rules.overlap import (
     has_any_overlap_reasons,
     has_any_shared_external_reference,
     has_description,
+    has_distinct_bureau_pair,
     has_matching_district_and_state,
     has_matching_permanent_id,
     has_matching_receipt_year,
@@ -695,6 +696,18 @@ def test_is_case_within_window():
     assert is_case_within_window(c1, NOW, window_days=90) is True
     assert is_case_within_window(c2, NOW, window_days=90) is False
     assert is_case_within_window(c2, NOW, window_days=150) is True
+
+
+def test_has_distinct_bureau_pair():
+    c1 = _case("c1", "bureau_a")
+    c2 = _case("c2", "bureau_b")
+    c3 = _case("c3", "bureau_a")
+    c_none = _case("c4", None)
+
+    assert has_distinct_bureau_pair([c1, c2]) is True
+    assert has_distinct_bureau_pair([c1, c3]) is False
+    assert has_distinct_bureau_pair([c1, c_none]) is False
+    assert has_distinct_bureau_pair([]) is False
 
 
 
