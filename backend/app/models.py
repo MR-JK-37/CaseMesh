@@ -246,6 +246,11 @@ def is_valid_session_termination_reason(reason: str | None) -> bool:
     return reason in SESSION_TERMINATION_REASONS
 
 
+def get_all_session_termination_reasons() -> tuple[str, ...]:
+    """Return tuple of all valid session termination reasons."""
+    return SESSION_TERMINATION_REASONS
+
+
 
 
 
