@@ -232,6 +232,20 @@ def get_all_audit_actions() -> tuple[str, ...]:
     return AUDIT_ACTIONS
 
 
+SESSION_TERMINATION_REASONS = (
+    "logout",
+    "timeout",
+    "revoked",
+    "concurrent_login",
+    "security_lockout",
+)
+
+
+def is_valid_session_termination_reason(reason: str | None) -> bool:
+    """Return True if session termination reason conforms to Section 4.1 lifecycle events."""
+    return reason in SESSION_TERMINATION_REASONS
+
+
 
 
 
