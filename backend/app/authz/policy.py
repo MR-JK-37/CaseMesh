@@ -427,6 +427,11 @@ def can_escalate_cases(role: str) -> bool:
     return can(role, "case:escalate")
 
 
+def can_register_cases(role: str) -> bool:
+    """Return True if role has authority to register incoming grievance cases."""
+    return can(role, "case:register")
+
+
 
 
 
