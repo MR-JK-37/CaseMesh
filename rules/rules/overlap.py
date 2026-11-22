@@ -652,6 +652,19 @@ def filter_candidates_by_state(
     ]
 
 
+def filter_candidates_by_district(
+    candidates: list[InstitutionCandidate] | tuple[InstitutionCandidate, ...],
+    district: str,
+) -> list[InstitutionCandidate]:
+    """Filter candidate institutions by geographical district case-insensitively."""
+    target_district = district.strip().lower()
+    return [
+        c
+        for c in candidates
+        if c.district and c.district.strip().lower() == target_district
+    ]
+
+
 
 
 
