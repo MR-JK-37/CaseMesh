@@ -307,6 +307,11 @@ def is_valid_permanent_id_format(permanent_id: str) -> bool:
     return bool(re.match(r"^1-\d{6,12}$", permanent_id.strip()))
 
 
+def normalize_district_name(district: str) -> str:
+    """Normalize district name to standard Title Case with trimmed whitespace."""
+    return district.strip().title()
+
+
 
 
 
