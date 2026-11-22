@@ -312,6 +312,13 @@ def normalize_district_name(district: str) -> str:
     return district.strip().title()
 
 
+def is_valid_academic_year_format(ay: str) -> bool:
+    """Validate whether an academic year string conforms to YYYY-YY or YYYY-YYYY format."""
+    import re
+
+    return bool(re.match(r"^\d{4}-\d{2,4}$", ay.strip()))
+
+
 
 
 
