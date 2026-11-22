@@ -41,6 +41,7 @@ from rules.overlap import (
     has_matching_receipt_year,
     has_overlap_reason,
     is_category_compatible,
+    is_case_within_window,
     is_cross_bureau_pair,
     is_cross_state_institution_pair,
     is_empty_or_whitespace,
@@ -682,6 +683,18 @@ def test_filter_candidates_by_district():
     assert len(pune_cands) == 2
     assert {c.institution_id for c in pune_cands} == {"i1", "i3"}
     assert filter_candidates_by_district([c1, c2, c3, c4], "Thane") == []
+
+
+def test_is_case_within_window():
+    base_date = dt.datetime(2026, 6, 1, tzinfo=dt.UTC)
+    c_close = _case("c1", "b1", days_ago=0)  # NOW is 2026-10-29
+    # Let's test with respect to NOW
+    c1 = _case("c1", "b1", days_ago=30)
+    c2 = _case("c2", "b1", days_ago=120)
+
+    assert is_case_within_window(c1, NOW, window_days=90) is True
+    assert is_case_within_window(c2, NOW, window_days=90) is False
+    assert is_case_within_window(c2, NOW, window_days=150) is True
 
 
 
