@@ -97,6 +97,12 @@ export function isValidMotionDurationKey(type: string): type is "fast" | "normal
   return type === "fast" || type === "normal" || type === "highlight";
 }
 
+export function getCardPadding(size: "sm" | "md" | "lg" = "md"): number {
+  if (size === "sm") return 12;
+  if (size === "lg") return 24;
+  return 16;
+}
+
 
 
 
