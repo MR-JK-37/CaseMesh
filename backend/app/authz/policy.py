@@ -432,6 +432,11 @@ def can_register_cases(role: str) -> bool:
     return can(role, "case:register")
 
 
+def can_dispose_cases(role: str) -> bool:
+    """Return True if role has authority to formally dispose cases."""
+    return can(role, "case:dispose")
+
+
 
 
 
