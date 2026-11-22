@@ -681,6 +681,13 @@ def has_distinct_bureau_pair(
     return len(bureaus) >= 2
 
 
+def get_candidate_permanent_ids(
+    candidates: list[InstitutionCandidate] | tuple[InstitutionCandidate, ...]
+) -> list[str]:
+    """Return sorted unique non-empty permanent IDs across candidate institutions."""
+    return sorted({c.permanent_id.strip() for c in candidates if c.permanent_id and c.permanent_id.strip()})
+
+
 
 
 
