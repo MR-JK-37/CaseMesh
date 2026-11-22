@@ -11,6 +11,7 @@ from rules.overlap import (
     count_shared_references,
     create_case_facts,
     filter_candidates_by_min_score,
+    filter_candidates_by_district,
     filter_candidates_by_state,
     filter_cases_by_bureau,
     filter_cases_by_matter_type,
@@ -669,6 +670,18 @@ def test_filter_candidates_by_state():
     assert len(mh_cands) == 2
     assert {c.institution_id for c in mh_cands} == {"i1", "i3"}
     assert filter_candidates_by_state([c1, c2, c3, c4], "Karnataka") == []
+
+
+def test_filter_candidates_by_district():
+    c1 = InstitutionCandidate("i1", "Inst 1", district="Pune")
+    c2 = InstitutionCandidate("i2", "Inst 2", district="Nagpur")
+    c3 = InstitutionCandidate("i3", "Inst 3", district="pune")
+    c4 = InstitutionCandidate("i4", "Inst 4", district=None)
+
+    pune_cands = filter_candidates_by_district([c1, c2, c3, c4], "Pune")
+    assert len(pune_cands) == 2
+    assert {c.institution_id for c in pune_cands} == {"i1", "i3"}
+    assert filter_candidates_by_district([c1, c2, c3, c4], "Thane") == []
 
 
 
