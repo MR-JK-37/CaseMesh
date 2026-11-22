@@ -673,6 +673,14 @@ def is_case_within_window(
     return days_apart <= window_days
 
 
+def has_distinct_bureau_pair(
+    cases: list[CaseFacts] | tuple[CaseFacts, ...]
+) -> bool:
+    """Return True if the case list contains at least two distinct valid bureau IDs."""
+    bureaus = {c.bureau_id for c in cases if c.bureau_id and c.bureau_id.strip()}
+    return len(bureaus) >= 2
+
+
 
 
 
