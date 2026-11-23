@@ -103,6 +103,12 @@ export function getCardPadding(size: "sm" | "md" | "lg" = "md"): number {
   return 16;
 }
 
+export function getBorderWidth(type: "thin" | "medium" | "thick" = "thin"): number {
+  if (type === "medium") return 2;
+  if (type === "thick") return 4;
+  return 1;
+}
+
 
 
 
