@@ -265,6 +265,11 @@ def is_valid_notification_status(status: str | None) -> bool:
     return status in NOTIFICATION_STATUSES
 
 
+def get_all_notification_statuses() -> tuple[str, ...]:
+    """Return tuple of all valid notification delivery statuses."""
+    return NOTIFICATION_STATUSES
+
+
 
 
 
