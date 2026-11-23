@@ -688,6 +688,15 @@ def get_candidate_permanent_ids(
     return sorted({c.permanent_id.strip() for c in candidates if c.permanent_id and c.permanent_id.strip()})
 
 
+def filter_cases_by_date_range(
+    cases: list[CaseFacts] | tuple[CaseFacts, ...],
+    start_date: datetime,
+    end_date: datetime,
+) -> list[CaseFacts]:
+    """Filter cases to those received within [start_date, end_date] inclusively."""
+    return [c for c in cases if start_date <= c.received_at <= end_date]
+
+
 
 
 
