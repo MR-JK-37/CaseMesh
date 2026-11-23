@@ -47,6 +47,7 @@ from rules.overlap import (
     is_case_within_window,
     is_cross_bureau_pair,
     is_cross_state_institution_pair,
+    is_empty_external_references,
     is_empty_or_whitespace,
     is_high_overlap,
     is_info_overlap,
@@ -733,6 +734,14 @@ def test_filter_cases_by_date_range():
     filtered = filter_cases_by_date_range([c1, c2, c3], start, end)
     assert len(filtered) == 2
     assert {c.case_id for c in filtered} == {"c1", "c2"}
+
+
+def test_is_empty_external_references():
+    c_empty = _case("c1", "b1", refs=[])
+    c_refs = _case("c2", "b1", refs=["REF-123"])
+
+    assert is_empty_external_references(c_empty) is True
+    assert is_empty_external_references(c_refs) is False
 
 
 
