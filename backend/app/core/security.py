@@ -319,6 +319,11 @@ def is_valid_academic_year_format(ay: str) -> bool:
     return bool(re.match(r"^\d{4}-\d{2,4}$", ay.strip()))
 
 
+def normalize_state_name(state: str) -> str:
+    """Normalize state/union territory name to standard Title Case with trimmed whitespace."""
+    return state.strip().title()
+
+
 
 
 
