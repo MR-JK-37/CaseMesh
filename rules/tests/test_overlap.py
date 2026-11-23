@@ -38,6 +38,7 @@ from rules.overlap import (
     get_unique_matter_types,
     has_any_overlap_reasons,
     has_any_shared_external_reference,
+    has_case_id,
     has_description,
     has_distinct_bureau_pair,
     has_matching_district_and_state,
@@ -753,6 +754,15 @@ def test_get_highest_scoring_candidate():
     top = get_highest_scoring_candidate([m1, m2, m3])
     assert top == m2
     assert get_highest_scoring_candidate([]) is None
+
+
+def test_has_case_id():
+    c1 = _case("CASE-101", "b1")
+    c2 = _case("CASE-102", "b1")
+
+    assert has_case_id([c1, c2], "CASE-101") is True
+    assert has_case_id([c1, c2], "CASE-999") is False
+    assert has_case_id([], "CASE-101") is False
 
 
 
