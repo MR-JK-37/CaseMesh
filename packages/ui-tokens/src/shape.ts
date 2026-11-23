@@ -109,6 +109,10 @@ export function getBorderWidth(type: "thin" | "medium" | "thick" = "thin"): numb
   return 1;
 }
 
+export function isValidBorderWidthKey(type: string): type is "thin" | "medium" | "thick" {
+  return type === "thin" || type === "medium" || type === "thick";
+}
+
 
 
 
