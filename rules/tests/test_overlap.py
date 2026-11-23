@@ -26,6 +26,7 @@ from rules.overlap import (
     get_compatible_categories,
     get_default_weights,
     get_external_references_count,
+    get_highest_scoring_candidate,
     get_known_abbreviations,
     get_matter_type,
     get_overlap_config_version,
@@ -742,6 +743,16 @@ def test_is_empty_external_references():
 
     assert is_empty_external_references(c_empty) is True
     assert is_empty_external_references(c_refs) is False
+
+
+def test_get_highest_scoring_candidate():
+    m1 = ResolutionMatch("i1", 75.0, "reason1")
+    m2 = ResolutionMatch("i2", 95.0, "reason2")
+    m3 = ResolutionMatch("i3", 85.0, "reason3")
+
+    top = get_highest_scoring_candidate([m1, m2, m3])
+    assert top == m2
+    assert get_highest_scoring_candidate([]) is None
 
 
 
