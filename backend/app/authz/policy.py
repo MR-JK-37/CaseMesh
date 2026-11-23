@@ -437,6 +437,11 @@ def can_dispose_cases(role: str) -> bool:
     return can(role, "case:dispose")
 
 
+def can_remark_cases(role: str) -> bool:
+    """Return True if role has authority to add official case remarks."""
+    return can(role, "case:remark")
+
+
 
 
 
