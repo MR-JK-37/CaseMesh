@@ -697,6 +697,11 @@ def filter_cases_by_date_range(
     return [c for c in cases if start_date <= c.received_at <= end_date]
 
 
+def is_empty_external_references(case: CaseFacts) -> bool:
+    """Return True if case contains no external references."""
+    return len(case.external_refs) == 0
+
+
 
 
 
