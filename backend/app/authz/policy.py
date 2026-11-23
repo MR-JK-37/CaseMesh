@@ -442,6 +442,11 @@ def can_remark_cases(role: str) -> bool:
     return can(role, "case:remark")
 
 
+def can_propose_case_transfer(role: str) -> bool:
+    """Return True if role has authority to propose an inter-bureau case transfer."""
+    return can(role, "case:transfer_propose")
+
+
 
 
 
