@@ -702,6 +702,15 @@ def is_empty_external_references(case: CaseFacts) -> bool:
     return len(case.external_refs) == 0
 
 
+def get_highest_scoring_candidate(
+    candidates: list[ResolutionMatch] | tuple[ResolutionMatch, ...]
+) -> ResolutionMatch | None:
+    """Return the candidate with the highest resolution score, or None if empty."""
+    if not candidates:
+        return None
+    return max(candidates, key=lambda c: c.score)
+
+
 
 
 
