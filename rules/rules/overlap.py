@@ -711,6 +711,14 @@ def get_highest_scoring_candidate(
     return max(candidates, key=lambda c: c.score)
 
 
+def has_case_id(
+    cases: list[CaseFacts] | tuple[CaseFacts, ...], case_id: str
+) -> bool:
+    """Return True if case_id exists in cases collection."""
+    clean_id = case_id.strip()
+    return any(c.case_id == clean_id for c in cases)
+
+
 
 
 
