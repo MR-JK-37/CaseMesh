@@ -324,6 +324,13 @@ def normalize_state_name(state: str) -> str:
     return state.strip().title()
 
 
+def is_valid_pincode_format(pincode: str) -> bool:
+    """Validate whether postal PIN code conforms to standard 6-digit Indian PIN format."""
+    import re
+
+    return bool(re.match(r"^[1-9]\d{5}$", pincode.strip()))
+
+
 
 
 
