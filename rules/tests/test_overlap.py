@@ -14,6 +14,7 @@ from rules.overlap import (
     filter_candidates_by_district,
     filter_candidates_by_state,
     filter_cases_by_bureau,
+    filter_cases_by_date_range,
     filter_cases_by_matter_type,
     format_case_reference_summary,
     format_overlap_summary,
@@ -720,6 +721,18 @@ def test_get_candidate_permanent_ids():
     perm_ids = get_candidate_permanent_ids([c1, c2, c3, c4])
     assert perm_ids == ["1-1234567", "1-2345678"]
     assert get_candidate_permanent_ids([]) == []
+
+
+def test_filter_cases_by_date_range():
+    c1 = _case("c1", "b1", days_ago=10)
+    c2 = _case("c2", "b1", days_ago=20)
+    c3 = _case("c3", "b1", days_ago=50)
+
+    start = NOW - dt.timedelta(days=25)
+    end = NOW - dt.timedelta(days=5)
+    filtered = filter_cases_by_date_range([c1, c2, c3], start, end)
+    assert len(filtered) == 2
+    assert {c.case_id for c in filtered} == {"c1", "c2"}
 
 
 
