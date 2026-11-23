@@ -251,6 +251,20 @@ def get_all_session_termination_reasons() -> tuple[str, ...]:
     return SESSION_TERMINATION_REASONS
 
 
+NOTIFICATION_STATUSES = (
+    "queued",
+    "sent",
+    "delivered",
+    "failed",
+    "bounced",
+)
+
+
+def is_valid_notification_status(status: str | None) -> bool:
+    """Return True if notification status conforms to dispatcher lifecycle states."""
+    return status in NOTIFICATION_STATUSES
+
+
 
 
 
