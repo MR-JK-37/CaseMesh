@@ -283,6 +283,11 @@ def is_valid_grievance_severity(sev: str | None) -> bool:
     return sev in GRIEVANCE_SEVERITIES
 
 
+def get_all_grievance_severities() -> tuple[str, ...]:
+    """Return all valid grievance severity tiers."""
+    return GRIEVANCE_SEVERITIES
+
+
 
 
 
