@@ -270,6 +270,19 @@ def get_all_notification_statuses() -> tuple[str, ...]:
     return NOTIFICATION_STATUSES
 
 
+GRIEVANCE_SEVERITIES = (
+    "urgent",
+    "high",
+    "medium",
+    "low",
+)
+
+
+def is_valid_grievance_severity(sev: str | None) -> bool:
+    """Return True if grievance severity matches defined prioritization tiers."""
+    return sev in GRIEVANCE_SEVERITIES
+
+
 
 
 
