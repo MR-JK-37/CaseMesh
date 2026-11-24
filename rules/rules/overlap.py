@@ -739,6 +739,18 @@ def get_candidate_ids(
     return sorted({c.institution_id for c in candidates if c.institution_id})
 
 
+def has_duplicate_case_ids(
+    cases: list[CaseFacts] | tuple[CaseFacts, ...]
+) -> bool:
+    """Return True if collection contains two or more cases with identical case_id."""
+    seen: set[str] = set()
+    for c in cases:
+        if c.case_id in seen:
+            return True
+        seen.add(c.case_id)
+    return False
+
+
 
 
 
