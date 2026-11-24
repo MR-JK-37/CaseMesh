@@ -120,6 +120,10 @@ export function getAvatarSize(size: "sm" | "md" | "lg" | "xl" = "md"): number {
   return 32;
 }
 
+export function isValidAvatarSizeKey(size: string): size is "sm" | "md" | "lg" | "xl" {
+  return size === "sm" || size === "md" || size === "lg" || size === "xl";
+}
+
 
 
 
