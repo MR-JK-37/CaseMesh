@@ -16,6 +16,7 @@ from rules.overlap import (
     filter_cases_by_bureau,
     filter_cases_by_date_range,
     filter_cases_by_matter_type,
+    filter_matches_by_min_score,
     format_case_reference_summary,
     format_overlap_summary,
     get_all_category_names,
@@ -763,6 +764,17 @@ def test_has_case_id():
     assert has_case_id([c1, c2], "CASE-101") is True
     assert has_case_id([c1, c2], "CASE-999") is False
     assert has_case_id([], "CASE-101") is False
+
+
+def test_filter_matches_by_min_score():
+    m1 = ResolutionMatch("i1", 85.0, "reason1")
+    m2 = ResolutionMatch("i2", 60.0, "reason2")
+    m3 = ResolutionMatch("i3", 92.0, "reason3")
+
+    high = filter_matches_by_min_score([m1, m2, m3], 80.0)
+    assert len(high) == 2
+    assert {m.institution_id for m in high} == {"i1", "i3"}
+    assert filter_matches_by_min_score([m1, m2, m3], 95.0) == []
 
 
 
