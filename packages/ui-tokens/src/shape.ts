@@ -113,6 +113,13 @@ export function isValidBorderWidthKey(type: string): type is "thin" | "medium" |
   return type === "thin" || type === "medium" || type === "thick";
 }
 
+export function getAvatarSize(size: "sm" | "md" | "lg" | "xl" = "md"): number {
+  if (size === "sm") return 24;
+  if (size === "lg") return 40;
+  if (size === "xl") return 48;
+  return 32;
+}
+
 
 
 
