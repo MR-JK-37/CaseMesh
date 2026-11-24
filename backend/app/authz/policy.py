@@ -452,6 +452,11 @@ def can_resolve_case_transfer(role: str) -> bool:
     return can(role, "case:transfer_resolve")
 
 
+def can_coordinate_overlaps(role: str) -> bool:
+    """Return True if role has authority to coordinate cross-bureau overlap investigations."""
+    return can(role, "overlap:coordinate")
+
+
 
 
 
