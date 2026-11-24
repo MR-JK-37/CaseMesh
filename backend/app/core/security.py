@@ -331,6 +331,11 @@ def is_valid_pincode_format(pincode: str) -> bool:
     return bool(re.match(r"^[1-9]\d{5}$", pincode.strip()))
 
 
+def normalize_search_query(query: str) -> str:
+    """Normalize user search query by collapsing consecutive whitespace and trimming."""
+    return " ".join(query.strip().split())
+
+
 
 
 
