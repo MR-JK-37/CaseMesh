@@ -22,6 +22,7 @@ from rules.overlap import (
     get_all_category_names,
     get_candidate_by_id,
     get_candidate_by_permanent_id,
+    get_candidate_ids,
     get_candidate_institution_names,
     get_candidate_permanent_ids,
     get_compatible_categories,
@@ -785,6 +786,15 @@ def test_is_exact_resolution_match():
     assert is_exact_resolution_match(m_exact) is True
     assert is_exact_resolution_match(m_near) is False
     assert is_exact_resolution_match(None) is False
+
+
+def test_get_candidate_ids():
+    c1 = InstitutionCandidate("inst_b", "Inst B")
+    c2 = InstitutionCandidate("inst_a", "Inst A")
+    c3 = InstitutionCandidate("inst_b", "Inst B copy")
+
+    assert get_candidate_ids([c1, c2, c3]) == ["inst_a", "inst_b"]
+    assert get_candidate_ids([]) == []
 
 
 
