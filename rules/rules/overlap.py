@@ -732,6 +732,13 @@ def is_exact_resolution_match(match: ResolutionMatch | None) -> bool:
     return match is not None and match.score >= 100.0
 
 
+def get_candidate_ids(
+    candidates: list[InstitutionCandidate] | tuple[InstitutionCandidate, ...]
+) -> list[str]:
+    """Return sorted unique list of institution identifiers across candidates."""
+    return sorted({c.institution_id for c in candidates if c.institution_id})
+
+
 
 
 
