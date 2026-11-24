@@ -336,6 +336,13 @@ def normalize_search_query(query: str) -> str:
     return " ".join(query.strip().split())
 
 
+def is_valid_resolution_reason_format(reason: str) -> bool:
+    """Validate whether resolution reason code matches standard snake_case slug format."""
+    import re
+
+    return bool(re.match(r"^[a-z][a-z0-9_]*$", reason.strip()))
+
+
 
 
 
