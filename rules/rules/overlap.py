@@ -719,6 +719,14 @@ def has_case_id(
     return any(c.case_id == clean_id for c in cases)
 
 
+def filter_matches_by_min_score(
+    matches: list[ResolutionMatch] | tuple[ResolutionMatch, ...],
+    min_score: float,
+) -> list[ResolutionMatch]:
+    """Filter resolution candidate matches to those meeting or exceeding minimum score."""
+    return [m for m in matches if m.score >= min_score]
+
+
 
 
 
