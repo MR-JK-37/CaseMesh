@@ -727,6 +727,11 @@ def filter_matches_by_min_score(
     return [m for m in matches if m.score >= min_score]
 
 
+def is_exact_resolution_match(match: ResolutionMatch | None) -> bool:
+    """Return True if match represents a 100% confidence resolution match."""
+    return match is not None and match.score >= 100.0
+
+
 
 
 
