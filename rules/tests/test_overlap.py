@@ -43,6 +43,7 @@ from rules.overlap import (
     has_case_id,
     has_description,
     has_distinct_bureau_pair,
+    has_duplicate_case_ids,
     has_matching_district_and_state,
     has_matching_permanent_id,
     has_matching_receipt_year,
@@ -795,6 +796,16 @@ def test_get_candidate_ids():
 
     assert get_candidate_ids([c1, c2, c3]) == ["inst_a", "inst_b"]
     assert get_candidate_ids([]) == []
+
+
+def test_has_duplicate_case_ids():
+    c1 = _case("c1", "b1")
+    c2 = _case("c2", "b1")
+    c3 = _case("c1", "b2")
+
+    assert has_duplicate_case_ids([c1, c2, c3]) is True
+    assert has_duplicate_case_ids([c1, c2]) is False
+    assert has_duplicate_case_ids([]) is False
 
 
 
