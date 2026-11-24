@@ -52,6 +52,7 @@ from rules.overlap import (
     is_cross_state_institution_pair,
     is_empty_external_references,
     is_empty_or_whitespace,
+    is_exact_resolution_match,
     is_high_overlap,
     is_info_overlap,
     is_institution_candidate_active,
@@ -775,6 +776,15 @@ def test_filter_matches_by_min_score():
     assert len(high) == 2
     assert {m.institution_id for m in high} == {"i1", "i3"}
     assert filter_matches_by_min_score([m1, m2, m3], 95.0) == []
+
+
+def test_is_exact_resolution_match():
+    m_exact = ResolutionMatch("i1", 100.0, "exact_id")
+    m_near = ResolutionMatch("i2", 99.5, "fuzzy")
+
+    assert is_exact_resolution_match(m_exact) is True
+    assert is_exact_resolution_match(m_near) is False
+    assert is_exact_resolution_match(None) is False
 
 
 
