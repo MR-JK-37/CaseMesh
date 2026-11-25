@@ -288,6 +288,19 @@ def get_all_grievance_severities() -> tuple[str, ...]:
     return GRIEVANCE_SEVERITIES
 
 
+TRANSFER_STATUSES = (
+    "proposed",
+    "accepted",
+    "rejected",
+    "cancelled",
+)
+
+
+def is_valid_transfer_status(status: str | None) -> bool:
+    """Return True if status matches defined inter-bureau case transfer states."""
+    return status in TRANSFER_STATUSES
+
+
 
 
 
