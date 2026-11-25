@@ -343,16 +343,10 @@ def is_valid_resolution_reason_format(reason: str) -> bool:
     return bool(re.match(r"^[a-z][a-z0-9_]*$", reason.strip()))
 
 
+def sanitize_filename(filename: str) -> str:
+    """Strip path separators and unsafe characters from an uploaded filename."""
+    import os
+    import re
 
-
-
-
-
-
-
-
-
-
-
-
-
+    base = os.path.basename(filename.strip())
+    return re.sub(r"[^A-Za-z0-9._-]", "_", base)
