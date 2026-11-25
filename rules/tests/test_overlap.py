@@ -28,6 +28,7 @@ from rules.overlap import (
     get_compatible_categories,
     get_default_weights,
     get_external_references_count,
+    get_resolution_score_range,
     get_highest_scoring_candidate,
     get_known_abbreviations,
     get_matter_type,
@@ -808,32 +809,11 @@ def test_has_duplicate_case_ids():
     assert has_duplicate_case_ids([]) is False
 
 
+def test_get_resolution_score_range():
+    m1 = ResolutionMatch("i1", 72.5, "name")
+    m2 = ResolutionMatch("i2", 95.0, "permanent_id")
+    m3 = ResolutionMatch("i3", 81.0, "name")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    assert get_resolution_score_range([m1, m2, m3]) == (72.5, 95.0)
+    assert get_resolution_score_range([m1]) == (72.5, 72.5)
+    assert get_resolution_score_range([]) is None
