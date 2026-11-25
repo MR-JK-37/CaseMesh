@@ -751,31 +751,11 @@ def has_duplicate_case_ids(
     return False
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def get_resolution_score_range(
+    matches: list[ResolutionMatch] | tuple[ResolutionMatch, ...],
+) -> tuple[float, float] | None:
+    """Return (min_score, max_score) across resolution matches, or None if empty."""
+    if not matches:
+        return None
+    scores = [m.score for m in matches]
+    return (min(scores), max(scores))
