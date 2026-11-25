@@ -301,6 +301,11 @@ def is_valid_transfer_status(status: str | None) -> bool:
     return status in TRANSFER_STATUSES
 
 
+def get_all_transfer_statuses() -> tuple[str, ...]:
+    """Return all valid inter-bureau case transfer statuses."""
+    return TRANSFER_STATUSES
+
+
 
 
 
