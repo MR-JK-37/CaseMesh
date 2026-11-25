@@ -775,3 +775,8 @@ def count_cases_with_description(
 ) -> int:
     """Count cases that include a non-empty description."""
     return sum(1 for c in cases if c.description is not None and bool(c.description.strip()))
+
+
+def get_case_age_days(case: CaseFacts, reference_time: datetime) -> int:
+    """Calculate non-negative age of a case in calendar days relative to reference_time."""
+    return max(0, (reference_time - case.received_at).days)
