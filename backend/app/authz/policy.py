@@ -457,13 +457,6 @@ def can_coordinate_overlaps(role: str) -> bool:
     return can(role, "overlap:coordinate")
 
 
-
-
-
-
-
-
-
-
-
-
+def can_list_cases(role: str) -> bool:
+    """Return True if role has authority to list cases."""
+    return can(role, "case:list")
