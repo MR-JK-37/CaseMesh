@@ -8,6 +8,7 @@ from rules.overlap import (
     calculate_time_proximity_score,
     calculate_token_jaccard,
     count_cases_by_matter_type,
+    count_cases_with_description,
     count_candidates_with_permanent_id,
     count_shared_references,
     create_case_facts,
@@ -828,3 +829,13 @@ def test_count_candidates_with_permanent_id():
 
     assert count_candidates_with_permanent_id([c1, c2, c3, c4]) == 2
     assert count_candidates_with_permanent_id([]) == 0
+
+
+def test_count_cases_with_description():
+    now = dt.datetime(2026, 1, 10, tzinfo=dt.timezone.utc)
+    c1 = CaseFacts(case_id="c1", bureau_id="b1", matter_type="admission", external_refs=(), description="Fee refund", received_at=now)
+    c2 = CaseFacts(case_id="c2", bureau_id="b1", matter_type="admission", external_refs=(), description=None, received_at=now)
+    c3 = CaseFacts(case_id="c3", bureau_id="b1", matter_type="admission", external_refs=(), description="   ", received_at=now)
+
+    assert count_cases_with_description([c1, c2, c3]) == 1
+    assert count_cases_with_description([]) == 0
