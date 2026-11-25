@@ -27,6 +27,7 @@ from rules.overlap import (
     get_candidate_ids,
     get_candidate_institution_names,
     get_candidate_permanent_ids,
+    get_case_age_days,
     get_compatible_categories,
     get_default_weights,
     get_external_references_count,
@@ -839,3 +840,13 @@ def test_count_cases_with_description():
 
     assert count_cases_with_description([c1, c2, c3]) == 1
     assert count_cases_with_description([]) == 0
+
+
+def test_get_case_age_days():
+    received = dt.datetime(2026, 1, 1, tzinfo=dt.timezone.utc)
+    ref_later = dt.datetime(2026, 1, 16, tzinfo=dt.timezone.utc)
+    ref_earlier = dt.datetime(2025, 12, 25, tzinfo=dt.timezone.utc)
+    case = CaseFacts(case_id="c1", bureau_id="b1", matter_type="admission", external_refs=(), description=None, received_at=received)
+
+    assert get_case_age_days(case, ref_later) == 15
+    assert get_case_age_days(case, ref_earlier) == 0
