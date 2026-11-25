@@ -460,3 +460,8 @@ def can_coordinate_overlaps(role: str) -> bool:
 def can_list_cases(role: str) -> bool:
     """Return True if role has authority to list cases."""
     return can(role, "case:list")
+
+
+def can_manage_saved_views(role: str) -> bool:
+    """Return True if role has authority to create and manage personal saved views."""
+    return can(role, "view:manage")
