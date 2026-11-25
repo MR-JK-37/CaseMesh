@@ -124,10 +124,9 @@ export function isValidAvatarSizeKey(size: string): size is "sm" | "md" | "lg" |
   return size === "sm" || size === "md" || size === "lg" || size === "xl";
 }
 
-
-
-
-
-
-
-
+export function getIconSize(size: "sm" | "md" | "lg" | "xl" = "md"): number {
+  if (size === "sm") return 16;
+  if (size === "lg") return 24;
+  if (size === "xl") return 32;
+  return 20;
+}
