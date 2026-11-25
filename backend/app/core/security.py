@@ -350,3 +350,10 @@ def sanitize_filename(filename: str) -> str:
 
     base = os.path.basename(filename.strip())
     return re.sub(r"[^A-Za-z0-9._-]", "_", base)
+
+
+def is_valid_slug_format(slug: str) -> bool:
+    """Validate whether string conforms to lowercase hyphenated URL slug format."""
+    import re
+
+    return bool(re.match(r"^[a-z0-9]+(?:-[a-z0-9]+)*$", slug.strip()))
