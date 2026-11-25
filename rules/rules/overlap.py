@@ -759,3 +759,12 @@ def get_resolution_score_range(
         return None
     scores = [m.score for m in matches]
     return (min(scores), max(scores))
+
+
+def count_candidates_with_permanent_id(
+    candidates: list[InstitutionCandidate] | tuple[InstitutionCandidate, ...],
+) -> int:
+    """Count institution candidates that have a non-empty permanent ID."""
+    return sum(
+        1 for c in candidates if c.permanent_id is not None and bool(c.permanent_id.strip())
+    )
