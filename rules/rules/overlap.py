@@ -768,3 +768,10 @@ def count_candidates_with_permanent_id(
     return sum(
         1 for c in candidates if c.permanent_id is not None and bool(c.permanent_id.strip())
     )
+
+
+def count_cases_with_description(
+    cases: list[CaseFacts] | tuple[CaseFacts, ...],
+) -> int:
+    """Count cases that include a non-empty description."""
+    return sum(1 for c in cases if c.description is not None and bool(c.description.strip()))
