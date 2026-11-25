@@ -130,3 +130,7 @@ export function getIconSize(size: "sm" | "md" | "lg" | "xl" = "md"): number {
   if (size === "xl") return 32;
   return 20;
 }
+
+export function isValidIconSizeKey(size: string): size is "sm" | "md" | "lg" | "xl" {
+  return size === "sm" || size === "md" || size === "lg" || size === "xl";
+}
