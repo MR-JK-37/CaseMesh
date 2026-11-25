@@ -8,6 +8,7 @@ from rules.overlap import (
     calculate_time_proximity_score,
     calculate_token_jaccard,
     count_cases_by_matter_type,
+    count_candidates_with_permanent_id,
     count_shared_references,
     create_case_facts,
     filter_candidates_by_min_score,
@@ -817,3 +818,13 @@ def test_get_resolution_score_range():
     assert get_resolution_score_range([m1, m2, m3]) == (72.5, 95.0)
     assert get_resolution_score_range([m1]) == (72.5, 72.5)
     assert get_resolution_score_range([]) is None
+
+
+def test_count_candidates_with_permanent_id():
+    c1 = InstitutionCandidate(institution_id="i1", name="A", permanent_id="1-100")
+    c2 = InstitutionCandidate(institution_id="i2", name="B", permanent_id=None)
+    c3 = InstitutionCandidate(institution_id="i3", name="C", permanent_id="   ")
+    c4 = InstitutionCandidate(institution_id="i4", name="D", permanent_id="1-200")
+
+    assert count_candidates_with_permanent_id([c1, c2, c3, c4]) == 2
+    assert count_candidates_with_permanent_id([]) == 0
