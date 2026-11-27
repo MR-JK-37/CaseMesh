@@ -810,3 +810,14 @@ def count_total_external_refs(
 ) -> int:
     """Count total number of external references across all provided cases."""
     return sum(len(c.external_refs) for c in cases)
+
+
+def filter_candidates_by_permanent_id(
+    candidates: list[InstitutionCandidate] | tuple[InstitutionCandidate, ...],
+    permanent_id: str,
+) -> list[InstitutionCandidate]:
+    """Filter institution candidates matching a given trimmed permanent ID."""
+    target = permanent_id.strip()
+    if not target:
+        return []
+    return [c for c in candidates if c.permanent_id is not None and c.permanent_id.strip() == target]
