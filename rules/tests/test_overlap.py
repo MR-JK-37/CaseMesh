@@ -35,6 +35,7 @@ from rules.overlap import (
     get_compatible_categories,
     get_default_weights,
     get_external_references_count,
+    get_latest_case_receipt_time,
     get_resolution_score_range,
     get_unique_bureau_ids,
     get_highest_scoring_candidate,
@@ -895,3 +896,12 @@ def test_filter_candidates_by_permanent_id():
     c3 = InstitutionCandidate(institution_id="i3", name="C", permanent_id=None)
     assert filter_candidates_by_permanent_id([c1, c2, c3], " 1-100 ") == [c1]
     assert filter_candidates_by_permanent_id([c1, c2, c3], "  ") == []
+
+
+def test_get_latest_case_receipt_time():
+    t1 = dt.datetime(2026, 1, 5, tzinfo=dt.timezone.utc)
+    t2 = dt.datetime(2026, 1, 15, tzinfo=dt.timezone.utc)
+    c1 = CaseFacts(case_id="c1", bureau_id="b1", matter_type="admission", external_refs=(), description=None, received_at=t1)
+    c2 = CaseFacts(case_id="c2", bureau_id="b1", matter_type="admission", external_refs=(), description=None, received_at=t2)
+    assert get_latest_case_receipt_time([c1, c2]) == t2
+    assert get_latest_case_receipt_time([]) is None
