@@ -39,6 +39,7 @@ from rules.overlap import (
     get_latest_case_receipt_time,
     get_resolution_score_range,
     get_unique_bureau_ids,
+    is_high_confidence_match,
     get_highest_scoring_candidate,
     get_known_abbreviations,
     get_matter_type,
@@ -915,3 +916,11 @@ def test_get_earliest_case_receipt_time():
     c2 = CaseFacts(case_id="c2", bureau_id="b1", matter_type="admission", external_refs=(), description=None, received_at=t2)
     assert get_earliest_case_receipt_time([c1, c2]) == t1
     assert get_earliest_case_receipt_time([]) is None
+
+
+def test_is_high_confidence_match():
+    m_high = ResolutionMatch("i1", 92.0, "name")
+    m_low = ResolutionMatch("i2", 85.0, "name")
+    assert is_high_confidence_match(m_high) is True
+    assert is_high_confidence_match(m_low) is False
+    assert is_high_confidence_match(None) is False
