@@ -34,6 +34,7 @@ from rules.overlap import (
     get_case_age_days,
     get_compatible_categories,
     get_default_weights,
+    get_earliest_case_receipt_time,
     get_external_references_count,
     get_latest_case_receipt_time,
     get_resolution_score_range,
@@ -905,3 +906,12 @@ def test_get_latest_case_receipt_time():
     c2 = CaseFacts(case_id="c2", bureau_id="b1", matter_type="admission", external_refs=(), description=None, received_at=t2)
     assert get_latest_case_receipt_time([c1, c2]) == t2
     assert get_latest_case_receipt_time([]) is None
+
+
+def test_get_earliest_case_receipt_time():
+    t1 = dt.datetime(2026, 1, 5, tzinfo=dt.timezone.utc)
+    t2 = dt.datetime(2026, 1, 15, tzinfo=dt.timezone.utc)
+    c1 = CaseFacts(case_id="c1", bureau_id="b1", matter_type="admission", external_refs=(), description=None, received_at=t1)
+    c2 = CaseFacts(case_id="c2", bureau_id="b1", matter_type="admission", external_refs=(), description=None, received_at=t2)
+    assert get_earliest_case_receipt_time([c1, c2]) == t1
+    assert get_earliest_case_receipt_time([]) is None
