@@ -470,3 +470,8 @@ def can_manage_saved_views(role: str) -> bool:
 def can_list_overlaps(role: str) -> bool:
     """Return True if role has authority to list cross-bureau overlap flags."""
     return can(role, "overlap:list")
+
+
+def can_list_alerts(role: str) -> bool:
+    """Return True if role has authority to list system alerts."""
+    return can(role, "alert:list")
