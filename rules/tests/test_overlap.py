@@ -22,6 +22,7 @@ from rules.overlap import (
     format_case_reference_summary,
     format_overlap_summary,
     get_all_category_names,
+    get_average_resolution_score,
     get_candidate_by_id,
     get_candidate_by_permanent_id,
     get_candidate_ids,
@@ -850,3 +851,10 @@ def test_get_case_age_days():
 
     assert get_case_age_days(case, ref_later) == 15
     assert get_case_age_days(case, ref_earlier) == 0
+
+
+def test_get_average_resolution_score():
+    m1 = ResolutionMatch("i1", 70.0, "name")
+    m2 = ResolutionMatch("i2", 90.0, "permanent_id")
+    assert get_average_resolution_score([m1, m2]) == 80.0
+    assert get_average_resolution_score([]) is None
