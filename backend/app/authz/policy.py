@@ -480,3 +480,8 @@ def can_list_alerts(role: str) -> bool:
 def can_list_institutions(role: str) -> bool:
     """Return True if role has authority to list registered institutions."""
     return can(role, "institution:list")
+
+
+def can_read_institutions(role: str) -> bool:
+    """Return True if role has authority to view institution detail records."""
+    return can(role, "institution:read")
