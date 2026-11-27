@@ -377,3 +377,10 @@ def mask_aadhaar_number(aadhaar: str) -> str:
     if len(digits) != 12:
         return "****"
     return f"XXXX-XXXX-{digits[-4:]}"
+
+
+def is_valid_year_format(year: str) -> bool:
+    """Validate whether string represents a 4-digit calendar year in 1900-2099."""
+    import re
+
+    return bool(re.match(r"^(19|20)\d{2}$", year.strip()))
