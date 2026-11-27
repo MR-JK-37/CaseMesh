@@ -34,6 +34,7 @@ from rules.overlap import (
     get_default_weights,
     get_external_references_count,
     get_resolution_score_range,
+    get_unique_bureau_ids,
     get_highest_scoring_candidate,
     get_known_abbreviations,
     get_matter_type,
@@ -867,3 +868,12 @@ def test_filter_cases_with_external_refs():
     c2 = CaseFacts(case_id="c2", bureau_id="b1", matter_type="admission", external_refs=(), description=None, received_at=now)
     assert filter_cases_with_external_refs([c1, c2]) == [c1]
     assert filter_cases_with_external_refs([]) == []
+
+
+def test_get_unique_bureau_ids():
+    now = dt.datetime(2026, 1, 10, tzinfo=dt.timezone.utc)
+    c1 = CaseFacts(case_id="c1", bureau_id="b2", matter_type="admission", external_refs=(), description=None, received_at=now)
+    c2 = CaseFacts(case_id="c2", bureau_id="b1", matter_type="admission", external_refs=(), description=None, received_at=now)
+    c3 = CaseFacts(case_id="c3", bureau_id=None, matter_type="admission", external_refs=(), description=None, received_at=now)
+    assert get_unique_bureau_ids([c1, c2, c3, c1]) == ("b1", "b2")
+    assert get_unique_bureau_ids([]) == ()
