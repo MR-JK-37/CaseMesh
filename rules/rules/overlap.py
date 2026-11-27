@@ -789,3 +789,10 @@ def get_average_resolution_score(
     if not matches:
         return None
     return sum(m.score for m in matches) / len(matches)
+
+
+def filter_cases_with_external_refs(
+    cases: list[CaseFacts] | tuple[CaseFacts, ...],
+) -> list[CaseFacts]:
+    """Filter cases to those containing at least one external reference."""
+    return [c for c in cases if bool(c.external_refs)]
