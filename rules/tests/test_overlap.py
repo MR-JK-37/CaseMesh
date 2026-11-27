@@ -11,6 +11,7 @@ from rules.overlap import (
     count_cases_with_description,
     count_candidates_with_permanent_id,
     count_shared_references,
+    count_total_external_refs,
     create_case_facts,
     filter_candidates_by_min_score,
     filter_candidates_by_district,
@@ -877,3 +878,11 @@ def test_get_unique_bureau_ids():
     c3 = CaseFacts(case_id="c3", bureau_id=None, matter_type="admission", external_refs=(), description=None, received_at=now)
     assert get_unique_bureau_ids([c1, c2, c3, c1]) == ("b1", "b2")
     assert get_unique_bureau_ids([]) == ()
+
+
+def test_count_total_external_refs():
+    now = dt.datetime(2026, 1, 10, tzinfo=dt.timezone.utc)
+    c1 = CaseFacts(case_id="c1", bureau_id="b1", matter_type="admission", external_refs=("R1", "R2"), description=None, received_at=now)
+    c2 = CaseFacts(case_id="c2", bureau_id="b1", matter_type="admission", external_refs=("R3",), description=None, received_at=now)
+    assert count_total_external_refs([c1, c2]) == 3
+    assert count_total_external_refs([]) == 0
