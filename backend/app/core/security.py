@@ -362,3 +362,10 @@ def is_valid_slug_format(slug: str) -> bool:
 def normalize_whitespace(text: str) -> str:
     """Collapse consecutive whitespace characters into single spaces and strip ends."""
     return " ".join(text.split())
+
+
+def is_valid_ifsc_format(ifsc: str) -> bool:
+    """Validate whether string conforms to standard 11-character Indian IFSC format."""
+    import re
+
+    return bool(re.match(r"^[A-Z]{4}0[A-Z0-9]{6}$", ifsc.strip().upper()))
