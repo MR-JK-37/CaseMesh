@@ -14,6 +14,7 @@ from rules.overlap import (
     count_total_external_refs,
     create_case_facts,
     filter_candidates_by_min_score,
+    filter_candidates_by_permanent_id,
     filter_candidates_by_district,
     filter_candidates_by_state,
     filter_cases_by_bureau,
@@ -886,3 +887,11 @@ def test_count_total_external_refs():
     c2 = CaseFacts(case_id="c2", bureau_id="b1", matter_type="admission", external_refs=("R3",), description=None, received_at=now)
     assert count_total_external_refs([c1, c2]) == 3
     assert count_total_external_refs([]) == 0
+
+
+def test_filter_candidates_by_permanent_id():
+    c1 = InstitutionCandidate(institution_id="i1", name="A", permanent_id="1-100")
+    c2 = InstitutionCandidate(institution_id="i2", name="B", permanent_id="1-200")
+    c3 = InstitutionCandidate(institution_id="i3", name="C", permanent_id=None)
+    assert filter_candidates_by_permanent_id([c1, c2, c3], " 1-100 ") == [c1]
+    assert filter_candidates_by_permanent_id([c1, c2, c3], "  ") == []
