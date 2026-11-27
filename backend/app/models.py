@@ -306,6 +306,19 @@ def get_all_transfer_statuses() -> tuple[str, ...]:
     return TRANSFER_STATUSES
 
 
+REMINDER_FREQUENCIES = (
+    "daily",
+    "weekly",
+    "escalated",
+    "none",
+)
+
+
+def is_valid_reminder_frequency(freq: str | None) -> bool:
+    """Return True if reminder frequency matches supported schedules."""
+    return freq in REMINDER_FREQUENCIES
+
+
 
 
 
