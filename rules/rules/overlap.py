@@ -803,3 +803,10 @@ def get_unique_bureau_ids(
 ) -> tuple[str, ...]:
     """Return sorted unique non-empty bureau IDs present across cases."""
     return tuple(sorted({c.bureau_id for c in cases if c.bureau_id}))
+
+
+def count_total_external_refs(
+    cases: list[CaseFacts] | tuple[CaseFacts, ...],
+) -> int:
+    """Count total number of external references across all provided cases."""
+    return sum(len(c.external_refs) for c in cases)
