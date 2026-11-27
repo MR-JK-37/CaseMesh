@@ -140,3 +140,7 @@ export function getBadgeHeight(size: "sm" | "md" | "lg" = "md"): number {
   if (size === "lg") return 28;
   return 24;
 }
+
+export function isValidBadgeSizeKey(size: string): size is "sm" | "md" | "lg" {
+  return size === "sm" || size === "md" || size === "lg";
+}
