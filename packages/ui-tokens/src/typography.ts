@@ -40,3 +40,7 @@ export function getScaleStep(step: number): number {
 export function isValidFontWeightKey(key: string): key is FontWeightKey {
   return key in weight;
 }
+
+export function isValidLineHeightKey(key: string): key is LineHeightKey {
+  return key in lineHeight;
+}
