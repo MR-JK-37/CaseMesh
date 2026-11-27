@@ -796,3 +796,10 @@ def filter_cases_with_external_refs(
 ) -> list[CaseFacts]:
     """Filter cases to those containing at least one external reference."""
     return [c for c in cases if bool(c.external_refs)]
+
+
+def get_unique_bureau_ids(
+    cases: list[CaseFacts] | tuple[CaseFacts, ...],
+) -> tuple[str, ...]:
+    """Return sorted unique non-empty bureau IDs present across cases."""
+    return tuple(sorted({c.bureau_id for c in cases if c.bureau_id}))
