@@ -339,6 +339,11 @@ def is_valid_document_type(doc_type: str | None) -> bool:
     return doc_type in DOCUMENT_TYPES
 
 
+def get_all_document_types() -> tuple[str, ...]:
+    """Return all valid document attachment classifications."""
+    return DOCUMENT_TYPES
+
+
 
 
 
