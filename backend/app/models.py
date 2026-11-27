@@ -324,6 +324,21 @@ def get_all_reminder_frequencies() -> tuple[str, ...]:
     return REMINDER_FREQUENCIES
 
 
+DOCUMENT_TYPES = (
+    "petition",
+    "affidavit",
+    "fee_receipt",
+    "marksheet",
+    "correspondence",
+    "order",
+)
+
+
+def is_valid_document_type(doc_type: str | None) -> bool:
+    """Return True if document type matches canonical attachment classifications."""
+    return doc_type in DOCUMENT_TYPES
+
+
 
 
 
