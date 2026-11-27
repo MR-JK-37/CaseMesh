@@ -134,3 +134,9 @@ export function getIconSize(size: "sm" | "md" | "lg" | "xl" = "md"): number {
 export function isValidIconSizeKey(size: string): size is "sm" | "md" | "lg" | "xl" {
   return size === "sm" || size === "md" || size === "lg" || size === "xl";
 }
+
+export function getBadgeHeight(size: "sm" | "md" | "lg" = "md"): number {
+  if (size === "sm") return 20;
+  if (size === "lg") return 28;
+  return 24;
+}
