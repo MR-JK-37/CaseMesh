@@ -44,3 +44,7 @@ export function isValidFontWeightKey(key: string): key is FontWeightKey {
 export function isValidLineHeightKey(key: string): key is LineHeightKey {
   return key in lineHeight;
 }
+
+export function isValidLetterSpacingKey(key: string): key is LetterSpacingKey {
+  return key in letterSpacing;
+}
