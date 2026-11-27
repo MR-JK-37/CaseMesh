@@ -780,3 +780,12 @@ def count_cases_with_description(
 def get_case_age_days(case: CaseFacts, reference_time: datetime) -> int:
     """Calculate non-negative age of a case in calendar days relative to reference_time."""
     return max(0, (reference_time - case.received_at).days)
+
+
+def get_average_resolution_score(
+    matches: list[ResolutionMatch] | tuple[ResolutionMatch, ...],
+) -> float | None:
+    """Calculate mean resolution score across matches, or None if empty."""
+    if not matches:
+        return None
+    return sum(m.score for m in matches) / len(matches)
