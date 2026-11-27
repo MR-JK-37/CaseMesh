@@ -319,6 +319,11 @@ def is_valid_reminder_frequency(freq: str | None) -> bool:
     return freq in REMINDER_FREQUENCIES
 
 
+def get_all_reminder_frequencies() -> tuple[str, ...]:
+    """Return all supported reminder frequencies."""
+    return REMINDER_FREQUENCIES
+
+
 
 
 
