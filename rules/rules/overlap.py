@@ -835,3 +835,11 @@ def get_earliest_case_receipt_time(
 ) -> datetime | None:
     """Return earliest received_at timestamp across cases, or None if empty."""
     return min((c.received_at for c in cases), default=None)
+
+
+def is_high_confidence_match(
+    match: ResolutionMatch | None,
+    threshold: float = 90.0,
+) -> bool:
+    """Return True if match exists and meets or exceeds the confidence threshold."""
+    return match is not None and match.score >= threshold
