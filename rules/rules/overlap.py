@@ -821,3 +821,10 @@ def filter_candidates_by_permanent_id(
     if not target:
         return []
     return [c for c in candidates if c.permanent_id is not None and c.permanent_id.strip() == target]
+
+
+def get_latest_case_receipt_time(
+    cases: list[CaseFacts] | tuple[CaseFacts, ...],
+) -> datetime | None:
+    """Return most recent received_at timestamp across cases, or None if empty."""
+    return max((c.received_at for c in cases), default=None)
