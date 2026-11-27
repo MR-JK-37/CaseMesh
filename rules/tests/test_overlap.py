@@ -18,6 +18,7 @@ from rules.overlap import (
     filter_cases_by_bureau,
     filter_cases_by_date_range,
     filter_cases_by_matter_type,
+    filter_cases_with_external_refs,
     filter_matches_by_min_score,
     format_case_reference_summary,
     format_overlap_summary,
@@ -858,3 +859,11 @@ def test_get_average_resolution_score():
     m2 = ResolutionMatch("i2", 90.0, "permanent_id")
     assert get_average_resolution_score([m1, m2]) == 80.0
     assert get_average_resolution_score([]) is None
+
+
+def test_filter_cases_with_external_refs():
+    now = dt.datetime(2026, 1, 10, tzinfo=dt.timezone.utc)
+    c1 = CaseFacts(case_id="c1", bureau_id="b1", matter_type="admission", external_refs=("REF-1",), description=None, received_at=now)
+    c2 = CaseFacts(case_id="c2", bureau_id="b1", matter_type="admission", external_refs=(), description=None, received_at=now)
+    assert filter_cases_with_external_refs([c1, c2]) == [c1]
+    assert filter_cases_with_external_refs([]) == []
