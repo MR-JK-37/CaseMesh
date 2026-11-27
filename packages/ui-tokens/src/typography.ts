@@ -37,7 +37,6 @@ export function getScaleStep(step: number): number {
   return scale[index];
 }
 
-
-
-
-
+export function isValidFontWeightKey(key: string): key is FontWeightKey {
+  return key in weight;
+}
