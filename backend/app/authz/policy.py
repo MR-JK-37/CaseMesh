@@ -475,3 +475,8 @@ def can_list_overlaps(role: str) -> bool:
 def can_list_alerts(role: str) -> bool:
     """Return True if role has authority to list system alerts."""
     return can(role, "alert:list")
+
+
+def can_list_institutions(role: str) -> bool:
+    """Return True if role has authority to list registered institutions."""
+    return can(role, "institution:list")
