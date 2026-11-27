@@ -357,3 +357,8 @@ def is_valid_slug_format(slug: str) -> bool:
     import re
 
     return bool(re.match(r"^[a-z0-9]+(?:-[a-z0-9]+)*$", slug.strip()))
+
+
+def normalize_whitespace(text: str) -> str:
+    """Collapse consecutive whitespace characters into single spaces and strip ends."""
+    return " ".join(text.split())
