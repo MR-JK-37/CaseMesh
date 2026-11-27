@@ -369,3 +369,11 @@ def is_valid_ifsc_format(ifsc: str) -> bool:
     import re
 
     return bool(re.match(r"^[A-Z]{4}0[A-Z0-9]{6}$", ifsc.strip().upper()))
+
+
+def mask_aadhaar_number(aadhaar: str) -> str:
+    """Mask Aadhaar number leaving only the final 4 digits visible."""
+    digits = "".join(ch for ch in aadhaar if ch.isdigit())
+    if len(digits) != 12:
+        return "****"
+    return f"XXXX-XXXX-{digits[-4:]}"
